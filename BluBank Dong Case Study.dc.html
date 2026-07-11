@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#0A0D15}
+.case{--blu:#7EB3F5;--bg:#0A0D15;--bg2:#0E121C;--card:#141925;--card2:#192030;--line:rgba(255,255,255,.07);--fillsubtle:rgba(255,255,255,.04);--fillsubtle2:rgba(255,255,255,.02);--track:rgba(255,255,255,.06);--track2:rgba(255,255,255,.045);--hairline:rgba(255,255,255,.1);--watermark:rgba(255,255,255,.06);--dashed:rgba(255,255,255,.28);--dashed2:rgba(255,255,255,.18);--hovertip:rgba(255,255,255,.24);--danger:#E05A7A;--success:#34D399;--amber:#F5B97E;--purple:#A78BFA;--teal:#5EE0C8;--slate:#94A3B8;--text:#EAEEF4;--muted:#AAB6C8;--dim:#8593A6;--chip-slate-fg:#C4CEDC;--chip-slate-bg:rgba(148,163,184,.09);--chip-slate-bd:rgba(148,163,184,.4);--chip-teal-bg:rgba(94,224,200,.08);--chip-teal-bd:rgba(94,224,200,.34);--chip-purple-fg:#BCA9F9;--chip-purple-bg:rgba(167,139,250,.1);--chip-purple-bd:rgba(167,139,250,.36);--chip-high-fg:#EC8AA0;--chip-high-bg:rgba(224,90,122,.13);--chip-high-bd:rgba(224,90,122,.3);--chip-med-fg:#F5C58C;--chip-med-bg:rgba(245,185,126,.13);--chip-med-bd:rgba(245,185,126,.3);--jct-s-fg:#9CC6F8;--jct-n-fg:#C6D0DE;--pain-num-fg:#EFA6B7;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:clip;position:relative}
+.case[data-theme="light"]{--bg:#F6F7FA;--bg2:#EDEFF4;--card:#FFFFFF;--card2:#F3F5F9;--line:rgba(15,23,42,.1);--fillsubtle:rgba(15,23,42,.045);--fillsubtle2:rgba(15,23,42,.03);--track:rgba(15,23,42,.08);--track2:rgba(15,23,42,.07);--hairline:rgba(15,23,42,.14);--watermark:rgba(15,23,42,.05);--dashed:rgba(15,23,42,.22);--dashed2:rgba(15,23,42,.18);--hovertip:rgba(15,23,42,.22);--text:#12151C;--muted:#475569;--dim:#5A6472;--blu:#2A5DC7;--danger:#C22F55;--success:#128A5E;--amber:#B5650E;--purple:#6D4FD1;--teal:#0E8F7A;--slate:#56637A;--chip-slate-fg:#3F4C5E;--chip-slate-bg:rgba(71,85,105,.08);--chip-slate-bd:rgba(71,85,105,.32);--chip-teal-bg:rgba(14,143,122,.08);--chip-teal-bd:rgba(14,143,122,.3);--chip-purple-fg:#6D4FD1;--chip-purple-bg:rgba(109,79,209,.08);--chip-purple-bd:rgba(109,79,209,.3);--chip-high-fg:#B23056;--chip-high-bg:rgba(194,47,85,.08);--chip-high-bd:rgba(194,47,85,.3);--chip-med-fg:#A15A0B;--chip-med-bg:rgba(181,101,14,.08);--chip-med-bd:rgba(181,101,14,.3);--jct-s-fg:#2A5DC7;--jct-n-fg:#475569;--pain-num-fg:#B23056}
+.case a{color:var(--blu);text-decoration:none}
+.case a:hover{opacity:.82}
+.themetoggle{position:fixed;top:18px;right:24px;z-index:95;width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);color:var(--text);display:grid;place-items:center;cursor:pointer;padding:0}
+.themetoggle:hover{background:var(--card2)}
+.themetoggle .ic-moon{display:none}
+.case[data-theme="light"] .themetoggle .ic-sun{display:none}
+.case[data-theme="light"] .themetoggle .ic-moon{display:block}
+.fa{font-family:'Vazirmatn',sans-serif;direction:rtl;unicode-bidi:isolate}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative}
+.sec{padding:96px 0;scroll-margin-top:20px;transition:background .3s ease}
+.tint-a{background:var(--bg)}
+.tint-b{background:var(--bg2)}
+.lbl{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blu);margin-bottom:15px}
+.h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,5.2vw,60px);line-height:1.02;letter-spacing:-.03em;margin:0 0 22px}
+.h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.7vw,44px);line-height:1.06;letter-spacing:-.022em;margin:0}
+.h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;line-height:1.2;letter-spacing:-.01em;margin:0}
+.lead{font-size:18px;color:var(--muted);line-height:1.62;margin:0}
+.muted{color:var(--muted)}.dim{color:var(--dim)}.accent{color:var(--blu)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.stat{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;letter-spacing:-.02em;line-height:1}
+.statlbl{margin-top:9px;font-size:13px;color:var(--muted)}
+.rv{transition:opacity .75s ease,transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal-on .rv{opacity:0;transform:translateY(28px)}
+.rv.in{opacity:1;transform:none}
+.reduce .rv,.reduce .reveal-on .rv{opacity:1;transform:none;transition:none}
+.reduce [data-parallax]{transform:none!important}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);background:var(--fillsubtle);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.pill .pd{width:7px;height:7px;border-radius:50%;background:var(--blu);flex:none}
+.mbadge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 15px;border-radius:999px;border:1px solid}
+.mbadge .mn{font-family:'Space Grotesk',sans-serif;font-size:11px;opacity:.7}
+.mb-desk{color:var(--chip-slate-fg);border-color:var(--chip-slate-bd);background:var(--chip-slate-bg)}
+.mb-int{color:var(--teal);border-color:var(--chip-teal-bd);background:var(--chip-teal-bg)}
+.mb-heur{color:var(--chip-purple-fg);border-color:var(--chip-purple-bd);background:var(--chip-purple-bg)}
+.brandfix{position:fixed;top:18px;left:24px;z-index:70;display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brandfix img{width:24px;height:24px;border-radius:6px}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--blu);z-index:90;box-shadow:0 0 12px rgba(126,179,245,.6);transition:width .1s linear}
+.sidenav{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;gap:3px}
+.snav,.sidenav .snav{display:flex;align-items:center;gap:12px;justify-content:flex-end;text-decoration:none;color:var(--dim);padding:7px 2px}
+.sdot{width:10px;height:10px;border-radius:50%;border:1.6px solid currentColor;flex:none;transition:all .25s}
+.slabel{font-size:12px;font-weight:600;color:var(--text);opacity:0;transform:translateX(8px);transition:all .25s;white-space:nowrap;pointer-events:none;background:var(--bg2);border:1px solid var(--line);padding:3px 10px;border-radius:7px}
+.snav:hover .slabel,.compact .slabel{opacity:1;transform:none}
+.snav.on,.sidenav .snav.on{color:var(--blu)}
+.snav.on .sdot{background:var(--blu);box-shadow:0 0 0 4px rgba(126,179,245,.16)}
+.snav.on .slabel{color:var(--text);font-weight:800}
+.cons{display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.cons .ico{width:38px;height:38px;border-radius:10px;background:rgba(224,90,122,.12);border:1px solid rgba(224,90,122,.24);display:grid;place-items:center;color:var(--danger)}
+.cons .ct{font-weight:700;font-size:15px;color:var(--text);line-height:1.3}
+.cons .cd{font-size:13.5px;color:var(--muted);line-height:1.5}
+.mcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;overflow:hidden}
+.mcard .top{height:3px;position:absolute;top:0;left:0;right:0}
+.mcap{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin:0 0 5px}
+.mtxt{margin:0 0 16px;font-size:14px;color:var(--muted);line-height:1.55}
+.sevcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;overflow:hidden;display:flex;flex-direction:column}
+.sevcard .frow{margin-top:auto}
+.sevcard .mtxt{margin-bottom:8px}
+.herologo{display:block;width:54px;height:54px;border-radius:13px;flex:none}
+.herolock{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sevbadge{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid}
+.sb-high{background:var(--chip-high-bg);color:var(--chip-high-fg);border-color:var(--chip-high-bd)}
+.sb-med{background:var(--chip-med-bg);color:var(--chip-med-fg);border-color:var(--chip-med-bd)}
+.frow{height:6px;border-radius:999px;background:var(--track);overflow:hidden;margin-top:16px}
+.ffill{height:100%;border-radius:999px;width:var(--w);transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.reveal-on .ffill{width:0}
+.chart.grow .ffill{width:var(--w)}
+.imp{position:relative;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;padding:26px;overflow:hidden}
+.impnum{font-family:'Space Grotesk',sans-serif;font-size:54px;font-weight:700;line-height:1;color:var(--watermark);position:absolute;top:14px;right:22px}
+.sevtag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--chip-high-bg);color:var(--chip-high-fg);border:1px solid var(--chip-high-bd)}
+.sevtag.s3{background:var(--chip-med-bg);color:var(--chip-med-fg);border-color:var(--chip-med-bd)}
+.qtheme{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;border-left:3px solid var(--teal)}
+.qttl{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 6px;color:var(--text)}
+.qins{font-size:13.5px;color:var(--teal);line-height:1.5;margin:0 0 18px}
+.quote{display:flex;flex-direction:column;gap:5px;padding:13px 0;border-top:1px solid var(--line)}
+.quote .qt{font-size:14.5px;color:var(--text);line-height:1.5;margin:0;font-weight:500}
+.quote .qw{font-size:12.5px;color:var(--dim);font-weight:600}
+.bar{display:grid;grid-template-columns:minmax(150px,210px) 1fr auto;align-items:center;gap:14px;padding:7px 0}
+.blabel{font-size:13.5px;color:var(--muted);font-weight:500;line-height:1.25}
+.blabel b{color:var(--text);font-weight:700}
+.btrack{position:relative;height:30px;border-radius:8px;background:var(--track2);overflow:hidden}
+.bfill{height:100%;width:var(--w);border-radius:8px;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+.reveal-on .bfill{width:0}
+.chart.grow .bfill{width:var(--w)}
+.bval{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;min-width:46px;text-align:right;color:var(--text)}
+.bf-crit{background:linear-gradient(90deg,#E05A7A,#F07A92)}
+.bf-amber{background:linear-gradient(90deg,#E0915A,#F5B97E)}
+.bf-blu{background:linear-gradient(90deg,#5E8FE0,#7EB3F5)}
+.bf-good{background:linear-gradient(90deg,#2BB389,#34D399)}
+.bf-slate{background:linear-gradient(90deg,#6B7686,#94A3B8)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}
+.lg{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.lgd{width:11px;height:11px;border-radius:3px;flex:none}
+.foot{font-size:12.5px;color:var(--dim);line-height:1.5}
+.cta{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--blu);text-decoration:none;background:rgba(126,179,245,.1);border:1px solid rgba(126,179,245,.28);border-radius:10px;padding:12px 18px;min-height:44px;transition:all .2s}
+.cta:hover{background:rgba(126,179,245,.16);transform:translateY(-1px)}
+.venn{position:relative;width:100%;max-width:520px;aspect-ratio:440/300;height:auto;margin:0 auto}
+.vc{position:absolute;width:47.7%;aspect-ratio:1/1;border-radius:50%;display:grid;place-items:start;mix-blend-mode:screen;border:1.5px solid}
+.vc span{font-size:clamp(10px,2.4vw,12px);font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:16px 18px;line-height:1.35}
+.vc1 span{padding:clamp(16px,11vw,44px) clamp(8px,3vw,18px) 0}
+.vc2 span{padding:0 clamp(8px,3vw,18px) clamp(20px,14vw,62px) clamp(6px,2vw,12px)}
+.vc3 span{padding:0 clamp(6px,2vw,12px) clamp(18px,13vw,56px) clamp(8px,3vw,18px)}
+.vc1{top:0;left:50%;transform:translateX(-50%);background:rgba(148,163,184,.16);border-color:rgba(148,163,184,.4);color:var(--chip-slate-fg);place-items:start center;text-align:center}
+.vc2{bottom:0;left:18%;background:rgba(94,224,200,.14);border-color:rgba(94,224,200,.4);color:var(--teal);place-items:end start}
+.vc3{bottom:0;right:18%;background:rgba(167,139,250,.16);border-color:rgba(167,139,250,.42);color:var(--chip-purple-fg);place-items:end end;text-align:right}
+.case[data-theme="light"] .vc{mix-blend-mode:multiply}
+.case[data-theme="light"] .vc1{background:rgba(63,76,94,.12);border-color:rgba(63,76,94,.55)}
+.case[data-theme="light"] .vc2{background:rgba(14,143,122,.12);border-color:rgba(14,143,122,.55)}
+.case[data-theme="light"] .vc3{background:rgba(109,79,209,.12);border-color:rgba(109,79,209,.55)}
+.venncore{position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);z-index:3;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--text);width:130px;line-height:1.25}
+.synthtop{display:flex;align-items:flex-start;gap:44px;flex-wrap:wrap}
+.synthtxt{flex:1 1 300px;min-width:280px;max-width:52ch}
+.synthtop .venn{flex:1 1 260px;width:100%;max-width:440px;margin:0}
+.conv{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.convrow{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.convrow:first-child{border-top:0}
+.convh{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:16px 18px;background:var(--fillsubtle2)}
+.convcell{padding:18px;border-left:1px solid var(--line);font-size:13.5px;color:var(--muted);line-height:1.5}
+.convcell:first-child{border-left:0}
+.convp{font-weight:700;color:var(--text);font-size:15px;font-family:'Space Grotesk',sans-serif;display:flex;gap:12px;align-items:flex-start}
+.convp .nn{color:var(--blu);font-size:13px}
+.ch-desk{color:var(--chip-slate-fg)}.ch-int{color:var(--teal)}.ch-heur{color:var(--chip-purple-fg)}
+.pquote{position:relative;background:linear-gradient(135deg,rgba(126,179,245,.1),rgba(126,179,245,.02));border:1px solid rgba(126,179,245,.22);border-left:3px solid var(--blu);border-radius:16px;padding:32px 34px}
+.pquote p{margin:0;font-size:21px;font-weight:500;line-height:1.5;letter-spacing:-.01em;color:var(--text)}
+.nextcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.nextn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:var(--blu);letter-spacing:.04em}
+.figcur{position:absolute;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;z-index:5;animation:figfloat 6s ease-in-out infinite}
+.figcur svg{filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+.figpill{margin-top:2px;margin-left:16px;font-size:11px;font-weight:800;color:#0A0D15;background:var(--cc);padding:3px 9px;border-radius:6px;white-space:nowrap}
+.phone{background:#05070A;border:1px solid var(--hairline);border-radius:30px;padding:6px;box-shadow:0 40px 70px -28px rgba(0,0,0,.8)}
+.phone img{display:block;width:152px;height:auto;border-radius:24px;image-rendering:auto}
+@keyframes figfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes glowpulse{0%,100%{opacity:.3}50%{opacity:.5}}
+.reduce .figcur,.reduce .glow{animation:none}
+.glow{position:absolute;border-radius:50%;filter:blur(40px);animation:glowpulse 7s ease-in-out infinite}
+:focus-visible{outline:2px solid var(--blu);outline-offset:3px;border-radius:4px}
+@media(max-width:960px){.sidenav{right:auto;left:50%;top:auto;bottom:14px;transform:translateX(-50%);flex-direction:row;gap:6px;background:color-mix(in srgb,var(--card2) 94%,transparent);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:9px 13px;box-shadow:0 8px 24px rgba(0,0,0,.18)}.slabel{display:none}.sidenav .snav{padding:5px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;color:var(--dim)}.compact .slabel{display:none}.brandfix .bt{display:none}#next{padding-bottom:86px}}
+.pcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
+.phead{display:flex;align-items:center;gap:15px;margin:16px 0 18px}
+.pav{width:96px;height:96px;border-radius:50%;flex:none;display:grid;place-items:center;overflow:hidden;background:rgba(126,179,245,.13);border:1px solid rgba(126,179,245,.32)}
+.pname{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;letter-spacing:-.01em;color:var(--text);line-height:1.1}
+.parch{font-size:13.5px;color:var(--blu);font-weight:600;margin-top:3px}
+.pchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.pchip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--muted);background:var(--fillsubtle);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.pchip .pd{width:6px;height:6px;border-radius:50%;background:var(--blu);flex:none}
+.pblock{padding-top:16px;border-top:1px solid var(--line)}
+.pgoaltxt{margin:0;font-size:16px;color:var(--muted);line-height:1.5}
+.gb{color:var(--text);font-weight:700}
+.pneeds{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pneeds li{position:relative;padding-left:18px;font-size:14px;color:var(--muted);line-height:1.5}
+.pneeds li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--blu)}
+.pqt{margin:0;font-style:italic;font-size:15px;line-height:1.5;color:var(--text);border-left:3px solid var(--blu);padding:4px 0 4px 16px}
+.pscene{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--dim);line-height:1.5}
+.pscene svg{flex:none;margin-top:2px;color:var(--blu);opacity:.75}
+.pcallout{position:relative;border-radius:13px;padding:15px 16px 15px 18px;overflow:hidden}
+.pcallout.goal{min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.pcallout::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.pcallout.goal{background:rgba(126,179,245,.08);border:1px solid rgba(126,179,245,.22);min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.pcallout.goal::before{background:var(--blu)}
+.pcallout.pain{background:rgba(224,90,122,.09);border:1px solid rgba(224,90,122,.26)}
+.pcallout.pain::before{background:var(--danger)}
+.pctag{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;margin:0 0 8px}
+.pctag.goal{color:var(--blu)}
+.pctag.pain{color:var(--danger)}
+.pctag .pi{width:14px;height:14px;flex:none}
+.plead{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:17px;line-height:1.28;letter-spacing:-.012em;color:var(--text)}
+.pdet{margin:9px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
+.hl{color:var(--text);font-weight:700;background:linear-gradient(transparent 60%,rgba(224,90,122,.28) 0);padding:0 1px}
+.prole{font-weight:600;font-size:15px;color:var(--muted)}
+.pav img,.jslav img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+.pctag.pain.hdr{margin-top:2px}
+.complogos{display:flex;gap:8px;margin-bottom:16px}
+.complogo{width:32px;height:32px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11px;color:#1a1a1a;flex:none;overflow:hidden}
+.complogo img{width:60%;height:60%;object-fit:contain}
+.compgrid{align-items:stretch}
+.compcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .45s}
+.compcard:hover{transform:translateY(-6px);border-color:rgba(126,179,245,.32);box-shadow:0 26px 46px -26px rgba(0,0,0,.6)}
+.compicon{width:38px;height:38px;border-radius:11px;background:rgba(126,179,245,.1);border:1px solid rgba(126,179,245,.24);color:var(--blu);display:grid;place-items:center;margin-bottom:16px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.compcard:hover .compicon{transform:scale(1.08) rotate(-4deg)}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:20px}
+.cchip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;line-height:1;color:var(--muted);background:var(--fillsubtle);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 5px;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s,color .3s;cursor:default}
+.cchip:hover,.cchip.hl{transform:translateY(-2px);border-color:rgba(126,179,245,.4);background:rgba(126,179,245,.09);color:var(--text)}
+.cchip:focus-visible{outline:2px solid var(--blu);outline-offset:2px}
+.cclogo{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center;overflow:hidden;flex:none}
+.cclogo img{width:70%;height:70%;object-fit:contain}
+.cn{color:var(--text);font-weight:700;transition:color .3s,border-color .3s;border-bottom:1.5px solid transparent;cursor:default}
+.cn.hl{color:var(--blu);border-bottom-color:rgba(126,179,245,.5)}
+.ppain{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;counter-reset:pp}
+.ppain li{position:relative;padding-left:28px;font-size:13.5px;color:var(--muted);line-height:1.55}
+.ppain li::before{counter-increment:pp;content:counter(pp);position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;background:rgba(224,90,122,.14);border:1px solid rgba(224,90,122,.36);color:var(--pain-num-fg);font-size:10.5px;font-weight:700;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif}
+.ppain b{color:var(--text);font-weight:700}
+/* ===== JOURNEY MAP ===== */
+.jscroll{overflow-x:auto;padding-bottom:6px}
+.jgrid{display:grid;grid-template-columns:240px repeat(4,minmax(150px,1fr));grid-template-rows:repeat(4,auto);row-gap:18px;column-gap:8px;min-width:880px}
+.jlabelcol,.jcol{grid-row:1/5;display:grid;grid-template-rows:subgrid;row-gap:18px;column-gap:8px}
+.jlabelcol{grid-column:1;min-width:0;overflow-wrap:break-word}
+.jgrid>.jcol:nth-of-type(2){grid-column:2}
+.jgrid>.jcol:nth-of-type(3){grid-column:3}
+.jgrid>.jcol:nth-of-type(4){grid-column:4}
+.jgrid>.jcol:nth-of-type(5){grid-column:5}
+.jhspacer{min-height:1px}
+.jpersona{display:flex;align-items:center;gap:10px;align-self:center;padding:6px 0;min-width:0}
+.jpersona{gap:14px}
+.jptxt{min-width:0;flex:1 1 auto}
+.jpav{width:72px;height:72px;border-radius:50%;flex:none;overflow:hidden;background:rgba(126,179,245,.13);border:2.5px solid rgba(126,179,245,.32)}
+.jpav img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+.jpersona.sara .jpav{border-color:var(--blu)}
+.jpersona.nick .jpav{border-color:var(--success)}
+.jpname{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--text);line-height:1.2}
+.jpname .r{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text);font-size:17px}
+.jptag{font-size:13.5px;font-weight:700;line-height:1.3;margin-top:5px}
+.jpersona.sara .jptag{color:var(--blu)}
+.jpersona.nick .jptag{color:var(--success)}
+.jrl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);align-self:center}
+.jh{display:flex;align-items:center;background:#050810;border:1px solid var(--hairline);border-radius:9px;padding:12px 13px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#E4EBF5;line-height:1.2}
+.jh.danger{border:1.5px solid rgba(224,90,122,.65)}
+.ja{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px;font-size:12.5px;color:var(--text);line-height:1.5}
+.ja.empty{background:transparent;border:1px dashed var(--dashed2);color:var(--muted);font-style:italic;display:flex;align-items:center}
+.jmt{display:none;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.jmt.s{color:var(--blu)}.jmt.n{color:var(--slate)}
+.jpc{display:flex;flex-direction:column;gap:10px;justify-content:flex-start}
+.jpi{position:relative;padding-left:25px;font-size:12px;color:var(--muted);line-height:1.45}
+.ptag{position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:9.5px;font-weight:700;font-family:'Space Grotesk',sans-serif;line-height:1}
+.ptag.s{color:var(--blu);border:1.5px solid var(--blu)}
+.ptag.n{color:var(--success);border:1.5px solid var(--success)}
+.jchart{margin-top:56px;padding-top:30px;border-top:1px solid var(--line)}
+.jconn{position:absolute;transform:translateX(-50%);z-index:4}
+.jconn-badge{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--danger);background:var(--card);border:1px solid rgba(224,90,122,.45);border-radius:999px;padding:4px 11px;white-space:nowrap}
+.jconn-lead{position:absolute;width:0;border-left:1.5px dashed var(--danger);opacity:.75;z-index:2}
+.jchart-head{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.jchart-head .jpav{width:32px;height:32px}
+.jctitle{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--text);padding-left:11px;border-left:3px solid transparent}
+.jct-s{border-left-color:var(--blu);color:var(--jct-s-fg)}
+.jct-n{border-left-color:var(--slate);color:var(--jct-n-fg)}
+.jctitle .r{font-weight:600;color:var(--muted);font-size:13px}
+.jchart-row,.jaxisrow{display:grid;grid-template-columns:1fr;gap:8px;align-items:center;padding-left:248px}
+@media(max-width:820px){.jchart-row,.jaxisrow{padding-left:0}}
+.jplot{position:relative;height:220px;width:100%}
+.jln{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.jpt{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--card);display:grid;place-items:center;z-index:3}
+.jpt.blu{border:2px solid var(--blu);color:var(--blu)}
+.jpt.gray{border:2px solid var(--slate);color:var(--slate)}
+.jpt.opp{border:2.5px solid var(--danger);color:var(--danger);box-shadow:0 0 0 4px rgba(224,90,122,.15)}
+.jni{position:absolute;transform:translate(-50%,-50%);z-index:2;width:100px;text-align:center;font-size:10.5px;font-style:italic;color:var(--muted);line-height:1.3}
+.jlead2{position:absolute;border-left:1.5px dashed var(--dashed);z-index:2}
+.jtip2{position:absolute;transform:translateX(-50%);background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:6px 12px;z-index:4;white-space:nowrap}
+.jtip2 .em{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:var(--text)}
+.jtip2.opp{border-color:rgba(224,90,122,.55);background:rgba(224,90,122,.08);text-align:center}
+.jopp{display:flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#EFA6B7;margin-bottom:3px;justify-content:center}
+.jpoint{display:contents}
+.jcat{display:none;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.jaxis{display:grid;grid-template-columns:repeat(4,1fr)}
+.jax{font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.25;padding:0 4px}
+.jsr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.jlegend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.jlg{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.jlg .sw{width:22px;height:4px;border-radius:2px;flex:none}
+.jlg .swd{width:22px;height:0;border-top:2px dashed var(--slate);flex:none}
+.jlg .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--danger);flex:none}
+.ptag.sn{position:static;width:auto;height:auto;border-radius:6px;padding:1px 6px;font-size:10px;letter-spacing:.02em;border:1.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(90deg,var(--blu),var(--success)) border-box;color:var(--text);display:inline-flex;margin-inline-end:6px;top:0;vertical-align:1px}
+.jplot-uni{height:320px}
+.jpt{width:44px;height:44px}
+.jpt.v-amber{border:2.5px solid var(--amber)}
+.jpt.v-pink{border:2.5px solid var(--danger)}
+.jpt.v-green{border:2.5px solid var(--success)}
+.jpt.v-mixed{border:2.5px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--amber),var(--danger)) border-box}
+.jpt.v-opp{box-shadow:0 0 0 4px rgba(224,90,122,.15)}
+.jptdots{position:absolute;bottom:-2px;right:-2px;display:flex;gap:2px}
+.jptdots span{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--card)}
+.jpt.emo{width:60px;height:60px;padding:0;overflow:hidden;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease}
+.jpt.emo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:50%;display:block}
+.jpt.emo.sara{border:2.5px solid var(--blu);box-shadow:0 0 0 3px var(--card),0 0 0 8px rgba(126,179,245,.18)}
+.jpt.emo.nick{border:2.5px solid var(--success);box-shadow:0 0 0 3px var(--card),0 0 0 8px rgba(52,211,153,.18)}
+.jpt.emo.opp{box-shadow:0 0 0 3px var(--card),0 0 0 9px rgba(224,90,122,.24)}
+.jpoint{cursor:pointer}
+.jpoint:hover .jpt.emo{transform:translate(-50%,-50%) scale(1.16);z-index:6}
+.jpoint:hover .jpt.emo.sara{box-shadow:0 0 0 3px var(--card),0 0 0 10px rgba(126,179,245,.32),0 10px 22px rgba(0,0,0,.4)}
+.jpoint:hover .jpt.emo.nick{box-shadow:0 0 0 3px var(--card),0 0 0 10px rgba(52,211,153,.32),0 10px 22px rgba(0,0,0,.4)}
+.jpoint:hover .jtip2{transform:translateX(-50%) translateY(-3px);border-color:var(--hovertip)}
+.jtip2{transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease}
+.jtip2.multi{white-space:normal;width:max-content;max-width:200px;text-align:left;padding:10px 13px}
+.jtip2.multi.opp{text-align:left}
+.jtip2 .ohead{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14.5px;color:var(--text);margin:3px 0 8px}
+.jtip2 .prow{display:flex;align-items:baseline;gap:6px;font-size:11.5px;color:var(--muted);line-height:1.6}
+.jtip2 .prow b{font-weight:700;min-width:30px}
+.jtip2 .prow.sara b{color:var(--blu)}
+.jtip2 .prow.nick b{color:var(--success)}
+.jtip2.multi .jopp{justify-content:flex-start}
+.jlegend2{display:flex;flex-wrap:wrap;gap:30px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.jlegroup{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.jlegroup .cap{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);margin-right:2px}
+.jlg .rng{width:14px;height:14px;border-radius:50%;flex:none;background:var(--card)}
+.jlg .rng.amber{border:2.5px solid var(--amber)}
+.jlg .rng.pink{border:2.5px solid var(--danger)}
+.jlg .rng.green{border:2.5px solid var(--success)}
+@media(max-width:820px){.jtip2.multi{width:auto;max-width:240px}}
+.jplot-mobile{display:none}
+@media(max-width:820px){.jplot-uni{display:none}.jplot-mobile{display:block}.jchart-row{padding-left:0}.jlegend2{gap:16px}.jlegroup{gap:10px}}
+.jplot-mobile{position:relative;width:100%;max-width:400px;margin:0 auto;height:770px;padding:10px 0 20px}
+.jmln{position:absolute;left:0;top:10px;width:100%;height:740px;overflow:visible;pointer-events:none;z-index:1}
+.jplot-mobile .jpt{z-index:3}
+.jmside{position:absolute;left:46%;right:4px;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;z-index:2}
+.jmstep{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.jmtip{position:static;transform:none;width:auto;max-width:none;white-space:normal}
+.jmopp{position:absolute;left:46%;transform:translateY(-50%);white-space:nowrap;z-index:4}
+.jmlead{position:absolute;height:0;border-top:1.5px dashed var(--dashed);opacity:.7;z-index:2;pointer-events:none}
+.jmlead.opp{border-top-color:var(--danger);opacity:.75;z-index:3}
+.jtip2 .prow span.dim{color:var(--dim)}
+@media (prefers-reduced-motion:no-preference){.jpath{stroke-dasharray:var(--len,260);stroke-dashoffset:var(--len,260);animation:jdraw 1.2s cubic-bezier(.22,1,.36,1) .15s forwards}}
+@keyframes jdraw{to{stroke-dashoffset:0}}
+.reduce .jpath{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+.sbflow{display:flex;align-items:stretch;gap:2px}
+.sbnode{position:relative;flex:1 1 0;min-width:0;background:radial-gradient(120% 100% at 50% 0%,color-mix(in oklab,var(--sc) 10%,var(--card)) 0%,var(--card) 62%);border:1px solid var(--line);border-radius:26px;padding:44px 18px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;isolation:isolate;transition:transform .5s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .5s}
+.sbnode:hover{transform:translateY(-8px);border-color:color-mix(in oklab,var(--sc) 50%,var(--line));box-shadow:0 24px 46px -22px rgba(0,0,0,.65)}
+.sbnode:hover .sbimg2{transform:scale(1.06) rotate(-1.2deg)}
+.sbnode:hover .sbglow{opacity:.4;filter:blur(30px)}
+.sbglow{position:absolute;top:-46px;left:50%;transform:translateX(-50%);width:170px;height:170px;border-radius:50%;background:var(--sc);opacity:.2;filter:blur(40px);pointer-events:none;transition:opacity .5s,filter .5s;z-index:0}
+.sbnum{position:absolute;top:16px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--bg2);border:1.5px solid var(--sc);color:var(--sc);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:0;display:grid;place-items:center;z-index:2}
+.sbimgwrap{position:relative;width:100%;display:flex;justify-content:center;z-index:1}
+.sbimg2{width:80%;max-width:190px;height:auto;display:block;animation:sbfloat 5.5s ease-in-out infinite;filter:drop-shadow(0 16px 22px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.22,1,.36,1)}
+@keyframes sbfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.reduce .sbimg2{animation:none}
+.sbcap2{position:relative;z-index:1;margin:16px 2px 0;margin-top:auto;font-size:14.5px;color:var(--muted);line-height:1.55}
+.sbnode--climax{box-shadow:0 0 0 1px rgba(224,90,122,.16)}
+.sbnode--climax .sbnum{box-shadow:0 0 0 4px rgba(224,90,122,.14)}
+.sbarrow{flex:none;width:30px;display:flex;align-items:center;justify-content:center;color:var(--dim)}
+.sbarrow svg{animation:sbarrowpulse 2.4s ease-in-out infinite}
+@keyframes sbarrowpulse{0%,100%{opacity:.3;transform:translateX(0)}50%{opacity:.85;transform:translateX(4px)}}
+.reduce .sbarrow svg{animation:none;opacity:.5}
+.sbfoot{font-size:11.5px;color:var(--dim);line-height:1.5;margin:24px 0 0}
+@media(max-width:768px){.sbflow{flex-direction:column;gap:14px}.sbnode{flex:none;width:100%}.sbarrow{width:100%;height:20px}.sbarrow svg{transform:rotate(90deg)}@keyframes sbarrowpulse{0%,100%{opacity:.3;transform:rotate(90deg) translateY(0)}50%{opacity:.85;transform:rotate(90deg) translateY(4px)}}.sbnode{padding-top:40px}}
+@media(max-width:768px){.qthemegrid{grid-template-columns:1fr!important}}
+@media(max-width:820px){.jgrid{display:block;min-width:0}.jlabelcol{display:none}.jcol{display:block;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line)}.jcol>*{margin-bottom:8px}.jmt{display:block}.jchart-row,.jaxisrow{grid-template-columns:1fr}.jchart-lbl,.jaxis{display:none}.jplot{position:static;height:auto;min-width:0}.jln{display:none}.jpoint{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:14px}.jpt,.jtip2,.jni{position:static;transform:none}.jni{width:auto;text-align:left}.jlead2{display:none}.jtip2{white-space:normal}.jcat{display:block;flex-basis:100%;margin-bottom:-4px}}
+.herogrid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
+@media(max-width:820px){.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.convrow{grid-template-columns:1fr}.convcell{border-left:0;border-top:1px solid var(--line)}.convh{display:none}.bar{grid-template-columns:1fr;gap:6px}.btrack{height:26px}.bval{text-align:left}.sec{padding:64px 0}.heromock{display:none}.herogrid{grid-template-columns:1fr}}
+@media(max-width:480px){.venn{max-width:290px}}
+.langtoggle{position:fixed;top:18px;right:76px;z-index:95;display:flex;direction:ltr;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px}
+.langslide{position:absolute;top:4px;left:4px;width:44px;height:36px;border-radius:999px;background:var(--blu);transition:transform .32s cubic-bezier(.4,0,.2,1);z-index:0}
+.langbtn{position:relative;z-index:1;border:none;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;width:44px;height:36px;padding:0;border-radius:999px;cursor:pointer;display:grid;place-items:center;transition:color .2s;line-height:1}
+.langbtn.active{color:#0A0D15}
+.langbtn:not(.active):hover{color:var(--text)}
+.case[data-theme="light"] .langbtn.active{color:#fff}
+.case[data-theme="light"] .themetoggle,.case[data-theme="light"] .langtoggle{background:#E6E9EF}
+
+.case[dir="rtl"]{font-family:'Vazirmatn',sans-serif}
+.case[dir="rtl"] .h1,.case[dir="rtl"] .h2,.case[dir="rtl"] .h3,.case[dir="rtl"] .stat,.case[dir="rtl"] .impnum,.case[dir="rtl"] .bval,.case[dir="rtl"] .jpname,.case[dir="rtl"] .jctitle,.case[dir="rtl"] .convp,.case[dir="rtl"] .pname,.case[dir="rtl"] .plead,.case[dir="rtl"] .sbnum,.case[dir="rtl"] .mn,.case[dir="rtl"] .langbtn{font-family:'Vazirmatn',sans-serif}
+.case[dir="rtl"] .brandfix{left:auto;right:24px}
+.case[dir="rtl"] .themetoggle{right:auto;left:18px}
+.case[dir="rtl"] .langtoggle{right:auto;left:76px}
+@media(min-width:961px){.case[dir="rtl"] .sidenav{right:auto;left:26px}}
+.case[dir="rtl"] .slabel{transform:translateX(-8px)}
+.case[dir="rtl"] .snav:hover .slabel,.case[dir="rtl"].compact .slabel{transform:none}
+.case[dir="rtl"] .progress{left:auto;right:0}
+.case[dir="rtl"] .bval{text-align:left}
+.case[dir="rtl"] .figpill{margin-left:0;margin-right:16px}
+.case[dir="rtl"] .pneeds li{padding-left:0;padding-right:18px}
+.case[dir="rtl"] .pneeds li::before{left:auto;right:0}
+.case[dir="rtl"] .pqt{border-left:none;border-right:3px solid var(--blu);padding:4px 16px 4px 0}
+.case[dir="rtl"] .pcallout::before{left:auto;right:0}
+.case[dir="rtl"] .pcallout{padding:15px 18px 15px 16px}
+.case[dir="rtl"] .ppain li{padding-left:0;padding-right:28px}
+.case[dir="rtl"] .ppain li::before{left:auto;right:0}
+.case[dir="rtl"] .qtheme{border-left:none;border-right:3px solid var(--teal)}
+.case[dir="rtl"] .jctitle{padding-left:0;padding-right:11px;border-left:none;border-right:3px solid transparent}
+.case[dir="rtl"] .cchip{padding:5px 5px 5px 12px}
+.case[dir="rtl"] .convcell:first-child{border-left:1px solid var(--line)}
+.case[dir="rtl"] .convcell:last-child{border-left:0}
+.jplot-uni,.jplot-mobile{transition:transform .5s ease}
+.case[dir="rtl"] .jpi{padding-left:0;padding-right:25px}
+.case[dir="rtl"] .ptag{left:auto;right:0}
+.case[dir="rtl"] .impnum{right:auto;left:22px}
+.case[dir="rtl"] .cta svg{transform:scaleX(-1)}
+.case[dir="rtl"] .sbnum{left:auto;right:16px}
+.case[dir="rtl"] .vc2{left:auto;inset-inline-start:18%}
+.case[dir="rtl"] .vc3{right:auto;inset-inline-end:18%}
+@media(min-width:769px){.case[dir="rtl"] .sbarrow{transform:scaleX(-1)}}
+.case[dir="rtl"] .jplot-uni,.case[dir="rtl"] .jplot-mobile{transform:scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jpt,.case[dir="rtl"] .jplot-mobile .jpt{transform:translate(-50%,-50%) scale(1) scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jtip2,.case[dir="rtl"] .jplot-mobile .jtip2{transform:translateX(-50%) scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jpoint:hover .jtip2{transform:translateX(-50%) translateY(-3px) scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jpoint:hover .jpt.emo{transform:translate(-50%,-50%) scale(1.16) scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jni{transform:translate(-50%,-50%) scaleX(-1)}
+.case[dir="rtl"] .jplot-uni .jconn{transform:translateX(-50%) scaleX(-1)}
+.case[dir="rtl"] .jplot-mobile .jmopp{transform:translateY(-50%) scaleX(-1)}
+.case[dir="rtl"] .jplot-mobile .jmstep{display:inline-block;transform:scaleX(-1)}
+@media(max-width:820px){.case[dir="rtl"] .jgrid{direction:rtl}}
+@media(min-width:821px){.case[dir="rtl"] .jchart-row,.case[dir="rtl"] .jaxisrow{padding-left:0;padding-right:248px}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#0A0D15"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#0A0D15"/><circle cx="600" cy="300" r="150" fill="#7EB3F5" opacity="0.18"/><rect x="330" y="250" width="540" height="34" rx="9" fill="#7EB3F5"/><rect x="330" y="320" width="380" height="20" rx="6" fill="rgba(255,255,255,.22)"/><rect x="330" y="470" width="160" height="200" rx="14" fill="#E05A7A" opacity="0.85"/><rect x="520" y="510" width="160" height="160" rx="14" fill="#192030"/><rect x="710" y="490" width="160" height="180" rx="14" fill="#A78BFA" opacity="0.6"/></svg></template>
+<div class="case" ref="{{ rootRef }}" data-theme="{{ theme }}" dir="{{ dir }}" lang="{{ langAttr }}">
+<div class="progress" data-progress></div>
+<div class="langtoggle" role="group" aria-label="{{ t.langToggleAria }}">
+<span class="langslide" style="transform:translateX({{ slideX }})"></span>
+<button type="button" class="langbtn {{ enActiveClass }}" onClick="{{ setLangEn }}" aria-pressed="{{ isEn }}">EN</button>
+<button type="button" class="langbtn {{ faActiveClass }}" onClick="{{ setLangFa }}" aria-pressed="{{ isFa }}">فا</button>
+</div>
+<button type="button" class="themetoggle" onClick="{{ toggleTheme }}" aria-label="{{ themeToggleLabel }}" aria-pressed="{{ isLight }}"><svg class="ic-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg><svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"></path></svg></button>
+
+<nav class="sidenav" aria-label="Sections">
+<a class="snav on" data-spy="#top" href="#top"><span class="slabel">{{ t.nav_intro }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#context" href="#context"><span class="slabel">{{ t.nav_product }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#scope" href="#scope"><span class="slabel">{{ t.nav_scope }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#desk" href="#desk"><span class="slabel">{{ t.nav_desk }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#competitive" href="#competitive"><span class="slabel">{{ t.nav_comp }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#interviews" href="#interviews"><span class="slabel">{{ t.nav_int }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#heuristics" href="#heuristics"><span class="slabel">{{ t.nav_heur }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#synthesis" href="#synthesis"><span class="slabel">{{ t.nav_synth }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#friction" href="#friction"><span class="slabel">{{ t.nav_fric }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#personas" href="#personas"><span class="slabel">{{ t.nav_pers }}</span><span class="sdot"></span></a>
+<a class="snav" data-spy="#journey" href="#journey"><span class="slabel">{{ t.nav_jour }}</span><span class="sdot"></span></a>
+</nav>
+
+<section id="top" class="sec tint-a" data-screen-label="Hero" style="padding-top:84px">
+<div class="wrap">
+<div class="herogrid" style="gap:44px;align-items:center">
+<div class="rv">
+<div class="herolock"><img class="herologo" src="assets/blu-logo.png" alt="BluBank logo"><span class="lbl" style="margin-bottom:0">{{ t.hero_kicker }}</span></div>
+<h1 class="h1">{{ t.hero_title_a }}<span style="color:var(--blu)">{{ t.hero_title_accent }}</span>{{ t.hero_title_b }}</h1>
+<p class="lead" style="max-width:54ch">{{ t.hero_lead_a }}<b style="color:var(--text);font-weight:600">{{ t.hero_lead_bold }}</b><span class="fa muted" style="font-size:15px">{{ t.hero_lead_gloss }}</span>{{ t.hero_lead_b }}</p>
+<div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:9px">
+<span class="pill"><span class="pd"></span>{{ t.hero_pill1 }}</span>
+<span class="pill">{{ t.hero_pill2 }}</span>
+<span class="pill">{{ t.hero_pill3 }}</span>
+<span class="pill">{{ t.hero_pill4 }}</span>
+<span class="pill" style="color:var(--success);border-color:rgba(52,211,153,.25)">{{ t.hero_pill5 }}</span>
+</div>
+<div style="margin-top:20px;font-size:13.5px;color:var(--dim)">{{ t.team }}</div>
+</div>
+<div class="rv heromock" data-d="120" style="position:relative;min-height:430px;display:flex;align-items:center;justify-content:center">
+<div class="glow" style="width:300px;height:300px;background:radial-gradient(circle,var(--blu),transparent 68%);opacity:.34"></div>
+<div data-parallax="0.04" data-rot="{{ heroRot1 }}" style="position:relative;z-index:1;transform:{{ heroRot1 }}"><div class="phone" style="animation:figfloat 7s ease-in-out infinite"><img src="assets/screen-summary.png" alt="Dong summary screen"></div></div>
+<div data-parallax="0.08" data-rot="{{ heroRot2 }}" style="position:relative;z-index:2;margin-left:{{ heroMargin2 }}px;transform:{{ heroRot2 }}"><div class="phone" style="border-color:rgba(126,179,245,.35);box-shadow:0 44px 80px -26px rgba(0,0,0,.85),0 0 0 1px rgba(126,179,245,.12);animation:figfloat 7s ease-in-out infinite .7s"><img src="assets/screen-transactions.png" alt="Dong transactions screen"></div></div>
+<div class="figcur" style="--cc:#7EB3F5;top:{{ cur1Top }};left:{{ cur1Left }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" style="color:#7EB3F5"><path d="M4.5 2.2 L19.5 11.3 L12.4 12.6 L9.6 19.8 Z"></path></svg><span class="figpill">Parisa</span></div>
+<div class="figcur" style="--cc:#E05A7A;top:{{ cur2Top }};left:{{ cur2Left }};animation-delay:-2.4s"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" style="color:#E05A7A"><path d="M4.5 2.2 L19.5 11.3 L12.4 12.6 L9.6 19.8 Z"></path></svg><span class="figpill">Farnaz</span></div>
+<div class="figcur" style="--cc:#34D399;top:{{ cur3Top }};left:{{ cur3Left }};animation-delay:-4.1s"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" style="color:#34D399"><path d="M4.5 2.2 L19.5 11.3 L12.4 12.6 L9.6 19.8 Z"></path></svg><span class="figpill">Mahdis</span></div>
+<div class="figcur" style="--cc:#F5B97E;top:{{ cur4Top }};left:{{ cur4Left }};animation-delay:-1.2s"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" style="color:#F5B97E"><path d="M4.5 2.2 L19.5 11.3 L12.4 12.6 L9.6 19.8 Z"></path></svg><span class="figpill">Arin</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="context" class="sec tint-b" data-screen-label="Product Overview">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="lbl">{{ t.ctx_kicker }}</span>
+<h2 class="h2">{{ t.ctx_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.ctx_p_a }}<b style="color:var(--text);font-weight:600">{{ t.ctx_p_bold }}</b><span class="fa muted" style="font-size:14px">{{ t.ctx_p_gloss }}</span>{{ t.ctx_p_b }}</p>
+</div>
+<div class="rv grid4" data-d="60">
+<div class="card"><div class="stat" data-count="2019">{{ t.stat_founded }}</div><div class="statlbl">{{ t.stat_founded_lbl }}</div></div>
+<div class="card"><div class="stat" style="font-size:30px;line-height:1.3">{{ t.stat_parent }}</div><div class="statlbl">{{ t.stat_parent_lbl }}</div></div>
+<div class="card"><div class="stat" style="color:var(--blu)"><span data-count="10" data-prefix="+" data-suffix="M">+10M</span></div><div class="statlbl">{{ t.stat_users_lbl }}</div></div>
+<div class="card"><div class="stat"><span data-count="700" data-prefix="+">+700</span></div><div class="statlbl">{{ t.stat_emp_lbl }}</div></div>
+</div>
+</div>
+</section>
+
+<section id="scope" class="sec tint-a" data-screen-label="Research Approach">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="lbl">{{ t.scope_kicker }}</span>
+<h2 class="h2">{{ t.scope_title }}</h2>
+</div>
+<div class="rv" data-d="80">
+<div class="grid3">
+<div class="mcard"><span class="top" style="background:var(--slate)"></span><span class="mbadge mb-desk"><span class="mn">{{ t.n_m01 }}</span>{{ t.m1_badge }}</span><p class="mcap" style="margin-top:16px">{{ t.lbl_goal }}</p><p class="mtxt">{{ t.m1_goal }}</p><p class="mcap">{{ t.lbl_output }}</p><p class="mtxt" style="margin-bottom:0">{{ t.m1_out }}</p></div>
+<div class="mcard"><span class="top" style="background:var(--teal)"></span><span class="mbadge mb-int"><span class="mn">{{ t.n_m02 }}</span>{{ t.m2_badge }}</span><p class="mcap" style="margin-top:16px">{{ t.lbl_goal }}</p><p class="mtxt">{{ t.m2_goal }}</p><p class="mcap">{{ t.lbl_output }}</p><p class="mtxt" style="margin-bottom:0">{{ t.m2_out }}</p></div>
+<div class="mcard"><span class="top" style="background:var(--purple)"></span><span class="mbadge mb-heur"><span class="mn">{{ t.n_m03 }}</span>{{ t.m3_badge }}</span><p class="mcap" style="margin-top:16px">{{ t.lbl_goal }}</p><p class="mtxt">{{ t.m3_goal }}</p><p class="mcap">{{ t.lbl_output }}</p><p class="mtxt" style="margin-bottom:0">{{ t.m3_out }}</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="desk" class="sec tint-b" data-screen-label="Desk Research">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="mbadge mb-desk" style="margin-bottom:18px"><span class="mn">{{ t.desk_badge_m }}</span>{{ t.desk_badge }}</span>
+<h2 class="h2">{{ t.desk_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.desk_lead }}</p>
+</div>
+<div class="grid3">
+<article class="rv chart sevcard"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><span class="sevbadge sb-high">{{ t.sev_high }}</span></div><h3 class="h3">{{ t.desk1_t }}</h3><p class="mtxt" style="margin:10px 0 8px">{{ t.desk1_d }}</p><div class="frow" style="--w:90%"><div class="ffill" style="background:var(--danger)"></div></div></article>
+<article class="rv chart sevcard" data-d="70"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><span class="sevbadge sb-high">{{ t.sev_high }}</span></div><h3 class="h3">{{ t.desk2_t }}</h3><p class="mtxt" style="margin:10px 0 8px">{{ t.desk2_d }}</p><div class="frow" style="--w:85%"><div class="ffill" style="background:var(--danger)"></div></div></article>
+<article class="rv chart sevcard" data-d="140"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><span class="sevbadge sb-med">{{ t.sev_med }}</span></div><h3 class="h3">{{ t.desk3_t }}</h3><p class="mtxt" style="margin:10px 0 8px">{{ t.desk3_d }}</p><div class="frow" style="--w:58%"><div class="ffill" style="background:var(--amber)"></div></div></article>
+</div>
+</div>
+</section>
+
+<section id="competitive" class="sec tint-a" data-screen-label="Competitive Analysis">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="lbl">{{ t.comp_kicker }}</span>
+<h2 class="h2">{{ t.comp_title_a }}<span style="color:var(--blu)">{{ t.comp_title_accent }}</span></h2>
+<p class="lead" style="margin-top:14px">{{ t.comp_lead }}</p>
+</div>
+<div class="grid3 compgrid">
+<article class="rv compcard">
+<h3 class="h3">{{ t.comp1_t }}</h3>
+<p class="mtxt" style="margin:10px 0 0"><b class="cn" data-c="splitwise">Splitwise</b>{{ t.comp1_mid }}<br><b class="cn" data-c="tricount">Tricount</b>{{ t.comp1_post }}</p>
+<div class="cchips"><span class="cchip" data-c="splitwise"><span class="cclogo"><img src="assets/logo-splitwise.png" alt=""></span>Splitwise</span><span class="cchip" data-c="tricount"><span class="cclogo"><img src="assets/logo-tricount.png" alt=""></span>Tricount</span></div>
+</article>
+<article class="rv compcard" data-d="70">
+<h3 class="h3">{{ t.comp2_t }}</h3>
+<p class="mtxt" style="margin:10px 0 0"><b class="cn" data-c="splitwise">Splitwise</b>{{ t.comp2_seg1 }}<br><b class="cn" data-c="monzo">Monzo</b>{{ t.comp2_seg2 }}<br><b class="cn" data-c="revolut">Revolut</b>{{ t.comp2_seg3 }}</p>
+<div class="cchips"><span class="cchip" data-c="splitwise"><span class="cclogo"><img src="assets/logo-splitwise.png" alt=""></span>Splitwise</span><span class="cchip" data-c="monzo"><span class="cclogo"><img src="assets/logo-monzo.png" alt=""></span>Monzo</span><span class="cchip" data-c="revolut"><span class="cclogo"><img src="assets/logo-revolut.png" alt=""></span>Revolut</span></div>
+</article>
+<article class="rv compcard" data-d="140">
+<h3 class="h3">{{ t.comp3_t }}</h3>
+<p class="mtxt" style="margin:10px 0 0"><b class="cn" data-c="monzo">Monzo</b>{{ t.comp3_seg1 }}<br><b class="cn" data-c="cino">Cino</b>{{ t.comp3_seg2 }}</p>
+<div class="cchips"><span class="cchip" data-c="monzo"><span class="cclogo"><img src="assets/logo-monzo.png" alt=""></span>Monzo</span><span class="cchip" data-c="cino"><span class="cclogo"><img src="assets/logo-cino.png" alt=""></span>Cino</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="interviews" class="sec tint-b" data-screen-label="User Interviews">
+<div class="wrap">
+<div class="rv" style="margin-bottom:32px">
+<span class="mbadge mb-int" style="margin-bottom:18px"><span class="mn">{{ t.int_badge_m }}</span>{{ t.int_badge }}</span>
+<h2 class="h2">{{ t.int_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.int_lead }}</p>
+</div>
+<div class="qthemegrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div class="rv qtheme"><h3 class="qttl">{{ t.int1_t }}</h3><p class="qins">{{ t.int1_i }}</p><div class="quote"><p class="qt">"{{ t.int1_q1 }}"</p><span class="qw">— {{ t.int1_w1 }}</span></div><div class="quote"><p class="qt">"{{ t.int1_q2 }}"</p><span class="qw">— {{ t.int1_w2 }}</span></div></div>
+<div class="rv qtheme" data-d="60"><h3 class="qttl">{{ t.int2_t }}</h3><p class="qins">{{ t.int2_i }}</p><div class="quote"><p class="qt">"{{ t.int2_q1 }}"</p><span class="qw">— {{ t.int2_w1 }}</span></div><div class="quote"><p class="qt">"{{ t.int2_q2 }}"</p><span class="qw">— {{ t.int2_w2 }}</span></div></div>
+<div class="rv qtheme"><h3 class="qttl">{{ t.int3_t }}</h3><p class="qins">{{ t.int3_i }}</p><div class="quote"><p class="qt">"{{ t.int3_q1 }}"</p><span class="qw">— {{ t.int3_w1 }}</span></div><div class="quote"><p class="qt">"{{ t.int3_q2 }}"</p><span class="qw">— {{ t.int3_w2 }}</span></div></div>
+<div class="rv qtheme" data-d="60"><h3 class="qttl">{{ t.int4_t }}</h3><p class="qins">{{ t.int4_i }}</p><div class="quote"><p class="qt">"{{ t.int4_q1 }}"</p><span class="qw">— {{ t.int4_w1 }}</span></div><div class="quote"><p class="qt">"{{ t.int4_q2 }}"</p><span class="qw">— {{ t.int4_w2 }}</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="heuristics" class="sec tint-a" data-screen-label="Heuristic Evaluation">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="mbadge mb-heur" style="margin-bottom:18px"><span class="mn">{{ t.heur_badge_m }}</span>{{ t.heur_badge }}</span>
+<h2 class="h2">{{ t.heur_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.heur_lead }}</p>
+</div>
+<div class="rv grid3" data-d="40" style="margin-bottom:30px">
+<div class="card"><div class="stat" style="color:var(--purple)" data-count="85">85</div><div class="statlbl">{{ t.heur_stat1 }}</div></div>
+<div class="card"><div class="stat" data-count="48" data-suffix="%">48%</div><div class="statlbl">{{ t.heur_stat2 }}</div></div>
+<div class="card"><div class="stat">{{ t.n_h4 }}–{{ t.n_h1 }}</div><div class="statlbl">{{ t.heur_stat3 }}</div></div>
+</div>
+
+<div class="rv chart card" style="margin-bottom:16px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px"><h3 class="h3">{{ t.chart1_t }}</h3><span class="foot">{{ t.chart1_cap }}</span></div>
+<p class="foot" style="margin:0 0 18px">{{ t.chart1_note }}</p>
+<div class="bar"><span class="blabel"><b>{{ t.hc7 }}</b> · {{ t.h7_name }}</span><div class="btrack" style="--w:100%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_h7 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc10 }}</b> · {{ t.h10_name }}</span><div class="btrack" style="--w:21.6%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_h10 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc3 }}</b> · {{ t.h3_name }}</span><div class="btrack" style="--w:16.2%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_h3 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc1 }}</b> · {{ t.h1_name }}</span><div class="btrack" style="--w:13.5%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_h1 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc5 }}</b> · {{ t.h5_name }}</span><div class="btrack" style="--w:12.1%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_h5 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc9 }}</b> · {{ t.h9_name }}</span><div class="btrack" style="--w:10.2%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_h9 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc8 }}</b> · {{ t.h8_name }}</span><div class="btrack" style="--w:4%"><div class="bfill bf-blu"></div></div><span class="bval">{{ t.n_h8 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc2 }}</b> · {{ t.h2_name }}</span><div class="btrack" style="--w:2.2%"><div class="bfill bf-blu"></div></div><span class="bval">{{ t.n_h2 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc6 }}</b> · {{ t.h6_name }}</span><div class="btrack" style="--w:1%"><div class="bfill bf-blu"></div></div><span class="bval">{{ t.n_h6 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc4 }}</b> · {{ t.h4_name }}</span><div class="btrack" style="--w:0.6%"><div class="bfill bf-blu"></div></div><span class="bval">{{ t.n_h4 }}</span></div>
+</div>
+
+<div class="grid2">
+<div class="rv chart card">
+<h3 class="h3" style="margin-bottom:4px">{{ t.sevdist_t }}</h3>
+<p class="foot" style="margin:0 0 18px">{{ t.sevdist_cap }}</p>
+<div class="bar"><span class="blabel"><b>{{ t.n_h4 }}</b> · {{ t.sev0_l }}</span><div class="btrack" style="--w:100%"><div class="bfill bf-good"></div></div><span class="bval">{{ t.n_sev0 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.n_h1 }}</b> · {{ t.sev1_l }}</span><div class="btrack" style="--w:26.7%"><div class="bfill bf-slate"></div></div><span class="bval">{{ t.n_sev1 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.n_h2 }}</b> · {{ t.sev2_l }}</span><div class="btrack" style="--w:36.7%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_sev2 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.n_h3 }}</b> · {{ t.sev3_l }}</span><div class="btrack" style="--w:70%"><div class="bfill" style="background:linear-gradient(90deg,#E0915A,#EE8B5B)"></div></div><span class="bval">{{ t.n_sev3 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc4 }}</b> · {{ t.sev4_l }}</span><div class="btrack" style="--w:6.7%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_sev4 }}</span></div>
+</div>
+<div class="rv chart card" data-d="80">
+<h3 class="h3" style="margin-bottom:4px">{{ t.passrate_t }}</h3>
+<p class="foot" style="margin:0 0 18px">{{ t.passrate_cap }}</p>
+<div class="bar"><span class="blabel"><b>{{ t.hc1 }}</b> {{ t.h1_short }}</span><div class="btrack" style="--w:44%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_pr1 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc2 }}</b> {{ t.h2_short }}</span><div class="btrack" style="--w:60%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_pr2 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc3 }}</b> {{ t.h3_short }}</span><div class="btrack" style="--w:33%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_pr3 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc4 }}</b> {{ t.h4_short }}</span><div class="btrack" style="--w:100%"><div class="bfill bf-good"></div></div><span class="bval">{{ t.n_pr4 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc5 }}</b> {{ t.h5_short }}</span><div class="btrack" style="--w:50%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_pr5 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc6 }}</b> {{ t.h6_short }}</span><div class="btrack" style="--w:83%"><div class="bfill bf-good"></div></div><span class="bval">{{ t.n_pr6 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc7 }}</b> {{ t.h7_short }}</span><div class="btrack" style="--w:12%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_pr7 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc8 }}</b> {{ t.h8_short }}</span><div class="btrack" style="--w:50%"><div class="bfill bf-amber"></div></div><span class="bval">{{ t.n_pr8 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc9 }}</b> {{ t.h9_short }}</span><div class="btrack" style="--w:25%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_pr9 }}</span></div>
+<div class="bar"><span class="blabel"><b>{{ t.hc10 }}</b> {{ t.h10_short }}</span><div class="btrack" style="--w:20%"><div class="bfill bf-crit"></div></div><span class="bval">{{ t.n_pr10 }}</span></div>
+</div>
+</div>
+<div class="rv" data-d="60" style="margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+<div class="legend"><span class="lg"><span class="lgd bf-crit"></span>{{ t.leg_crit }}</span><span class="lg"><span class="lgd bf-amber"></span>{{ t.leg_partial }}</span><span class="lg"><span class="lgd bf-good"></span>{{ t.leg_pass }}</span></div>
+<a class="cta" href="https://docs.google.com/spreadsheets/d/1DCKncaZY3ZCkVi4_aPZ8cqMMcOk0OTDe/edit?gid=89532273#gid=89532273" target="_blank" rel="noopener">{{ t.cta_view }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"></path></svg></a>
+</div>
+</div>
+</section>
+
+<section id="synthesis" class="sec tint-b" data-screen-label="Synthesis">
+<div class="wrap">
+<div class="rv synthtop" data-d="40" style="margin-bottom:40px">
+<div class="synthtxt">
+<span class="lbl">{{ t.synth_kicker }}</span>
+<h2 class="h2">{{ t.synth_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.synth_lead }}</p>
+</div>
+<div class="venn">
+<div class="vc vc1"><span>{{ t.venn1 }}</span></div>
+<div class="vc vc2"><span>{{ t.venn2 }}</span></div>
+<div class="vc vc3"><span>{{ t.venn3a }}<br/>{{ t.venn3b }}</span></div>
+<div class="venncore">{{ t.venn_core }}</div>
+</div>
+</div>
+<div class="rv conv" data-d="60">
+<div class="convrow"><div class="convh">{{ t.conv_h_problem }}</div><div class="convh ch-desk">{{ t.conv_h_desk }}</div><div class="convh ch-int">{{ t.conv_h_int }}</div><div class="convh ch-heur">{{ t.conv_h_heur }}</div></div>
+<div class="convrow"><div class="convcell convp"><span class="nn">{{ t.n_m01 }}</span>{{ t.conv1_p }}</div><div class="convcell">{{ t.conv1_desk }}</div><div class="convcell">{{ t.conv1_int }}</div><div class="convcell">{{ t.conv1_heur }}</div></div>
+<div class="convrow"><div class="convcell convp"><span class="nn">{{ t.n_m02 }}</span>{{ t.conv2_p }}</div><div class="convcell">{{ t.conv2_desk }}</div><div class="convcell">{{ t.conv2_int }}</div><div class="convcell">{{ t.conv2_heur }}</div></div>
+<div class="convrow"><div class="convcell convp"><span class="nn">{{ t.n_m03 }}</span>{{ t.conv3_p }}</div><div class="convcell">{{ t.conv3_desk }}</div><div class="convcell">{{ t.conv3_int }}</div><div class="convcell">{{ t.conv3_heur }}</div></div>
+</div>
+<div class="rv pquote" data-d="80" style="margin-top:30px">
+<span class="lbl" style="color:var(--blu)">{{ t.problem_lbl }}</span>
+<p>"{{ t.problem_q }}"</p>
+</div>
+</div>
+</section>
+
+<section id="friction" class="sec tint-a" data-screen-label="Social Friction">
+<div class="wrap">
+<div class="rv" style="margin-bottom:34px">
+<span class="lbl">{{ t.fric_kicker }}</span>
+<h2 class="h2">{{ t.fric_title }}</h2>
+</div>
+<div class="rv sbflow" data-d="40">
+<article class="sbnode" style="--sc:var(--blu)">
+<div class="sbglow"></div><div class="sbnum">{{ t.n_m01 }}</div>
+<div class="sbimgwrap"><img class="sbimg2" src="assets/friction-1.png" alt="A woman sits alone on a couch at night, anxiously looking at a payment reminder notification on her phone." style="animation-delay:-.2s"></div>
+<p class="sbcap2">{{ t.fric1 }}</p>
+</article>
+<div class="sbarrow" aria-hidden="true"><svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 7h16M11 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<article class="sbnode" style="--sc:var(--amber)">
+<div class="sbglow"></div><div class="sbnum">{{ t.n_m02 }}</div>
+<div class="sbimgwrap"><img class="sbimg2" src="assets/friction-2.png" alt="A woman holding her phone with a red send-payment button, surrounded by thought bubbles full of question marks." style="animation-delay:-1.4s"></div>
+<p class="sbcap2">{{ t.fric2 }}</p>
+</article>
+<div class="sbarrow" aria-hidden="true"><svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 7h16M11 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<article class="sbnode" style="--sc:var(--purple)">
+<div class="sbglow"></div><div class="sbnum">{{ t.n_m03 }}</div>
+<div class="sbimgwrap"><img class="sbimg2" src="assets/friction-3.png" alt="A nervous woman typing a hesitant message on her phone, sweating slightly." style="animation-delay:-2.6s"></div>
+<p class="sbcap2">{{ t.fric3 }}</p>
+</article>
+<div class="sbarrow" aria-hidden="true"><svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 7h16M11 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<article class="sbnode sbnode--climax" style="--sc:var(--danger)">
+<div class="sbglow"></div><div class="sbnum">{{ t.n_m04 }}</div>
+<div class="sbimgwrap"><img class="sbimg2" src="assets/friction-4.png" alt="A woman and a man standing apart, separated by a jagged lightning-bolt shape, both looking uncomfortable." style="animation-delay:-3.8s"></div>
+<p class="sbcap2">{{ t.fric4 }}</p>
+</article>
+</div>
+<p class="sbfoot">{{ t.fric_foot }}</p>
+</div>
+</section>
+
+<section id="personas" class="sec tint-b" data-screen-label="Personas">
+<div class="wrap">
+<div class="rv" style="margin-bottom:32px">
+<span class="lbl">{{ t.pers_kicker }}</span>
+<h2 class="h2">{{ t.pers_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.pers_lead }}</p>
+<p class="foot" style="margin-top:12px">{{ t.pers_foot }}</p>
+</div>
+<div class="grid2">
+
+<article class="rv pcard">
+<span class="lbl" style="margin-bottom:0">{{ t.p1_badge }}</span>
+<div class="phead">
+<div class="pav"><img src="assets/persona-sara.png" alt="Sara, primary persona"></div>
+<div><div class="pname">{{ t.p1_name }} <span class="prole">{{ t.p1_role }}</span></div><div class="parch">{{ t.p1_arch }}</div></div>
+</div>
+<p class="pqt" style="margin-bottom:20px">"{{ t.p1_quote }}"</p>
+<div class="pblock">
+<div class="pcallout goal">
+<p class="pctag goal"><svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle></svg>{{ t.lbl_goal }}</p>
+<p class="plead">{{ t.p1_goal }}</p>
+<p class="pdet">{{ t.p1_goal_d }}</p>
+</div>
+</div>
+<div class="pblock" style="margin-top:18px">
+<p class="mcap" style="color:var(--danger)">{{ t.pain_hdr }}</p>
+<ul class="ppain">
+<li>{{ t.p1_pain1 }}</li>
+<li>{{ t.p1_pain2 }}</li>
+<li>{{ t.p1_pain3 }}</li>
+<li>{{ t.p1_pain4 }}</li>
+</ul>
+</div>
+</article>
+
+<article class="rv pcard" data-d="70">
+<span class="lbl" style="margin-bottom:0">{{ t.p2_badge }}</span>
+<div class="phead">
+<div class="pav"><img src="assets/persona-nick.png" alt="Nick, secondary persona"></div>
+<div><div class="pname">{{ t.p2_name }} <span class="prole">{{ t.p2_role }}</span></div><div class="parch">{{ t.p2_arch }}</div></div>
+</div>
+<p class="pqt" style="margin-bottom:20px">"{{ t.p2_quote }}"</p>
+<div class="pblock">
+<div class="pcallout goal">
+<p class="pctag goal"><svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5"></circle></svg>{{ t.lbl_goal }}</p>
+<p class="plead">{{ t.p2_goal }}</p>
+<p class="pdet">{{ t.p2_goal_d }}</p>
+</div>
+</div>
+<div class="pblock" style="margin-top:18px">
+<p class="mcap" style="color:var(--danger)">{{ t.pain_hdr }}</p>
+<ul class="ppain">
+<li>{{ t.p2_pain1 }}</li>
+<li>{{ t.p2_pain2 }}</li>
+<li>{{ t.p2_pain3 }}</li>
+</ul>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="journey" class="sec tint-a" data-screen-label="Journey Map">
+<div class="wrap">
+<div class="rv" style="margin-bottom:30px">
+<span class="lbl">{{ t.jour_kicker }}</span>
+<h2 class="h2">{{ t.jour_title }}</h2>
+<p class="lead" style="margin-top:14px">{{ t.jour_lead }}</p>
+</div>
+
+<div class="rv" data-d="40">
+<div class="jscroll">
+
+<div class="jgrid">
+<div class="jlabelcol">
+<div class="jhspacer"></div>
+<div class="jpersona sara"><div class="jpav"><img src="assets/persona-sara.png" alt=""></div><div class="jptxt"><div class="jpname">{{ t.p1_name }} <span class="r">{{ t.p1_role }}</span></div><div class="jptag">{{ t.p1_arch }}</div></div></div>
+<div class="jpersona nick"><div class="jpav"><img src="assets/persona-nick.png" alt=""></div><div class="jptxt"><div class="jpname">{{ t.p2_name }} <span class="r">{{ t.p2_role }}</span></div><div class="jptag">{{ t.p2_arch }}</div></div></div>
+<div class="jrl">{{ t.jour_pain_lbl }}</div>
+</div>
+
+<div class="jcol">
+<div class="jh">{{ t.col1_h }}</div>
+<div class="ja"><span class="jmt s">{{ t.p1_name }} · {{ t.p1_role }}</span>{{ t.jc1_sara }}</div>
+<div class="ja"><span class="jmt n">{{ t.p2_name }} · {{ t.p2_role }}</span>{{ t.jc1_nick }}</div>
+<div class="jpc"><div class="jpi"><span class="ptag s">{{ t.s_letter }}</span>{{ t.jc1_pain }}</div></div>
+</div>
+
+<div class="jcol">
+<div class="jh">{{ t.col2_h }}</div>
+<div class="ja"><span class="jmt s">{{ t.p1_name }} · {{ t.p1_role }}</span>{{ t.jc2_sara }}</div>
+<div class="ja empty"><span class="jmt n">{{ t.p2_name }} · {{ t.p2_role }}</span>{{ t.jc2_nick_empty }}</div>
+<div class="jpc"><div class="jpi"><span class="ptag s">{{ t.s_letter }}</span>{{ t.jc2_pain1 }}</div><div class="jpi"><span class="ptag s">{{ t.s_letter }}</span>{{ t.jc2_pain2 }}</div><div class="jpi"><span class="ptag s">{{ t.s_letter }}</span>{{ t.jc2_pain3 }}</div></div>
+</div>
+
+<div class="jcol">
+<div class="jh">{{ t.col3_h }}</div>
+<div class="ja"><span class="jmt s">{{ t.p1_name }} · {{ t.p1_role }}</span>{{ t.jc3_sara }}</div>
+<div class="ja"><span class="jmt n">{{ t.p2_name }} · {{ t.p2_role }}</span>{{ t.jc3_nick }}</div>
+<div class="jpc"><div class="jpi"><span class="ptag s">{{ t.s_letter }}</span>{{ t.jc3_pain_s }}</div><div class="jpi"><span class="ptag n">{{ t.n_letter }}</span>{{ t.jc3_pain_n }}</div></div>
+</div>
+
+<div class="jcol">
+<div class="jh">{{ t.col4_h }}</div>
+<div class="ja"><span class="jmt s">{{ t.p1_name }} · {{ t.p1_role }}</span>{{ t.jc4_sara }}</div>
+<div class="ja"><span class="jmt n">{{ t.p2_name }} · {{ t.p2_role }}</span>{{ t.jc4_nick }}</div>
+<div class="jpc"><div class="jpi"><span class="ptag sn"><span style="color:var(--blu)">{{ t.s_letter }}</span>·<span style="color:var(--success)">{{ t.n_letter }}</span></span>{{ t.jc4_pain }}</div></div>
+</div>
+</div>
+
+<div class="jchart">
+<div class="jchart-head"><div class="jctitle" style="border-left-color:var(--line);color:var(--text)">{{ t.jchart_t_a }}<span class="r">{{ t.jchart_t_b }}</span></div></div>
+<div class="jchart-row">
+<div class="jplot jplot-uni">
+<svg class="jln" viewBox="0 0 100 320" preserveAspectRatio="none" aria-hidden="true">
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12.5 120 C 25 120 25 200 37.5 200"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#E05A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M37.5 200 C 50 200 50 160 62.5 160"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M62.5 160 C 75 160 75 40 81.5 40"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 5" opacity="0.45" d="M12.5 52 C 25 52 25 80 37.5 80"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#E05A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M37.5 80 C 50 80 50 92 62.5 92"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M62.5 92 C 75 92 75 40 88.7 40"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" d="M0 120 L12.5 120"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" d="M81.5 40 L100 40"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" d="M0 52 L12.5 52"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" d="M88.7 40 L100 40"></path>
+</svg>
+<div class="jconn" style="left:50%;top:2px"><span class="jconn-badge">{{ t.opp_badge }}</span></div>
+<div class="jconn-lead" style="left:50%;top:30px;height:103px"></div>
+<div class="jpoint">
+<span class="jcat">{{ t.col1_h }}</span>
+<div class="jpt emo sara" style="left:12.5%;top:120px" role="img" aria-label="Sara feels frustrated at Set Up"><img src="assets/emo-sara-frustrated.png" alt=""></div>
+<div class="jpt emo nick" style="left:12.5%;top:52px" role="img" aria-label="Nick feels curious at Set Up"><img src="assets/emo-nick-curious.png" alt=""></div>
+<div class="jlead2" style="left:12.5%;top:150px;height:16px"></div>
+<div class="jtip2 multi" style="left:12.5%;top:166px">
+<div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_frustrated }}</span></div>
+<div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_curious }}</span></div>
+</div>
+</div>
+<div class="jpoint">
+<span class="jcat">{{ t.col2_h }}</span>
+<div class="jpt emo sara opp" style="left:37.5%;top:200px" role="img" aria-label="Sara feels overwhelmed at Log and Split — key opportunity"><img src="assets/emo-sara-overwhelmed.png" alt=""></div>
+<div class="jlead2" style="left:37.5%;top:230px;height:16px"></div>
+<div class="jtip2 multi" style="left:37.5%;top:246px">
+<div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_overwhelmed }}</span></div>
+<div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_not_involved }}</span></div>
+</div>
+</div>
+<div class="jpoint">
+<span class="jcat">{{ t.col3_h }}</span>
+<div class="jpt emo sara opp" style="left:62.5%;top:160px" role="img" aria-label="Sara feels uncomfortable at Track, Remind and Review — key opportunity"><img src="assets/emo-sara-uncomfortable.png" alt=""></div>
+<div class="jpt emo nick opp" style="left:62.5%;top:92px" role="img" aria-label="Nick feels uncertain at Track, Remind and Review — key opportunity"><img src="assets/emo-nick-uncertain.png" alt=""></div>
+<div class="jlead2" style="left:62.5%;top:190px;height:16px"></div>
+<div class="jtip2 multi" style="left:62.5%;top:206px">
+<div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_uncomfortable }}</span></div>
+<div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_uncertain }}</span></div>
+</div>
+</div>
+<div class="jpoint">
+<span class="jcat">{{ t.col4_h }}</span>
+<div class="jpt emo sara" style="left:81.5%;top:40px;z-index:5" role="img" aria-label="Sara feels relieved at Settling"><img src="assets/emo-sara-relieved.png" alt=""></div>
+<div class="jpt emo nick" style="left:88.7%;top:40px;z-index:6" role="img" aria-label="Nick feels relieved at Settling"><img src="assets/emo-nick-relieved.png" alt=""></div>
+<div class="jlead2" style="left:85.1%;top:70px;height:16px"></div>
+<div class="jtip2 multi" style="left:85.1%;top:86px">
+<div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_relieved }}</span></div>
+<div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_relieved }}</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jplot-mobile" role="img" aria-label="Emotional arc across the journey, vertical mobile view">
+<svg class="jmln" viewBox="0 0 100 740" preserveAspectRatio="none" aria-hidden="true">
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.4 70 C 18.4 175 22 175 22 280"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#E05A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 280 C 22 385 19.6 385 19.6 490"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#7EB3F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19.6 490 C 19.6 605 20 605 20 656"></path>
+<path vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 5" opacity="0.45" d="M31 70 C 31 175 34 175 34 280"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#E05A7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M34 280 C 34 385 35.8 385 35.8 490"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M35.8 490 C 35.8 615 22 615 22.5 653"></path>
+<path class="jpath" style="--len:999" vector-effect="non-scaling-stroke" fill="none" stroke="#E05A7A" stroke-width="2" stroke-linecap="round" d="M21 385 L36 385"></path>
+<circle cx="21" cy="385" r="2.4" fill="#E05A7A"></circle>
+</svg>
+<div class="jmlead" style="top:70px;left:39%;width:7%"></div>
+<div class="jpt emo sara" style="left:18.4%;top:70px" role="img" aria-label="Sara feels frustrated at Set Up"><img src="assets/emo-sara-frustrated.png" alt=""></div>
+<div class="jpt emo nick" style="left:31%;top:70px" role="img" aria-label="Nick feels curious at Set Up"><img src="assets/emo-nick-curious.png" alt=""></div>
+<div class="jmside" style="top:70px"><span class="jmstep">{{ t.col1_h }}</span><div class="jtip2 multi jmtip"><div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_frustrated }}</span></div><div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_curious }}</span></div></div></div>
+<div class="jmlead" style="top:280px;left:30%;width:16%"></div>
+<div class="jpt emo sara opp" style="left:22%;top:280px" role="img" aria-label="Sara feels overwhelmed at Log and Split — key opportunity"><img src="assets/emo-sara-overwhelmed.png" alt=""></div>
+<div class="jmside" style="top:280px"><span class="jmstep">{{ t.col2_h }}</span><div class="jtip2 multi jmtip"><div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_overwhelmed }}</span></div><div class="prow nick"><b>{{ t.p2_name }}</b><span class="dim">{{ t.emo_not_involved }}</span></div></div></div>
+<div class="jmlead opp" style="top:385px;left:36%;width:10%"></div>
+<span class="jconn-badge jmopp" style="top:385px">{{ t.opp_badge }}</span>
+<div class="jmlead" style="top:490px;left:43.8%;width:2.2%"></div>
+<div class="jpt emo sara opp" style="left:19.6%;top:490px" role="img" aria-label="Sara feels uncomfortable at Track, Remind and Review — key opportunity"><img src="assets/emo-sara-uncomfortable.png" alt=""></div>
+<div class="jpt emo nick opp" style="left:35.8%;top:490px" role="img" aria-label="Nick feels uncertain at Track, Remind and Review — key opportunity"><img src="assets/emo-nick-uncertain.png" alt=""></div>
+<div class="jmside" style="top:490px"><span class="jmstep">{{ t.col3_h }}</span><div class="jtip2 multi jmtip"><div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_uncomfortable }}</span></div><div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_uncertain }}</span></div></div></div>
+<div class="jmlead" style="top:678px;left:29%;width:17%"></div>
+<div class="jpt emo sara" style="left:20%;top:653px" role="img" aria-label="Sara feels relieved at Settling"><img src="assets/emo-sara-relieved.png" alt=""></div>
+<div class="jpt emo nick" style="left:22.5%;top:702px;z-index:5" role="img" aria-label="Nick feels relieved at Settling"><img src="assets/emo-nick-relieved.png" alt=""></div>
+<div class="jmside" style="top:678px"><span class="jmstep">{{ t.col4_h }}</span><div class="jtip2 multi jmtip"><div class="prow sara"><b>{{ t.p1_name }}</b><span>{{ t.emo_relieved }}</span></div><div class="prow nick"><b>{{ t.p2_name }}</b><span>{{ t.emo_relieved }}</span></div></div></div>
+</div>
+
+</div>
+</div>
+
+<div class="rv jlegend2" data-d="60">
+<div class="jlegroup"><span class="cap">{{ t.jleg_persona }}</span><span class="jlg"><span class="sw" style="background:#7EB3F5"></span>{{ t.p1_name }}</span><span class="jlg"><span class="sw" style="background:#34D399"></span>{{ t.p2_name }}</span></div>
+<div class="jlegroup"><span class="cap">{{ t.jleg_line }}</span><span class="jlg"><span class="swd"></span>{{ t.jleg_notinv }}</span><span class="jlg"><span class="sw" style="background:var(--danger)"></span>{{ t.jleg_opp }}</span></div>
+</div>
+</div>
+</section>
+
+<section id="next" class="sec tint-b" data-screen-label="Footer">
+<div class="wrap">
+<div class="rv" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+<div style="display:flex;align-items:center;gap:11px"><img src="assets/blu-logo.png" alt="" style="width:26px;height:26px;border-radius:7px"><div><div style="font-weight:700;font-size:14px">{{ t.foot_brand_a }}<span style="color:var(--blu)">{{ t.foot_brand_b }}</span>{{ t.foot_brand_c }}</div><div class="foot">{{ t.team }} — {{ t.date_short }}</div></div></div>
+</div>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:860},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#7EB3F5&quot;,&quot;options&quot;:[&quot;#7EB3F5&quot;,&quot;#A78BFA&quot;,&quot;#5EE0C8&quot;,&quot;#F5B97E&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;compactNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Navigation&quot;}}">
+class Component extends DCLogic {
+  static TR = {
+    en: {
+      toLight: 'Switch to light mode', toDark: 'Switch to dark mode', langToggleAria: 'Switch language / تغییر زبان',
+      nav_intro: 'Intro', nav_product: 'Product', nav_scope: 'Research Approach', nav_desk: 'Desk Research', nav_comp: 'Competitive', nav_int: 'Interviews', nav_heur: 'Heuristics', nav_synth: 'Synthesis', nav_fric: 'Social Friction', nav_pers: 'Personas', nav_jour: 'Journey',
+      hero_kicker: 'UX Research Case Study · Dong', hero_title_a: 'Improving the ', hero_title_accent: 'Shared Money Hub', hero_title_b: ' for BluBank',
+      hero_lead_a: 'A UX research case study on ', hero_lead_bold: 'Dong', hero_lead_gloss: ' (دنگ)', hero_lead_b: " — BluBank's group expense-splitting feature.",
+      hero_pill1: '4 Designers', hero_pill2: 'Desk Research', hero_pill3: 'User Interviews', hero_pill4: 'Heuristic Evaluation', hero_pill5: 'Jun 2026 · Research Phase', date_short: 'Jun 2026',
+      team: 'Parisa Nasri · Farnaz Toghiani · Mahdis Salaari · Arin Hacoupian',
+      ctx_kicker: 'Product overview', ctx_title: 'What is Dong?',
+      ctx_p_a: "BluBank is Iran's digital-only neobank. ", ctx_p_bold: 'Dong', ctx_p_gloss: ' (دنگ)', ctx_p_b: " is its in-app feature for splitting group expenses — letting friends, housemates, and travel groups track who paid for what and settle up.",
+      stat_founded: '2019', stat_founded_lbl: 'Founded', stat_parent: 'Saman Bank', stat_parent_lbl: 'Parent company', stat_users_lbl: 'Users', stat_emp_lbl: 'Employees',
+      scope_kicker: 'Research approach', scope_title: 'Three Methods, One Question',
+      m1_badge: 'Desk Research', m1_goal: 'Map the market landscape and surface existing user pain points.', m1_out: 'User voice from 50+ app-store reviews.',
+      m2_badge: 'User Interviews', m2_goal: 'Understand real behavior, motivations, and unmet needs.', m2_out: 'Coded insights from 4 in-depth conversations.',
+      m3_badge: 'Heuristic Eval', m3_goal: 'Evaluate the UI against established usability standards.', m3_out: '85 checks across 10 usability heuristics.',
+      lbl_goal: 'Goal', lbl_output: 'Output',
+      desk_badge_m: 'Method 01', desk_badge: 'Desk Research', desk_title: 'Top User Frustrations', desk_lead: "The loudest, most repeated complaints across Iran's app stores — Myket, Cafe Bazaar, and Koocheh.",
+      sev_high: 'High', sev_med: 'Medium',
+      desk1_t: 'Lack of Smart Debt Reminders', desk1_d: 'Users forget to settle debts — there are no automatic or scheduled reminders.',
+      desk2_t: 'No Receipt Intelligence', desk2_d: 'Manual entry is time-consuming and prone to errors.',
+      desk3_t: 'Requirement to Have a Blu Account', desk3_d: 'Users in the network outside BluBank face barriers to participate.',
+      comp_kicker: 'Competitive Analysis', comp_title_a: 'Three answers to ', comp_title_accent: 'the same problem', comp_lead: 'Every competitor treats shared debt differently. Here is where each approach sits.',
+      comp1_t: 'Record and documentation',
+      comp1_mid: ' can scan receipts automatically and split expenses using flexible rules such as percentage-based or share-based allocations. ', comp1_post: ' attaches a photo to any expense and includes a built-in calculator for quickly splitting shared bills.',
+      comp2_t: 'Remind and explain',
+      comp2_seg1: ' provides automatic payment reminders for unpaid balances and shared expenses. ', comp2_seg2: ' sends friendly payment reminders on behalf of the requester, reducing the social friction of asking for money. ', comp2_seg3: ' sends only one automatic reminder; after that, follow-up is left to the user.',
+      comp3_t: 'Open network',
+      comp3_seg1: ' allows users to share a split link so anyone can join as a guest, without needing a Monzo account or UK bank account. ', comp3_seg2: ' allows non-users to pay their share instantly through a secure payment link, without needing to download the app or create an account.',
+      int_badge_m: 'Method 02', int_badge: 'User Interviews', int_title: 'What We Heard From Users', int_lead: 'Four in-depth, remote conversations with active Dong users. We grouped their words into recurring themes — each one maps directly onto a constraint and a heuristic gap.',
+      int1_t: '1. No Transparency, No Trust', int1_i: 'Without receipts, notes, or supporting details, users cannot verify expenses or understand why a charge was added. This lack of transparency makes it harder to trust the accuracy of group expenses.',
+      int1_q1: 'If I could upload a receipt, it would be so much better.', int1_w1: 'Aram', int1_q2: 'I have to send the receipt separately, outside the app.', int1_w2: 'Ali',
+      int2_t: '2. Manual uneven splitting is slow and error-prone', int2_i: 'Increases process completion time, reduces payment completion rates, and lowers user satisfaction.',
+      int2_q1: 'I have to manually enter unequal expenses myself.', int2_w1: 'Fereshteh', int2_q2: 'Last time we just calculated everything manually between ourselves.', int2_w2: 'Mahnaz',
+      int3_t: '3. Reminders Are Manual and Individual', int3_i: "Without automated and bulk reminders, debt follow-ups become time-consuming, increasing user effort and reducing the product's effectiveness in facilitating expense settlement.",
+      int3_q1: "I have to remind each member individually, and I'm worried they'll think I'm deliberately pressuring them.", int3_w1: 'Fereshteh', int3_q2: "It'd be better if a notification just went out automatically.", int3_w2: 'Aram',
+      int4_t: '4. Non-Blu Users Break the Flow', int4_i: 'When some group members are not Blu users, expense splitting and repayment become more difficult, limiting feature adoption and growth opportunities.',
+      int4_q1: "If even one person doesn't have a Blu account, the entire flow breaks down.", int4_w1: 'Ali', int4_q2: "Those who don't have Blu have to use card-to-card transfers through other banking apps.", int4_w2: 'Aram',
+      heur_badge_m: 'Method 03', heur_badge: 'Heuristic Evaluation', heur_title: 'Measuring the UI Against Standards', heur_lead: "85 check questions across Nielsen's 10 usability heuristics, each issue rated on the 0–4 severity scale.",
+      heur_stat1: 'Check questions', heur_stat2: 'Overall pass rate', heur_stat3: 'Severity scale (Nielsen)',
+      chart1_t: 'Priority Score by Heuristic', chart1_cap: 'Issues × average severity · sorted by priority', chart1_note: 'One heuristic dominates everything else — H7 Flexibility & Efficiency.',
+      h1_name: 'Visibility of System Status', h2_name: 'Match System & Real World', h3_name: 'User Control & Freedom', h4_name: 'Consistency & Standards', h5_name: 'Error Prevention', h6_name: 'Recognition Not Recall', h7_name: 'Flexibility & Efficiency', h8_name: 'Aesthetic & Minimalist', h9_name: 'Error Recovery', h10_name: 'Help & Documentation',
+      h1_short: 'Visibility', h2_short: 'Real World', h3_short: 'Control', h4_short: 'Consistency', h5_short: 'Error Prev.', h6_short: 'Recognition', h7_short: 'Flexibility', h8_short: 'Aesthetic', h9_short: 'Recovery', h10_short: 'Help & Docs',
+      sevdist_t: 'Severity Distribution', sevdist_cap: '85 checks rated 0 (no problem) to 4 (catastrophic).',
+      sev0_l: 'Not a Problem', sev1_l: 'Cosmetic', sev2_l: 'Minor', sev3_l: 'Major', sev4_l: 'Catastrophic',
+      passrate_t: 'Pass Rate by Heuristic', passrate_cap: 'Share of checks passed within each heuristic.',
+      leg_crit: 'Critical / failing', leg_partial: 'Partial', leg_pass: 'Passing', cta_view: 'View Full Evaluation Data',
+      synth_kicker: 'Cross-method synthesis', synth_title: 'Where All Three Methods Agree', synth_lead: 'Desk research, interviews, and the heuristic evaluation converge on the same three problems — the strongest possible signal for what to fix first.',
+      venn1: 'Desk Research', venn2: 'Interviews', venn3a: 'Heuristic', venn3b: 'Evaluation', venn_core: '3 shared problems',
+      conv_h_problem: 'Problem', conv_h_desk: 'Desk Research', conv_h_int: 'Interviews', conv_h_heur: 'Heuristic Eval',
+      conv1_p: 'No receipt / documentation system', conv1_desk: "Iran's App-Store", conv1_int: '3 / 4 interviewees requested it', conv1_heur: 'Flexibility gaps rated up to Severity 4',
+      conv2_p: 'Manual-only processes (split, reminders, calculations)', conv2_desk: 'Top complaint in reviews', conv2_int: '4 / 4 experienced this pain', conv2_heur: 'Multiple flexibility checks failed',
+      conv3_p: 'Closed BluBank-only ecosystem', conv3_desk: 'Top complaint in reviews', conv3_int: 'Mentioned across interviews', conv3_heur: 'Flexibility gap rated Severity 4',
+      problem_lbl: 'Problem statement',
+      problem_q: 'Dong users who split expenses with friends and family are forced to manage critical parts of their workflow — calculating shares, documenting costs, and communicating about disputes — outside the app, because the feature lacks receipt support, flexible splitting, and cross-platform access. This fragmentation erodes trust between group members and creates enough friction that users abandon the feature for manual methods.',
+      fric_kicker: 'The Social Friction Problem', fric_title: 'Why splitting bills is an emotional burden',
+      fric1: 'A friend still owes money in the group. No reminder has gone out.', fric2: 'Worries it will come across as pushy or transactional.', fric3: 'Has to ask directly, outside the app, in their own words.', fric4: 'Repeating this every time quietly wears on the relationship.',
+      fric_foot: 'Based on user feedback patterns observed in comparable expense-splitting apps, and consistent with published research on interpersonal debt communication (Angulo, Goldstein & Norton, 2024, Journal of Consumer Psychology).',
+      pers_kicker: 'Personas', pers_title: "Who We're Designing For", pers_lead: "The problem statement above names who's affected — these two people are the faces behind it. Both are composites derived from the research findings above, not designed from assumption.",
+      pers_foot: 'Synthesized from desk research, 4 user interviews, and a single-evaluator heuristic review (85 checks, 48% pass rate) — directional, not statistically representative.',
+      p1_badge: '01 · Primary Persona', p1_name: 'Sara', p1_role: '(Organizer)', p1_arch: 'Plans first, chases repayment',
+      p1_quote: "I want everyone to pay their share easily — even if they don't use Blu — without me having to remind anyone.",
+      p1_goal: 'Have Dong handle the tracking and reminders for her.', p1_goal_d: 'Right now she splits every shared expense by hand and chases each person herself.',
+      pain_hdr: 'Pain points · High → Medium',
+      p1_pain1: 'Lacks the ability to share payment receipts and expense breakdown details, creating concerns about potential confusion or disagreements among group members.',
+      p1_pain2: 'Feels dissatisfied with spending time tracking and reminding others about their pending payments.',
+      p1_pain3: 'Finds managing uneven expense splits time-consuming and frustrating.',
+      p1_pain4: 'Faces difficulties collecting payments when some group members are not Blu users.',
+      p2_badge: '02 · Secondary Persona', p2_name: 'Nick', p2_role: '(Payer)', p2_arch: 'Joins in, settles fast',
+      p2_quote: 'I want to see a clear breakdown of what I owe and why, so I can pay with confidence.',
+      p2_goal: 'See exactly what he owes, then pay it on time.', p2_goal_d: 'Right now he lacks visibility into expense details and relies on manual reminders to pay on time.',
+      p2_pain1: 'Lacks transparency and supporting documentation to confidently trust recorded expenses.',
+      p2_pain2: 'May forget to complete payments if the expense organizer does not send a reminder.',
+      p2_pain3: 'Cannot provide feedback or raise questions about their share of expenses.',
+      jour_kicker: 'Journey Mapping', jour_title: 'Where Dong Loses Trust', jour_lead: 'One map of the whole Dong experience, synthesized across all three methods — desk research, user interviews, and the heuristic evaluation — not interview data alone.',
+      jour_pain_lbl: 'Pain points',
+      col1_h: 'Set Up', col2_h: 'Log & Split', col3_h: 'Track, Remind & Review', col4_h: 'Settling',
+      jc1_sara: 'Starts a group for the shared expense and invites members.', jc1_nick: 'Joins the group through the invite link.', jc1_pain: "Some intended members can't join without a Blu account.",
+      jc2_sara: 'Manually logs each cost and splits the amount across the group.', jc2_nick_empty: 'Not active in this step.',
+      jc2_pain1: "Manual entry for every single cost adds up fast, especially in larger groups.", jc2_pain2: "No support for splitting uneven expenses — manual adjustments are required.", jc2_pain3: "Can't share receipts or documentation, creating confusion among members.",
+      jc3_sara: "Shares the breakdown, tracks who's paid, and manually re-reminds unpaid members.", jc3_nick: "Reviews the charge assigned to him and decides whether it's correct before paying.",
+      jc3_pain_s: 'Feels uncomfortable asking friends for money because reminders are sent directly by her.', jc3_pain_n: "Feels uncertain about the amount owed because the app doesn't provide receipts or supporting documents.",
+      jc4_sara: "Checks the group's debt/credit summary to see where payments and settlements stand.", jc4_nick: 'Completes the payment, Blu-to-Blu.',
+      jc4_pain: "Both only see totals in the group's Dong summary — checking any detail means scrolling the full transactions list and opening entries one by one.",
+      jchart_t_a: 'Emotional Arc ', jchart_t_b: '· Sara & Nick, across the journey',
+      emo_frustrated: 'Frustrated', emo_curious: 'Curious', emo_overwhelmed: 'Overwhelmed', emo_not_involved: 'not involved', emo_uncomfortable: 'Uncomfortable', emo_uncertain: 'Uncertain', emo_relieved: 'Relieved',
+      opp_badge: '⚠ Opportunity',
+      jleg_persona: 'Persona', jleg_line: 'Line style', jleg_notinv: 'Not involved in that step', jleg_opp: 'Opportunity — key friction point',
+      foot_brand_a: 'blu', foot_brand_b: 'Bank', foot_brand_c: ' · Shared Money Hub',
+      persona_sara_short: 'Sara', persona_nick_short: 'Nick', s_letter: 'S', n_letter: 'N',
+    },
+    fa: {
+      toLight: 'تغییر به حالت روشن', toDark: 'تغییر به حالت تاریک', langToggleAria: 'Switch language / تغییر زبان',
+      nav_intro: 'شروع', nav_product: 'محصول', nav_scope: 'رویکرد پژوهش', nav_desk: 'مطالعات کتابخانه‌ای', nav_comp: 'تحلیل رقبا', nav_int: 'مصاحبه‌ها', nav_heur: 'هیوریستیک', nav_synth: 'ترکیب یافته‌ها', nav_fric: 'اصطکاک اجتماعی', nav_pers: 'پرسونا‌ها', nav_jour: 'سفر کاربر',
+      hero_kicker: 'مطالعه موردی پژوهش تجربه کاربری · دنگ', hero_title_a: 'بهبود ', hero_title_accent: 'مرکز هزینه‌های مشترک', hero_title_b: ' در بلوبانک',
+      hero_lead_a: 'یک مطالعه موردی پژوهش تجربه کاربری درباره ', hero_lead_bold: 'دنگ', hero_lead_gloss: '', hero_lead_b: ' — ویژگی تقسیم هزینه‌های گروهی بلوبانک.',
+      hero_pill1: '۴ طراح', hero_pill2: 'مطالعات کتابخانه‌ای', hero_pill3: 'مصاحبه با کاربران', hero_pill4: 'ارزیابی هیوریستیک', hero_pill5: 'ژوئن ۲۰۲۶ · فاز پژوهش', date_short: 'ژوئن ۲۰۲۶',
+      team: 'پریسا نصری · فرناز توغیانی · مهدیس سالاری · آرین هاکوپیان',
+      ctx_kicker: 'معرفی محصول', ctx_title: 'دنگ چیست؟',
+      ctx_p_a: 'بلوبانک یک بانک دیجیتال کاملاً آنلاین در ایران است. ', ctx_p_bold: 'دنگ', ctx_p_gloss: '', ctx_p_b: ' ویژگی داخل اپلیکیشن آن برای تقسیم هزینه‌های گروهی است — که به دوستان، هم‌خانه‌ها و گروه‌های سفر امکان می‌دهد مشخص کنند چه‌کسی برای چه چیزی پرداخت کرده و حساب‌ها را تسویه کنند.',
+      stat_founded: '۲۰۱۹', stat_founded_lbl: 'تأسیس', stat_parent: 'بانک سامان', stat_parent_lbl: 'شرکت مادر', stat_users_lbl: 'کاربران', stat_emp_lbl: 'کارمندان',
+      scope_kicker: 'رویکرد پژوهش', scope_title: 'سه روش، یک پرسش',
+      m1_badge: 'مطالعات کتابخانه‌ای', m1_goal: 'ترسیم نقشه بازار و شناسایی نقاط درد موجود کاربران.', m1_out: 'صدای کاربر از بیش از ۵۰ نظر در فروشگاه‌های اپلیکیشن.',
+      m2_badge: 'مصاحبه با کاربران', m2_goal: 'درک رفتار واقعی، انگیزه‌ها و نیازهای برطرف‌نشده.', m2_out: 'بینش‌های کدگذاری‌شده از ۴ گفتگوی عمیق.',
+      m3_badge: 'ارزیابی هیوریستیک', m3_goal: 'ارزیابی رابط کاربری بر اساس استانداردهای شناخته‌شده قابلیت‌استفاده.', m3_out: '۸۵ بررسی در ۱۰ هیوریستیک قابلیت‌استفاده.',
+      lbl_goal: 'هدف', lbl_output: 'خروجی',
+      desk_badge_m: 'روش ۰۱', desk_badge: 'مطالعات کتابخانه‌ای', desk_title: 'بیشترین نارضایتی‌های کاربران', desk_lead: 'پرتکرارترین و پربسامدترین شکایات در فروشگاه‌های اپلیکیشن ایران — مایکت، کافه‌بازار و کوچه.',
+      sev_high: 'بالا', sev_med: 'متوسط',
+      desk1_t: 'نبود یادآوری هوشمند بدهی', desk1_d: 'کاربران فراموش می‌کنند بدهی‌ها را تسویه کنند — هیچ یادآوری خودکار یا زمان‌بندی‌شده‌ای وجود ندارد.',
+      desk2_t: 'نبود هوشمندی در ثبت رسید', desk2_d: 'ثبت دستی زمان‌بر است و مستعد خطاست.',
+      desk3_t: 'الزام داشتن حساب بلو', desk3_d: 'کاربرانی که در شبکه هستند اما حساب بلوبانک ندارند، برای مشارکت با محدودیت مواجه می‌شوند.',
+      comp_kicker: 'تحلیل رقبا', comp_title_a: 'سه پاسخ به ', comp_title_accent: 'یک مسئله مشترک', comp_lead: 'هر رقیب با بدهی مشترک متفاوت برخورد می‌کند. اینجا محل قرارگیری هر رویکرد است.',
+      comp1_t: 'ثبت و مستندسازی',
+      comp1_mid: ' امکان اسکن خودکار رسیدها و تقسیم هزینه‌ها را بر اساس قوانین انعطاف‌پذیر مثل درصدی یا سهمی فراهم می‌کند. ', comp1_post: ' امکان ضمیمه کردن عکس به هر هزینه را می‌دهد و شامل ماشین‌حساب داخلی برای تقسیم سریع صورت‌حساب‌های مشترک است.',
+      comp2_t: 'یادآوری و توضیح',
+      comp2_seg1: ' یادآوری خودکار پرداخت برای مانده‌های تسویه‌نشده و هزینه‌های مشترک ارسال می‌کند. ', comp2_seg2: ' یادآوری‌های دوستانه از طرف درخواست‌کننده ارسال می‌کند و فشار اجتماعی طلب کردن پول را کاهش می‌دهد. ', comp2_seg3: ' فقط یک یادآوری خودکار ارسال می‌کند؛ پیگیری بعدی بر عهده خود کاربر است.',
+      comp3_t: 'شبکه باز',
+      comp3_seg1: ' به کاربران اجازه می‌دهد لینک تقسیم هزینه را با هر کسی به اشتراک بگذارند، بدون نیاز به حساب Monzo یا حساب بانکی. ', comp3_seg2: ' به افراد غیرعضو اجازه می‌دهد سهم خود را از طریق لینک پرداخت امن بپردازند، بدون نیاز به دانلود اپلیکیشن یا ساخت حساب.',
+      int_badge_m: 'روش ۰۲', int_badge: 'مصاحبه با کاربران', int_title: 'کاربران چه گفتند', int_lead: 'چهار گفتگوی عمیق و از‌راه‌دور با کاربران فعال دنگ. صحبت‌های آن‌ها را در قالب موضوعات تکرارشونده دسته‌بندی کردیم — هرکدام مستقیماً به یک محدودیت و یک شکاف هیوریستیک مرتبط است.',
+      int1_t: '۱. بدون شفافیت، بدون اعتماد', int1_i: 'بدون رسید، یادداشت یا جزئیات پشتیبان، کاربران نمی‌توانند هزینه‌ها را راستی‌آزمایی کنند یا دلیل افزوده‌شدن یک هزینه را بفهمند. همین نبود شفافیت، اعتماد به دقت هزینه‌های گروهی را دشوارتر می‌کند.',
+      int1_q1: 'اگر می‌توانستم رسید را بارگذاری کنم، خیلی بهتر می‌شد.', int1_w1: 'آرام', int1_q2: 'باید رسید را جدا از اپلیکیشن ارسال کنم.', int1_w2: 'علی',
+      int2_t: '۲. تقسیم دستی و ناهمسان، کند و مستعد خطاست', int2_i: 'زمان تکمیل فرآیند را افزایش می‌دهد، نرخ تکمیل پرداخت را کاهش می‌دهد و رضایت کاربر را پایین می‌آورد.',
+      int2_q1: 'باید هزینه‌های نابرابر را خودم به‌صورت دستی وارد کنم.', int2_w1: 'فرشته', int2_q2: 'دفعه قبل همه‌چیز را دستی بین خودمان حساب کردیم.', int2_w2: 'مهناز',
+      int3_t: '۳. یادآوری‌ها دستی و فردی هستند', int3_i: 'بدون یادآوری خودکار و گروهی، پیگیری بدهی‌ها زمان‌بر می‌شود و باعث افزایش تلاش کاربر و کاهش اثربخشی محصول در تسهیل تسویه‌حساب می‌گردد.',
+      int3_q1: 'باید تک‌تک اعضا را جدا یادآوری کنم و نگرانم فکر کنند عمداً فشار می‌آورم.', int3_w1: 'فرشته', int3_q2: 'بهتر بود یک اعلان به‌طور خودکار ارسال می‌شد.', int3_w2: 'آرام',
+      int4_t: '۴. کاربران غیربلو، روند را مختل می‌کنند', int4_i: 'وقتی برخی اعضای گروه کاربر بلو نیستند، تقسیم هزینه و بازپرداخت دشوارتر می‌شود و فرصت رشد و پذیرش ویژگی را محدود می‌کند.',
+      int4_q1: 'اگر حتی یک نفر حساب بلو نداشته باشد، کل روند به‌هم می‌ریزد.', int4_w1: 'علی', int4_q2: 'کسانی که بلو ندارند باید از طریق سایر اپلیکیشن‌های بانکی کارت‌به‌کارت کنند.', int4_w2: 'آرام',
+      heur_badge_m: 'روش ۰۳', heur_badge: 'ارزیابی هیوریستیک', heur_title: 'سنجش رابط کاربری در برابر استانداردها', heur_lead: '۸۵ پرسش بررسی در ۱۰ هیوریستیک قابلیت‌استفاده نیلسن، هر مشکل در مقیاس شدت ۰ تا ۴ رتبه‌بندی شده است.',
+      heur_stat1: 'پرسش‌های بررسی', heur_stat2: 'نرخ قبولی کلی', heur_stat3: 'مقیاس شدت (نیلسن)',
+      chart1_t: 'امتیاز اولویت به تفکیک هیوریستیک', chart1_cap: 'تعداد مشکلات × میانگین شدت · مرتب‌شده بر اساس اولویت', chart1_note: 'یک هیوریستیک بر همه‌چیز غالب است — H7 انعطاف‌پذیری و کارایی.',
+      h1_name: 'نمایان‌بودن وضعیت سیستم', h2_name: 'تطابق سیستم با دنیای واقعی', h3_name: 'کنترل و آزادی کاربر', h4_name: 'یکپارچگی و استانداردها', h5_name: 'پیشگیری از خطا', h6_name: 'بازشناسی به‌جای یادآوری', h7_name: 'انعطاف‌پذیری و کارایی', h8_name: 'زیبایی‌شناسی و مینیمالیسم', h9_name: 'بازیابی از خطا', h10_name: 'راهنما و مستندات',
+      h1_short: 'نمایان‌سازی', h2_short: 'دنیای واقعی', h3_short: 'کنترل', h4_short: 'یکپارچگی', h5_short: 'پیشگیری خطا', h6_short: 'بازشناسی', h7_short: 'انعطاف‌پذیری', h8_short: 'زیبایی‌شناسی', h9_short: 'بازیابی', h10_short: 'راهنما',
+      sevdist_t: 'توزیع شدت مشکلات', sevdist_cap: '۸۵ بررسی با رتبه ۰ (بدون مشکل) تا ۴ (فاجعه‌بار).',
+      sev0_l: 'بدون مشکل', sev1_l: 'ظاهری', sev2_l: 'کوچک', sev3_l: 'بزرگ', sev4_l: 'فاجعه‌بار',
+      passrate_t: 'نرخ قبولی به تفکیک هیوریستیک', passrate_cap: 'سهم بررسی‌های قبول‌شده در هر هیوریستیک.',
+      leg_crit: 'بحرانی / ناموفق', leg_partial: 'نسبی', leg_pass: 'قبول', cta_view: 'مشاهده داده کامل ارزیابی',
+      synth_kicker: 'جمع‌بندی بین‌روشی', synth_title: 'جایی که هر سه روش توافق دارند', synth_lead: 'مطالعات کتابخانه‌ای، مصاحبه‌ها و ارزیابی هیوریستیک بر سر سه مسئله یکسان همگرا می‌شوند — قوی‌ترین سیگنال ممکن برای اولویت رفع مشکل.',
+      venn1: 'مطالعات کتابخانه‌ای', venn2: 'مصاحبه‌ها', venn3a: 'ارزیابی', venn3b: 'هیوریستیک', venn_core: '۳ مسئله مشترک',
+      conv_h_problem: 'مسئله', conv_h_desk: 'مطالعات کتابخانه‌ای', conv_h_int: 'مصاحبه‌ها', conv_h_heur: 'ارزیابی هیوریستیک',
+      conv1_p: 'نبود سیستم رسید / مستندسازی', conv1_desk: 'فروشگاه اپلیکیشن ایران', conv1_int: '۳ از ۴ مصاحبه‌شونده آن را درخواست کردند', conv1_heur: 'شکاف‌های انعطاف‌پذیری تا شدت ۴ رتبه‌بندی شدند',
+      conv2_p: 'فرایندهای صرفاً دستی (تقسیم، یادآوری، محاسبات)', conv2_desk: 'شکایت پرتکرار در نظرات', conv2_int: '۴ از ۴ نفر این مشکل را تجربه کردند', conv2_heur: 'چند بررسی انعطاف‌پذیری ناموفق بودند',
+      conv3_p: 'اکوسیستم بسته و منحصر به بلوبانک', conv3_desk: 'پرتکرارترین شکایت در نظرات', conv3_int: 'در سراسر مصاحبه‌ها ذکر شد', conv3_heur: 'شکاف انعطاف‌پذیری با شدت ۴ رتبه‌بندی شد',
+      problem_lbl: 'بیانیه مسئله',
+      problem_q: 'کاربران دنگ که هزینه‌ها را با دوستان و خانواده تقسیم می‌کنند، مجبورند بخش‌های حیاتی روند کاری‌شان — محاسبه سهم‌ها، مستندسازی هزینه‌ها و گفتگو درباره اختلاف‌نظرها — را خارج از اپلیکیشن انجام دهند، چون این ویژگی از پشتیبانی رسید، تقسیم منعطف و دسترسی چندسکویی محروم است. این پراکندگی اعتماد میان اعضای گروه را از بین می‌برد و اصطکاک کافی ایجاد می‌کند تا کاربران این ویژگی را کنار بگذارند و به روش‌های دستی بازگردند.',
+      fric_kicker: 'مسئله اصطکاک اجتماعی', fric_title: 'چرا تقسیم صورتحساب یک بار عاطفی است',
+      fric1: 'یک دوست هنوز در گروه بدهکار است. هیچ یادآوری ارسال نشده.', fric2: 'نگران است که این کار سرزده یا معامله‌گرانه به نظر برسد.', fric3: 'باید مستقیماً و خارج از اپلیکیشن بپرسد.', fric4: 'تکرار این کار در هر بار، به‌آرامی رابطه را خدشه‌دار می‌کند.',
+      fric_foot: 'بر اساس الگوهای بازخورد کاربران در اپلیکیشن‌های مشابه تقسیم هزینه، و همسو با پژوهش‌های منتشرشده درباره ارتباطات مربوط به بدهی بین‌فردی (Angulo, Goldstein & Norton, 2024, Journal of Consumer Psychology).',
+      pers_kicker: 'پرسونا‌ها', pers_title: 'برای چه کسی طراحی می‌کنیم', pers_lead: 'بیانیه مسئله در بالا نشان می‌دهد چه‌کسی تحت‌تأثیر قرار گرفته — این دو نفر چهره‌های پس این بیانیه هستند. هر دو پرسونای ترکیبی برگرفته از یافته‌های پژوهش بالا هستند، نه طراحی‌شده بر اساس فرض.',
+      pers_foot: 'برگرفته از مطالعات کتابخانه‌ای، ۴ مصاحبه کاربر و یک بررسی هیوریستیک تک‌ارزیاب (۸۵ بررسی، نرخ قبولی ۴۸٪) — راهنما، نه نمایانگر آماری.',
+      p1_badge: '۰۱ · پرسونای اصلی', p1_name: 'سارا', p1_role: '(سازمان‌دهنده)', p1_arch: 'اول برنامه‌ریزی می‌کند، بعد بازپرداخت را پیگیری می‌کند',
+      p1_quote: 'می‌خواهم همه سهم خودشان را به‌راحتی پرداخت کنند — حتی اگر بلو نداشته باشند — بدون اینکه من مجبور باشم کسی را یادآوری کنم.',
+      p1_goal: 'اینکه دنگ ردیابی و یادآوری‌ها را برایش انجام دهد.', p1_goal_d: 'در حال حاضر او هر هزینه مشترک را دستی تقسیم می‌کند و خودش هرکس را پیگیری می‌کند.',
+      pain_hdr: 'نقاط درد · بالا ← متوسط',
+      p1_pain1: 'امکان اشتراک‌گذاری رسید پرداخت و ریز جزئیات هزینه را ندارد، که نگرانی درباره سردرگمی یا اختلاف احتمالی میان اعضای گروه ایجاد می‌کند.',
+      p1_pain2: 'از صرف زمان برای ردیابی و یادآوری پرداخت‌های معلق دیگران ناراضی است.',
+      p1_pain3: 'مدیریت تقسیم‌های نابرابر هزینه را زمان‌بر و ناامیدکننده می‌داند.',
+      p1_pain4: 'وقتی برخی اعضای گروه کاربر بلو نیستند، در جمع‌آوری پرداخت‌ها با مشکل مواجه می‌شود.',
+      p2_badge: '۰۲ · پرسونای فرعی', p2_name: 'نیک', p2_role: '(پرداخت‌کننده)', p2_arch: 'می‌پیوندد، سریع تسویه می‌کند',
+      p2_quote: 'می‌خواهم ریز مشخصی از آنچه بدهکارم و دلیلش را ببینم، تا با اطمینان پرداخت کنم.',
+      p2_goal: 'دقیقاً ببیند چقدر بدهکار است، سپس به‌موقع آن را بپردازد.', p2_goal_d: 'در حال حاضر او دیدی نسبت به جزئیات هزینه ندارد و برای پرداخت به‌موقع به یادآوری‌های دستی وابسته است.',
+      p2_pain1: 'شفافیت و مستندات پشتیبان کافی برای اعتماد به هزینه‌های ثبت‌شده را ندارد.',
+      p2_pain2: 'اگر سازمان‌دهنده هزینه یادآوری نفرستد، ممکن است پرداخت را فراموش کند.',
+      p2_pain3: 'نمی‌تواند بازخورد بدهد یا درباره سهم خود از هزینه‌ها سؤال کند.',
+      jour_kicker: 'نقشه‌برداری سفر', jour_title: 'کجا دنگ اعتماد را از دست می‌دهد', jour_lead: 'یک نقشه از کل تجربه دنگ، ترکیب‌شده از هر سه روش — مطالعات کتابخانه‌ای، مصاحبه کاربران و ارزیابی هیوریستیک — نه فقط داده مصاحبه.',
+      jour_pain_lbl: 'نقاط درد',
+      col1_h: 'راه‌اندازی', col2_h: 'ثبت و تقسیم', col3_h: 'پیگیری، یادآوری و بازبینی', col4_h: 'تسویه',
+      jc1_sara: 'گروهی برای هزینه مشترک ایجاد می‌کند و اعضا را دعوت می‌کند.', jc1_nick: 'از طریق لینک دعوت به گروه می‌پیوندد.', jc1_pain: 'برخی اعضای مدنظر بدون داشتن حساب بلو نمی‌توانند بپیوندند.',
+      jc2_sara: 'هر هزینه را به‌صورت دستی ثبت و مقدار را بین گروه تقسیم می‌کند.', jc2_nick_empty: 'در این مرحله فعال نیست.',
+      jc2_pain1: 'ثبت دستی هر هزینه به‌سرعت زیاد می‌شود، به‌ویژه در گروه‌های بزرگ‌تر.', jc2_pain2: 'پشتیبانی از تقسیم هزینه‌های نابرابر وجود ندارد — تنظیمات دستی لازم است.', jc2_pain3: 'نمی‌تواند رسید یا مستندات را به اشتراک بگذارد، که باعث سردرگمی اعضا می‌شود.',
+      jc3_sara: 'ریز جزئیات را به اشتراک می‌گذارد، وضعیت پرداخت‌ها را پیگیری می‌کند و دستی به اعضای پرداخت‌نکرده یادآوری می‌کند.', jc3_nick: 'هزینه تخصیص‌یافته به خودش را بررسی می‌کند و پیش از پرداخت درستی آن را ارزیابی می‌کند.',
+      jc3_pain_s: 'به‌دلیل اینکه یادآوری‌ها مستقیماً از طرف او ارسال می‌شود، احساس ناراحتی هنگام درخواست پول از دوستان دارد.', jc3_pain_n: 'به‌دلیل نبود رسید یا مستندات پشتیبان در اپلیکیشن، درباره مقدار بدهی احساس عدم قطعیت دارد.',
+      jc4_sara: "خلاصه بدهی/طلب گروه را بررسی می‌کند تا وضعیت پرداخت‌ها و تسویه‌ها را ببیند.", jc4_nick: 'پرداخت را به‌صورت بلو‌به‌بلو تکمیل می‌کند.',
+      jc4_pain: 'هر دو فقط کل مقدار را در خلاصه دنگ گروه می‌بینند — بررسی هر جزئیات یعنی پیمایش کامل فهرست تراکنش‌ها و بازکردن ورودی‌ها یکی‌یکی.',
+      jchart_t_a: 'روند احساسی ', jchart_t_b: '· سارا و نیک، در طول سفر',
+      emo_frustrated: 'سرخورده', emo_curious: 'کنجکاو', emo_overwhelmed: 'غرق‌شده', emo_not_involved: 'درگیر نیست', emo_uncomfortable: 'ناراحت', emo_uncertain: 'نامطمئن', emo_relieved: 'آسوده',
+      opp_badge: '⚠ فرصت',
+      jleg_persona: 'پرسونا', jleg_line: 'سبک خط', jleg_notinv: 'در این مرحله درگیر نیست', jleg_opp: 'فرصت — نقطه اصطکاک کلیدی',
+      foot_brand_a: 'بلو', foot_brand_b: 'بانک', foot_brand_c: ' · مرکز هزینه‌های مشترک',
+      persona_sara_short: 'سارا', persona_nick_short: 'نیک', s_letter: 'س', n_letter: 'ن',
+    },
+  };
+  state = {
+    theme: (function () {
+      try { return localStorage.getItem('blubank-dong-theme') || 'dark'; } catch (e) { return 'dark'; }
+    })(),
+    lang: (function () {
+      try { return localStorage.getItem('blubank-dong-lang') || 'en'; } catch (e) { return 'en'; }
+    })(),
+  };
+  toggleTheme = () => {
+    const next = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.setState({ theme: next });
+    try { localStorage.setItem('blubank-dong-theme', next); } catch (e) {}
+  };
+  setLang = (lang) => {
+    if (lang === this.state.lang) return;
+    this.setState({ lang: lang });
+    try { localStorage.setItem('blubank-dong-lang', lang); } catch (e) {}
+  };
+  fmtNum(s) {
+    if (this.state.lang !== 'fa') return String(s);
+    const map = { '0': '۰', '1': '۱', '2': '۲', '3': '۳', '4': '۴', '5': '۵', '6': '۶', '7': '۷', '8': '۸', '9': '۹' };
+    return String(s).replace(/[0-9]/g, (d) => map[d]);
+  }
+  hcode(n) { return 'H' + this.fmtNum(String(n)); }
+  renderVals() {
+    const lang = this.state.lang;
+    const t = Object.assign({}, Component.TR[lang]);
+    const NUMS = { h7: '37.1', h10: '8.0', h3: '6.0', h1: '5.0', h5: '4.5', h9: '3.8', h8: '1.5', h2: '0.8', h6: '0.3', h4: '0.0', pr1: '44%', pr2: '60%', pr3: '33%', pr4: '100%', pr5: '50%', pr6: '83%', pr7: '12%', pr8: '50%', pr9: '25%', pr10: '20%', sev0: '30', sev1: '8', sev2: '11', sev3: '21', sev4: '2', m01: '01', m02: '02', m03: '03', m04: '04' };
+    Object.keys(NUMS).forEach((k) => { t['n_' + k] = this.fmtNum(NUMS[k]); });
+    for (let i = 1; i <= 10; i++) t['hc' + i] = this.hcode(i);
+    return {
+      rootRef: (el) => { this._root = el; },
+      theme: this.state.theme,
+      isLight: this.state.theme === 'light',
+      themeToggleLabel: this.state.theme === 'dark' ? t.toLight : t.toDark,
+      toggleTheme: this.toggleTheme,
+      dir: lang === 'fa' ? 'rtl' : 'ltr',
+      langAttr: lang,
+      isFa: lang === 'fa',
+      isEn: lang === 'en',
+      enActiveClass: lang === 'en' ? 'active' : '',
+      faActiveClass: lang === 'fa' ? 'active' : '',
+      setLangEn: () => this.setLang('en'),
+      setLangFa: () => this.setLang('fa'),
+      t: t,
+      heroRot1: lang === 'fa' ? 'rotate(-7deg) translate(-18px,2px)' : 'rotate(5deg) translateX(18px)',
+      heroRot2: lang === 'fa' ? 'rotate(6deg) translate(6px,16px)' : 'rotate(-5deg) translateX(-18px)',
+      heroMargin2: lang === 'fa' ? '0' : '-92',
+      cur1Top: lang === 'fa' ? '5%' : '8%', cur1Left: lang === 'fa' ? '46%' : '52%',
+      cur2Top: lang === 'fa' ? '54%' : '58%', cur2Left: lang === 'fa' ? '16%' : '26%',
+      cur3Top: lang === 'fa' ? '71%' : '74%', cur3Left: lang === 'fa' ? '60%' : '66%',
+      cur4Top: lang === 'fa' ? '28%' : '32%', cur4Left: lang === 'fa' ? '70%' : '74%',
+      slideX: lang === 'fa' ? '46px' : '0px',
+    };
+  }
+  componentDidMount() { this._apply(); this._init(); }
+  componentDidUpdate() { this._apply(); }
+  _apply() {
+    const root = this._root; if (!root) return;
+    const accentMap = {
+      '#7EB3F5': '#2A5DC7',
+      '#A78BFA': '#6D4FD1',
+      '#5EE0C8': '#0E8F7A',
+      '#F5B97E': '#B5650E',
+    };
+    const dark = this.props.accent || '#7EB3F5';
+    const blu = this.state.theme === 'light' ? (accentMap[dark] || dark) : dark;
+    root.style.setProperty('--blu', blu);
+    root.classList.toggle('reduce', !!this.props.reduceMotion);
+    root.classList.toggle('compact', !!this.props.compactNav);
+    document.body.style.background = this.state.theme === 'light' ? '#F6F7FA' : '#0A0D15';
+    this._syncCounts();
+  }
+  _init() {
+    const root = this._root; if (!root || this._ready) return;
+    this._ready = true;
+    const prog = root.querySelector('[data-progress]');
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (prog) prog.style.width = (p * 100) + '%';
+      if (!this.props.reduceMotion) {
+        root.querySelectorAll('[data-parallax]').forEach((el) => {
+          const s = parseFloat(el.dataset.parallax) || 0.05;
+          const r = el.getBoundingClientRect();
+          const center = r.top + r.height / 2 - window.innerHeight / 2;
+          el.style.transform = (el.dataset.rot || '') + ' translateY(' + (center * s * -1) + 'px)';
+        });
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._onScroll = onScroll;
+    root.classList.add('reveal-on');
+    const fire = (t) => {
+      if (t.classList.contains('chart')) t.classList.add('grow');
+      if (t.classList.contains('rv')) {
+        if (t.dataset.d) t.style.transitionDelay = parseInt(t.dataset.d, 10) + 'ms';
+        t.classList.add('in');
+      }
+      if (t.hasAttribute('data-count')) this._count(t);
+      t.querySelectorAll('[data-count]').forEach((c) => this._count(c));
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { fire(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    Array.prototype.slice.call(root.querySelectorAll('.rv,.chart')).forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.96 && r.bottom > 0) fire(el);
+      else io.observe(el);
+    });
+    this._io = io;
+    const links = Array.prototype.slice.call(root.querySelectorAll('[data-spy]'));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          links.forEach((a) => a.classList.toggle('on', a.dataset.spy === id));
+        }
+      });
+    }, { rootMargin: '-46% 0px -50% 0px', threshold: 0 });
+    root.querySelectorAll('section[id]').forEach((s) => spy.observe(s));
+    this._spy = spy;
+    root.querySelectorAll('.cchip').forEach((chip) => {
+      const key = chip.dataset.c;
+      const card = chip.closest('.compcard');
+      const marks = card ? card.querySelectorAll('.cn[data-c="' + key + '"]') : [];
+      const on = () => { chip.classList.add('hl'); marks.forEach((m) => m.classList.add('hl')); };
+      const off = () => { chip.classList.remove('hl'); marks.forEach((m) => m.classList.remove('hl')); };
+      chip.setAttribute('tabindex', '0');
+      chip.addEventListener('mouseenter', on);
+      chip.addEventListener('mouseleave', off);
+      chip.addEventListener('focus', on);
+      chip.addEventListener('blur', off);
+    });
+    root.querySelectorAll('.cn').forEach((el) => {
+      const key = el.dataset.c;
+      const card = el.closest('.compcard');
+      const chip = card ? card.querySelector('.cchip[data-c="' + key + '"]') : null;
+      el.addEventListener('mouseenter', () => { el.classList.add('hl'); if (chip) chip.classList.add('hl'); });
+      el.addEventListener('mouseleave', () => { el.classList.remove('hl'); if (chip) chip.classList.remove('hl'); });
+    });
+  }
+  _count(el) {
+    if (el._done) return; el._done = true;
+    const raw = el.dataset.count;
+    const target = parseFloat(raw) || 0;
+    const pre = el.dataset.prefix || '';
+    const suf = el.dataset.suffix || '';
+    const isFloat = String(raw).indexOf('.') >= 0;
+    el._finalRaw = pre + (isFloat ? target.toFixed(1) : Math.round(target)) + suf;
+    if (this.props.reduceMotion) { el.textContent = this.fmtNum(el._finalRaw); return; }
+    const dur = 1200, start = performance.now();
+    const fmt = (s) => this.fmtNum(s);
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      const v = target * e;
+      el.textContent = fmt(pre + (isFloat ? v.toFixed(1) : Math.round(v)) + suf);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(el._finalRaw);
+    };
+    requestAnimationFrame(tick);
+  }
+  _syncCounts() {
+    if (!this._root) return;
+    this._root.querySelectorAll('[data-count]').forEach((el) => {
+      if (el._done && el._finalRaw != null) el.textContent = this.fmtNum(el._finalRaw);
+    });
+  }
+  componentWillUnmount() {
+    if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+    if (this._io) this._io.disconnect();
+    if (this._spy) this._spy.disconnect();
+  }
+}
+</script>
+</body>
+</html>
