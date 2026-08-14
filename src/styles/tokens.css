@@ -1,0 +1,163 @@
+:root {
+  color-scheme: dark;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-persian: Vazirmatn, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 14px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 28px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --container: 1080px;
+  --container-pad: 28px;
+  --page-max-width: var(--container);
+  --page-gutter: var(--container-pad);
+  --content-max-width: 760px;
+  --text-max-width: 680px;
+  --visual-max-width: var(--container);
+  --full-content-width: var(--page-max-width);
+
+  --radius-xs: 7px;
+  --radius-sm: 12px;
+  --radius-control: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-device: 30px;
+  --radius-pill: 999px;
+  --radius-card: var(--radius-md);
+  --radius-visual: var(--radius-lg);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-lift: 0.45s var(--ease-out);
+
+  --shadow-soft: 0 44px 80px -26px rgba(0, 0, 0, 0.85);
+  --shadow-card: 0 24px 46px -26px rgba(0, 0, 0, 0.6);
+  --shadow-control: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --shadow-glow: 0 0 12px rgba(126, 179, 245, 0.6);
+  --card-radius: var(--radius-card);
+  --card-border: var(--line);
+  --card-bg: var(--card);
+  --card-bg-elevated: var(--card-2);
+  --card-padding: var(--space-5);
+  --card-padding-compact: 20px;
+  --visual-padding: 32px;
+  --card-gap: var(--space-4);
+  --section-gap: var(--space-5);
+  --subsection-gap: clamp(72px, 8vw, 112px);
+  --section-pad: clamp(72px, 7.5vw, 92px);
+
+  --blu: #7eb3f5;
+  --danger: #e05a7a;
+  --success: #34d399;
+  --amber: #f5b97e;
+  --purple: #a78bfa;
+  --teal: #5ee0c8;
+  --slate: #94a3b8;
+
+  --bg: #0a0d15;
+  --bg-2: #0e121c;
+  --card: #141925;
+  --card-2: #192030;
+  --device-bg: #05070a;
+  --surface: var(--card);
+  --surface-elevated: var(--card-2);
+  --line: rgba(255, 255, 255, 0.07);
+  --hairline: rgba(255, 255, 255, 0.1);
+  --fill-subtle: rgba(255, 255, 255, 0.04);
+  --fill-subtle-2: rgba(255, 255, 255, 0.02);
+  --track: rgba(255, 255, 255, 0.06);
+  --watermark: rgba(255, 255, 255, 0.06);
+  --dashed: rgba(255, 255, 255, 0.28);
+  --text: #eaeef4;
+  --muted: #aab6c8;
+  --dim: #8593a6;
+  --text-primary: var(--text);
+  --text-secondary: var(--muted);
+  --text-subtle: var(--dim);
+  --border-subtle: var(--line);
+  --accent: var(--blu);
+  --accent-blue: var(--blu);
+  --accent-research: var(--blu);
+  --accent-green: var(--success);
+  --accent-amber: var(--amber);
+  --accent-danger: var(--danger);
+  --active-control-text: #0a0d15;
+  --control-bg: var(--card);
+  --chip-slate-fg: #c4cedc;
+  --chip-slate-bg: rgba(148, 163, 184, 0.09);
+  --chip-slate-bd: rgba(148, 163, 184, 0.4);
+  --chip-blue-bg: rgba(126, 179, 245, 0.1);
+  --chip-blue-bd: rgba(126, 179, 245, 0.28);
+  --chip-success-bg: rgba(52, 211, 153, 0.08);
+  --chip-success-bd: rgba(52, 211, 153, 0.25);
+  --surface-gradient: linear-gradient(180deg, var(--card-2), var(--card));
+  --accent-gradient: linear-gradient(135deg, rgba(126, 179, 245, 0.1), rgba(126, 179, 245, 0.02));
+  --page-gradient:
+    radial-gradient(circle at 70% 26%, rgba(126, 179, 245, 0.24), transparent 18rem),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --blu: #2a5dc7;
+  --danger: #c22f55;
+  --success: #128a5e;
+  --amber: #b5650e;
+  --purple: #6d4fd1;
+  --teal: #0e8f7a;
+  --slate: #56637a;
+
+  --bg: #f6f7fa;
+  --bg-2: #edeff4;
+  --card: #ffffff;
+  --card-2: #f3f5f9;
+  --device-bg: #ffffff;
+  --surface: var(--card);
+  --surface-elevated: var(--card-2);
+  --line: rgba(15, 23, 42, 0.1);
+  --hairline: rgba(15, 23, 42, 0.14);
+  --fill-subtle: rgba(15, 23, 42, 0.045);
+  --fill-subtle-2: rgba(15, 23, 42, 0.03);
+  --track: rgba(15, 23, 42, 0.08);
+  --watermark: rgba(15, 23, 42, 0.05);
+  --dashed: rgba(15, 23, 42, 0.22);
+  --text: #12151c;
+  --muted: #475569;
+  --dim: #5a6472;
+  --text-primary: var(--text);
+  --text-secondary: var(--muted);
+  --text-subtle: var(--dim);
+  --border-subtle: var(--line);
+  --accent: var(--blu);
+  --accent-blue: var(--blu);
+  --accent-research: var(--blu);
+  --accent-green: var(--success);
+  --accent-amber: var(--amber);
+  --accent-danger: var(--danger);
+  --active-control-text: #ffffff;
+  --control-bg: #e6e9ef;
+  --chip-slate-fg: #3f4c5e;
+  --chip-slate-bg: rgba(71, 85, 105, 0.08);
+  --chip-slate-bd: rgba(71, 85, 105, 0.32);
+  --chip-blue-bg: rgba(42, 93, 199, 0.08);
+  --chip-blue-bd: rgba(42, 93, 199, 0.24);
+  --chip-success-bg: rgba(18, 138, 94, 0.08);
+  --chip-success-bd: rgba(18, 138, 94, 0.24);
+  --surface-gradient: linear-gradient(180deg, var(--card-2), var(--card));
+  --accent-gradient: linear-gradient(135deg, rgba(42, 93, 199, 0.08), rgba(42, 93, 199, 0.02));
+  --page-gradient:
+    radial-gradient(circle at 70% 26%, rgba(42, 93, 199, 0.13), transparent 18rem),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  --shadow-soft: 0 34px 64px -32px rgba(15, 23, 42, 0.38);
+  --shadow-card: 0 20px 42px -30px rgba(15, 23, 42, 0.32);
+  --shadow-control: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 0 12px rgba(42, 93, 199, 0.28);
+}
