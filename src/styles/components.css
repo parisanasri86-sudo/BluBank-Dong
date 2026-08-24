@@ -2754,6 +2754,7 @@ html[dir="rtl"] .workflow-handoff__arrow {
 
 .insight-evidence {
   display: flex;
+  align-items: baseline;
   min-width: 0;
   flex-wrap: wrap;
   gap: 6px 10px;
