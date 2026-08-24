@@ -1,0 +1,139 @@
+name: Sync latest case study
+
+on:
+  push:
+    paths:
+      - .github/workflows/sync-case-study.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download latest published case study
+        env:
+          SOURCE_BASE: https://blubank-dong-case-study.parisa65.chatgpt.site/case-study
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import quote
+          from urllib.request import Request, urlopen
+          import os
+
+          files = [
+          "src/components/header.js",
+          "src/components/sections.js",
+          "src/main.js",
+          "src/content/en.js",
+          "src/content/fa.js",
+          "src/styles/base.css",
+          "src/styles/components.css",
+          "src/styles/tokens.css",
+          "index.html",
+          "assets/icons/.gitkeep",
+          "assets/mockups/.gitkeep",
+          "assets/team/designer-1.png",
+          "assets/team/designer-3.png",
+          "assets/team/designer-2.png",
+          "assets/team/mentor.png",
+          "assets/images/.gitkeep",
+          "assets/figma-exports/figma-ocr-final-breakdown-en.png",
+          "assets/figma-exports/figma-feedback-toggle-after-en.png",
+          "assets/figma-exports/figma-reminder-schedule.png",
+          "assets/figma-exports/persona-sara-hd.png",
+          "assets/figma-exports/figma-ocr-discrepancy.png",
+          "assets/figma-exports/design-decision-en-05.png",
+          "assets/figma-exports/figma-feedback-toggle-before.png",
+          "assets/figma-exports/design-decision-fa-02.png",
+          "assets/figma-exports/figma-reminder-list-en.png",
+          "assets/figma-exports/friction-2-hd.png",
+          "assets/figma-exports/figma-ocr-discrepancy-en.png",
+          "assets/figma-exports/figma-reminder-list.png",
+          "assets/figma-exports/design-decision-en-02.png",
+          "assets/figma-exports/figma-ocr-edited-items.png",
+          "assets/figma-exports/figma-ocr-edited-items-en.png",
+          "assets/figma-exports/figma-autopay-refined-en.png",
+          "assets/figma-exports/iphone-14-frame.png",
+          "assets/figma-exports/emo-sara-relieved-hd.png",
+          "assets/figma-exports/figma-feedback-reminder-before-en.png",
+          "assets/figma-exports/current-dong-create-transaction.png",
+          "assets/figma-exports/final-reminder-flow-en.mp4",
+          "assets/figma-exports/figma-feedback-toggle-before-en.png",
+          "assets/figma-exports/figma-reminder-message.png",
+          "assets/figma-exports/persona-nick-hd.png",
+          "assets/figma-exports/figma-feedback-reminder-before.png",
+          "assets/figma-exports/figma-feedback-amount-before-en.png",
+          "assets/figma-exports/final-ocr-flow.mp4",
+          "assets/figma-exports/design-decision-en-03.png",
+          "assets/figma-exports/figma-autopay-settings-entry.png",
+          "assets/figma-exports/figma-feedback-amount-before.png",
+          "assets/figma-exports/friction-4-hd.png",
+          "assets/figma-exports/emo-nick-uncertain-hd.png",
+          "assets/figma-exports/design-decision-en-01.png",
+          "assets/figma-exports/friction-3-hd.png",
+          "assets/figma-exports/design-decision-fa-04.png",
+          "assets/figma-exports/figma-autopay-settings-entry-en.png",
+          "assets/figma-exports/final-auto-payment-flow.mp4",
+          "assets/figma-exports/figma-feedback-reminder-after-en.png",
+          "assets/figma-exports/final-ocr-flow-en.mp4",
+          "assets/figma-exports/figma-autopay-refined-1.png",
+          "assets/figma-exports/figma-autopay-refined.png",
+          "assets/figma-exports/emo-nick-relieved-hd.png",
+          "assets/figma-exports/design-decision-fa-01.png",
+          "assets/figma-exports/emo-sara-overwhelmed-hd.png",
+          "assets/figma-exports/current-dong-balances-en.png",
+          "assets/figma-exports/figma-feedback-toggle-after.png",
+          "assets/figma-exports/final-reminder-flow.mp4",
+          "assets/figma-exports/figma-feedback-reminder-after.png",
+          "assets/figma-exports/figma-reminder-message.png.png",
+          "assets/figma-exports/design-decision-fa-05.png",
+          "assets/figma-exports/final-auto-payment-flow-en.mp4",
+          "assets/figma-exports/figma-ocr-final-breakdown.png",
+          "assets/figma-exports/emo-sara-uncomfortable-hd.png",
+          "assets/figma-exports/figma-ocr-extracted-items.png",
+          "assets/figma-exports/ای.png",
+          "assets/figma-exports/figma-autopay-limit-en.png",
+          "assets/figma-exports/emo-nick-curious-hd.png",
+          "assets/figma-exports/hero-ocr-flow.mp4",
+          "assets/figma-exports/design-decision-fa-03.png",
+          "assets/figma-exports/current-dong-create-transaction-en.png",
+          "assets/figma-exports/figma-autopay-limit.png",
+          "assets/figma-exports/figma-feedback-amount-after-en.png",
+          "assets/figma-exports/figma-feedback-amount-after.png",
+          "assets/figma-exports/figma-reminder-schedule-en.png",
+          "assets/figma-exports/figma-reminder-message-en.png",
+          "assets/figma-exports/figma-ocr-extracted-items-en.png",
+          "assets/figma-exports/friction-1-hd.png",
+          "assets/figma-exports/README.txt",
+          "assets/figma-exports/design-decision-en-04.png",
+          "assets/figma-exports/hero-ocr-flow-en.mp4",
+          "assets/figma-exports/emo-sara-frustrated-hd.png",
+          "assets/figma-exports/current-dong-balances.png",
+          "assets/users/user-3.png",
+          "assets/users/user-1.png",
+          "assets/users/user-4.png",
+          "assets/users/user-2.png"
+          ]
+          base = os.environ['SOURCE_BASE'].rstrip('/')
+          for relative in files:
+              target = Path(relative)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              url = base + '/' + quote(relative, safe='/')
+              request = Request(url, headers={'User-Agent': 'GitHub-Actions-BluBank-Dong-Sync'})
+              with urlopen(request, timeout=120) as response:
+                  target.write_bytes(response.read())
+              print(f'Synced {relative}')
+          PY
+      - name: Publish synchronized files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html src assets
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish latest BluBank Dong case study"
+          git push
