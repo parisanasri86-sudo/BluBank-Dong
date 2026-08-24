@@ -1,6 +1,6 @@
-import { en } from './content/en.js?v=20260824-6';
-import { fa } from './content/fa.js?v=20260824-6';
-import { caseNav, header } from './components/header.js?v=20260824-6';
+import { en } from './content/en.js?v=20260824-7';
+import { fa } from './content/fa.js?v=20260824-7';
+import { caseNav, header } from './components/header.js?v=20260824-7';
 import {
   cardGrid,
   competitiveAnalysis,
@@ -36,7 +36,7 @@ import {
   productRelationship,
   reviewEvidence,
   closingComparison,
-} from './components/sections.js?v=20260824-6';
+} from './components/sections.js?v=20260824-7';
 
 const STORAGE_KEYS = {
   locale: 'blubank-dong-rebuild-locale',

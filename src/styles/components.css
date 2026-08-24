@@ -3839,15 +3839,19 @@ html[dir="rtl"] .insight-principle h3 {
 .persona-intro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-rows: repeat(5, auto);
+  column-gap: 16px;
+  row-gap: 18px;
   align-items: stretch;
 }
 
 .persona-card-compact {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto auto minmax(0, 1fr);
-  gap: 18px;
+  grid-template-rows: subgrid;
+  grid-row: 1 / span 5;
+  column-gap: 0;
+  row-gap: 18px;
   align-content: start;
   padding: clamp(20px, 2.7vw, 28px);
   min-height: 100%;
@@ -4921,6 +4925,9 @@ html[dir="rtl"] .device-front {
 
   .persona-card-compact {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto minmax(0, 1fr);
+    grid-row: auto;
+    gap: 18px;
     justify-items: center;
   }
 
