@@ -1,3 +1,5 @@
+import { deviceVideo } from './sections.js';
+
 export function header(content) {
   return `
     <header class="hero" aria-labelledby="page-title">
@@ -7,17 +9,53 @@ export function header(content) {
         <p class="hero-kicker">${content.productName}</p>
         <h1 id="page-title">${content.title}</h1>
         <p class="hero-lead">${content.subtitle}</p>
-        <p class="hero-meta">${content.meta}</p>
-        <a class="hero-scroll-cue" href="#research" aria-label="${content.scrollLabel}">
-          <span>${content.scrollLabel}</span>
-          <i aria-hidden="true">↓</i>
-        </a>
+        <div class="hero-team" aria-label="${content.team.ariaLabel}">
+          <div class="hero-team__portraits" aria-hidden="true">
+            <div class="hero-team__designers">
+              ${content.team.designers.map((person, index) => `
+                <img src="${person.src}" alt="" style="--portrait-index: ${index}">
+              `).join('')}
+            </div>
+            <span class="hero-team__plus">+</span>
+            <span class="hero-team__mentor">
+              <img src="${content.team.mentor.src}" alt="">
+              <i aria-hidden="true">✦</i>
+            </span>
+          </div>
+          <div class="hero-team__copy">
+            <strong>${content.team.label}</strong>
+            <span>${content.team.meta}</span>
+          </div>
+        </div>
+        <div class="hero-actions" aria-label="${content.actionsLabel}">
+          <a class="hero-action hero-action--primary" href="#overview">
+            <span>${content.scrollLabel}</span>
+            <i class="hero-action__icon hero-action__icon--down" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 5v14M7 14l5 5 5-5" />
+              </svg>
+            </i>
+          </a>
+          <a class="hero-action hero-action--secondary" href="#final">
+            <span>${content.finalLabel}</span>
+            <i class="hero-action__icon hero-action__icon--diagonal" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M6 6l12 12M9 18h9V9" />
+              </svg>
+            </i>
+          </a>
+        </div>
       </div>
       <div class="hero-visual">
         <figure class="hero-product-frame">
-          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="${content.media.poster.src}" aria-label="${content.media.alt}">
-            <source src="${content.media.video}" type="video/mp4">
-          </video>
+          ${deviceVideo({
+            src: content.media.video,
+            label: content.media.alt,
+            poster: content.media.poster.src,
+            autoplay: true,
+            loop: true,
+            className: 'device-video--hero hero-video',
+          })}
           <img class="hero-poster" src="${content.media.poster.src}" alt="${content.media.poster.alt}">
           <figcaption>${content.media.caption}</figcaption>
         </figure>

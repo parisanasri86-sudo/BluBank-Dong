@@ -10,50 +10,91 @@ const mediaSet = (slots, caption, video = '') => ({
   video,
 });
 
+const englishFigmaAssets = new Set([
+  'figma-autopay-limit-en.png',
+  'figma-autopay-refined-en.png',
+  'figma-autopay-settings-entry-en.png',
+  'figma-feedback-amount-after-en.png',
+  'figma-feedback-amount-before-en.png',
+  'figma-feedback-reminder-after-en.png',
+  'figma-feedback-reminder-before-en.png',
+  'figma-feedback-toggle-after-en.png',
+  'figma-feedback-toggle-before-en.png',
+  'figma-ocr-discrepancy-en.png',
+  'figma-ocr-edited-items-en.png',
+  'figma-ocr-extracted-items-en.png',
+  'figma-ocr-final-breakdown-en.png',
+  'figma-reminder-list-en.png',
+  'figma-reminder-message-en.png',
+  'figma-reminder-schedule-en.png',
+]);
+
+const localizedFigmaFile = (file) => {
+  const englishFile = file.replace(/\.png$/i, '-en.png');
+  return englishFigmaAssets.has(englishFile) ? englishFile : file;
+};
+
 const figmaSlot = (file, options = {}) => ({
   file,
-  src: `./assets/figma-exports/${file}`,
+  src: `./assets/figma-exports/${localizedFigmaFile(file)}`,
   ...options,
 });
 
 const rebuildAsset = (file) => `./assets/${file}`;
 
-const currentDongScreens = {
-  items: [
-    { src: './assets/img-02.png', alt: 'Current Dong expense detail screen' },
-    { src: './assets/img-03.png', alt: 'Current Dong summary screen' },
-  ],
-  caption: 'Existing Dong UI screenshots available in the repository.',
-};
-
 export const en = {
   meta: { locale: 'en', dir: 'ltr', languageLabel: 'English' },
   controls: {
+    skipToMain: 'Skip to main content',
     language: 'Language',
     theme: 'Theme',
     switchToEnglish: 'Switch to English',
     switchToPersian: 'Switch to Persian',
     switchToLight: 'Switch to light mode',
     switchToDark: 'Switch to dark mode',
+    backToTop: 'Back to the top',
   },
   hero: {
     eyebrow: 'Independent Product Design Case Study',
     productName: 'BluBank Dong',
-    title: 'Turning Shared Expenses Into A Clear, Automated Flow.',
+    title: 'Turning <span class="hero-title-accent">Shared Expenses</span> Into A Clear, Automated Flow.',
     subtitle: 'A proposed Dong experience that turns receipt capture, OCR review, and group splitting into one clearer flow.',
-    meta: 'Parisa Nasri · Farnaz Toghiani · 2 Product Designers · Jun 2026',
+    team: {
+      ariaLabel: 'Project team: 3 Product Designers and 1 Mentor',
+      label: '3 Product Designers · 1 Mentor',
+      meta: 'Collaborative case study · Jun 2026',
+      designers: [
+        { src: './assets/team/designer-1.png' },
+        { src: './assets/team/designer-2.png' },
+        { src: './assets/team/designer-3.png' },
+      ],
+      mentor: { src: './assets/team/mentor.png' },
+    },
     media: {
-      video: './assets/figma-exports/hero-ocr-flow.mp4',
+      video: './assets/figma-exports/hero-ocr-flow-en.mp4',
       alt: 'Final OCR flow preview for BluBank Dong',
-      poster: { src: './assets/figma-exports/figma-ocr-final-breakdown.png', alt: 'Final OCR breakdown screen showing a clear editable group split' },
+      poster: { src: './assets/figma-exports/figma-ocr-final-breakdown-en.png', alt: 'Final OCR breakdown screen showing a clear editable group split' },
       caption: 'From receipt → to a clear, editable group split.',
     },
     evidenceLabel: 'Research evidence',
     scrollLabel: 'Explore the process',
+    finalLabel: 'View final flows',
+    actionsLabel: 'Case study shortcuts',
     badges: [
       { label: '50+ app-store reviews' },
       { label: '4 user conversations' },
       { label: '85 heuristic checks' },
+    ],
+  },
+  quickScan: {
+    eyebrow: 'Case Study at a Glance',
+    title: 'Dong Splits The Bill — The Redesign Supports Everything Around It',
+    lead: 'For a fast review, the story is problem → evidence → design response → honest project status.',
+    items: [
+      { label: 'Problem', body: 'Dong splits the amount, but organizers still document, calculate, remind, and follow up manually.', href: 'overview' },
+      { label: 'Evidence', body: '50+ reviews, 4 user conversations, and 85 heuristic checks converged on trust, clarity, and effort.', href: 'research' },
+      { label: 'Design response', body: 'Receipt OCR, itemized splitting, system-supported reminders, and opt-in Automatic Payment.', href: 'final' },
+      { label: 'Project status', body: 'Independent, unlaunched concept with proposed success measures — no fabricated impact claims.', href: 'final' },
     ],
   },
   nav: {
@@ -68,30 +109,39 @@ export const en = {
     ],
   },
   context: {
-    eyebrow: 'Context',
-    title: 'Product, Role, And Users',
-    lead: 'Dong is BluBank’s in-app group expense-splitting feature.',
-    body: "BluBank is Iran's digital-only neobank. Dong helps friends, housemates, families, and travel groups track shared costs and settle up. Because money moves between people who already know each other, the experience has to protect trust, make owed amounts clear, and reduce the awkwardness of asking for repayment.",
-    project: {
-      kicker: 'Project context',
-      title: 'Independent Product Design Case Study',
-      disclosure: 'Independent product design case study — not affiliated with or commissioned by BluBank.',
+    eyebrow: 'Product overview',
+    title: 'Dong Brings Shared Expense Tracking Into BluBank',
+    lead: 'Dong is BluBank’s in-app shared-expense feature for friends, families, housemates, and travel groups. It helps groups track costs, see who owes what, and settle balances.',
+    body: 'Dong helps friends, housemates, families, and travel groups track shared costs, see who owes what, and settle balances.',
+    bridge: 'The split is covered. Documentation, follow-up, and settlement management are not.',
+    relationship: {
+      ariaLabel: 'BluBank contains Dong, which supports shared expenses for groups',
       items: [
-        { label: 'Designers', value: 'Parisa Nasri · Farnaz Toghiani' },
-        { label: 'Team', value: '2 Product Designers' },
-        { label: 'Date', value: 'Jun 2026' },
-        { label: 'Research scope', value: '50+ reviews · 4 conversations · 85 heuristic checks' },
+        { icon: 'bank', title: 'BluBank', caption: 'Digital bank' },
+        { icon: 'split', title: 'Dong', caption: 'Shared expenses' },
+        { icon: 'groups', title: 'Groups', caption: 'Track · Split · Settle' },
+      ],
+    },
+    project: {
+      kicker: 'BluBank at a glance',
+      title: 'The Product Behind Dong',
+      disclosure: 'Public company context · Independent case study, not affiliated with or commissioned by BluBank.',
+      items: [
+        { label: 'Founded', value: '2020' },
+        { label: 'Powered by', value: 'Saman Bank' },
+        { label: 'Users · May 2025', value: '≈14M' },
+        { label: 'Employees', value: '501–1,000' },
       ],
     },
   },
   currentExperience: {
-    eyebrow: 'Current Dong experience',
+    eyebrow: 'Current experience',
     title: 'Dong Handles The Split, But Not The Work Around It',
     lead: 'Dong handles the split itself, but much of the work before and after the split still falls on the organizer.',
-    label: 'Current Dong journey',
+    label: 'Current Dong experience',
     screens: [
-      { src: rebuildAsset('figma-exports/current-dong-balances.PNG'), alt: 'Current BluBank Dong group balances and outstanding transactions', caption: 'Current product evidence · group balances and manual reminders' },
-      { src: rebuildAsset('figma-exports/current-dong-create-transaction.PNG'), alt: 'Current BluBank Dong transaction creation and manual split flow', caption: 'Current product evidence · create transaction and split manually' },
+      { src: rebuildAsset('figma-exports/current-dong-balances-en.png'), alt: 'Current BluBank Dong group balances and outstanding transactions', caption: 'Balances & manual reminders' },
+      { src: rebuildAsset('figma-exports/current-dong-create-transaction-en.png'), alt: 'Current BluBank Dong transaction creation and manual split flow', caption: 'Create transaction & split' },
     ],
     steps: [
       { title: 'Track group balances', body: 'Users can see group transactions, payment progress, outstanding balances, and manually trigger reminders.' },
@@ -102,27 +152,21 @@ export const en = {
       label: 'The gap',
       body: 'Dong handles the split — but the organizer still has to track, remind, and follow up manually.',
     },
-  },
-  problem: {
-    eyebrow: 'Existing experience',
-    title: 'The Core Problem Is Trust, Not Just Math',
-    lead: 'The current flow explains why the redesign focuses on trust, clarity, and organizer effort.',
-    asset: currentDongScreens,
-    statement: {
-      quote: 'Dong users who split expenses with friends and family are forced to manage critical parts of their workflow — calculating shares, documenting costs, and communicating about disputes — outside the app, because the feature lacks receipt support, flexible splitting, and cross-platform access. This fragmentation erodes trust between group members and creates enough friction that users abandon the feature for manual methods.',
-      caption: 'Core problem statement.',
+    summary: {
+      kicker: 'Workflow handoff',
+      title: 'Dong Supports The Split—Then Hands The Hard Work Back To The Organizer',
+      ariaLabel: 'Where the shared-expense workflow leaves Dong and becomes manual work',
+      stages: [
+        { icon: 'product', tone: 'supported', eyebrow: 'Inside Dong', title: 'Product-supported', items: ['Track balances', 'Create an expense', 'Split shares'] },
+        { icon: 'handoff', tone: 'manual', eyebrow: 'Where work leaves the product', title: 'Organizer-managed', items: ['Capture the receipt', 'Calculate exceptions', 'Remind & reconcile'] },
+        { icon: 'impact', tone: 'impact', eyebrow: 'What the group experiences', title: 'Trust cost', items: ['More organizer effort', 'Less shared clarity', 'Lower group trust'] },
+      ],
     },
-    themes: [
-      { title: 'Costs are hard to verify.', body: 'There is no receipt or documentation system inside the flow.' },
-      { title: 'Splits are too manual.', body: 'Uneven shares, calculations, and repeated entries happen by hand.' },
-      { title: 'Reminder support is limited.', body: 'Follow-up can fall back to individual manual reminders and personal chasing.' },
-      { title: 'There is no automated settlement.', body: 'Participants still need to complete payment themselves; Automatic Payment is a proposed capability.' },
-    ],
   },
   research: {
     eyebrow: 'Research',
-    title: 'Documentation, Reminders, And Participation Kept Breaking The Flow',
-    lead: 'I used four complementary methods to separate recurring complaints, human consequences, structural usability gaps, and comparable-product patterns.',
+    title: 'Three Evidence Streams Converged On Receipt Clarity, Manual Follow-up, And Closed Participation',
+    lead: 'We triangulated 50+ app-store reviews, 4 user conversations, and 85 heuristic checks. Each method revealed a different layer: frequency, human impact, and usability severity.',
     snapshot: {
       ariaLabel: 'Research evidence snapshot',
       items: [
@@ -163,15 +207,15 @@ export const en = {
     ],
     reviews: {
       kicker: 'MARKETPLACE EVIDENCE · 50+ REVIEWS',
-      title: 'Reminders, Receipts, And Blu-only Participation Kept Reappearing',
-      lead: "Reviews from Myket, Cafe Bazaar, and Koocheh pointed to three repeated complaint patterns.",
+      title: 'Three Complaints Kept Reappearing',
+      lead: 'Reviews from Myket, Cafe Bazaar, and Koocheh established frequency.',
       evidenceLabel: 'Evidence',
       patternLabel: 'Recurring pattern',
       implicationLabel: 'Product implication',
       items: [
-        { severity: 'High', severityTone: 'high', theme: 'Lack of smart debt reminders', evidence: 'User voice from 50+ app-store reviews.', pattern: 'Users forget to settle debts when reminders are not automatic or scheduled.', implication: 'Repayment support needs to reduce organizer follow-up without making the ask feel personal.' },
-        { severity: 'High', severityTone: 'high', theme: 'No receipt intelligence', evidence: 'Repeated review pattern around manual entry and documentation gaps.', pattern: 'Manual entry and missing documentation made expenses harder to record and verify.', implication: 'Receipt/documentation support should make expenses easier to verify and explain.' },
-        { severity: 'Medium', severityTone: 'medium', theme: 'Requirement to have a Blu account', evidence: 'Non-Blu participation appeared as a recurring marketplace complaint.', pattern: 'People in the social group but outside BluBank faced barriers to joining or settling.', implication: 'The barrier is real, but any response must respect likely product/business constraints.' },
+        { severity: 'High', severityTone: 'high', theme: 'Manual reminders', evidence: 'User voice from 50+ app-store reviews.', pattern: 'Without system reminders, organizers had to chase repayment.', implication: 'Repayment support needs to reduce organizer follow-up without making the ask feel personal.' },
+        { severity: 'High', severityTone: 'high', theme: 'No receipt support', evidence: 'Repeated review pattern around manual entry and documentation gaps.', pattern: 'Expenses were harder to record, verify, and explain.', implication: 'Receipt/documentation support should make expenses easier to verify and explain.' },
+        { severity: 'Medium', severityTone: 'medium', theme: 'Blu-only participation', evidence: 'Non-Blu participation appeared as a recurring marketplace complaint.', pattern: 'Mixed groups had to settle outside Dong.', implication: 'The barrier is real, but any response must respect likely product/business constraints.' },
       ],
     },
     interviews: {
@@ -179,23 +223,22 @@ export const en = {
       title: 'The Complaints Mattered Because Shared Money Depends On Trust',
       lead: 'The conversations showed the human cost behind the reviews: uncertainty, extra organizer work, social discomfort, and harder group coordination.',
       items: [
-        { title: '1. Transparency affects trust', insight: 'People wanted proof before they felt confident paying.', quotes: [{ text: 'If I could upload a receipt, it would be so much better.', source: 'Aram' }, { text: 'I have to send the receipt separately, outside the app.', source: 'Ali' }] },
-        { title: '2. Manual work increases organizer effort', insight: 'Uneven splits pushed calculation and checking back onto the group.', quotes: [{ text: 'I have to manually enter unequal expenses myself.', source: 'Fereshteh' }, { text: 'Last time we just calculated everything manually between ourselves.', source: 'Mahnaz' }] },
-        { title: '3. Reminders create social discomfort', insight: 'Following up felt personal, even when the debt itself was simple.', quotes: [{ text: "I have to remind each member individually, and I'm worried they'll think I'm deliberately pressuring them.", source: 'Fereshteh' }, { text: "It'd be better if a notification just went out automatically.", source: 'Aram' }] },
-        { title: '4. Participation constraints complicate coordination', insight: 'Mixed Blu/non-Blu groups forced workarounds outside Dong.', quotes: [{ text: "If even one person doesn't have a Blu account, the entire flow breaks down.", source: 'Ali' }, { text: "Those who don't have Blu have to use card-to-card transfers through other banking apps.", source: 'Aram' }] },
+        { title: '1. Trust needs proof', insight: 'People wanted evidence before paying.', quotes: [{ text: 'If I could upload a receipt, it would be so much better.', source: 'Participant 01', avatar: '1' }, { text: 'I have to send the receipt separately, outside the app.', source: 'Participant 02', avatar: '2' }] },
+        { title: '2. Manual work increases organizer effort', insight: 'Uneven splits pushed calculation and checking back onto the group.', quotes: [{ text: 'I have to manually enter unequal expenses myself.', source: 'Participant 03', avatar: '3' }, { text: 'Last time we just calculated everything manually between ourselves.', source: 'Participant 04', avatar: '4' }] },
+        { title: '3. Reminders create social discomfort', insight: 'Following up felt personal, even when the debt itself was simple.', quotes: [{ text: "It’d be better if a notification just went out automatically.", source: 'Participant 01', avatar: '1' }, { text: "I have to remind each member individually, and I’m worried they’ll think I’m deliberately pressuring them.", source: 'Participant 03', avatar: '3' }] },
+        { title: '4. Non-Blu Users Break the Flow', insight: 'Mixed Blu/non-Blu groups forced workarounds outside Dong.', quotes: [{ text: "If even one person doesn’t have a Blu account, the entire flow breaks down.", source: 'Participant 02', avatar: '2' }, { text: "Those who don’t have Blu have to use card-to-card transfers through other banking apps.", source: 'Participant 04', avatar: '4' }] },
       ],
     },
     competitive: {
       kicker: 'COMPARABLE PRODUCT ANALYSIS',
-      title: 'Comparable Products Showed How These Situations Are Usually Supported',
+      title: 'Competitors Solve the Math, Dong Needs to Solve the Experience.',
       lead: 'Splitwise, Tricount, Monzo, Revolut, and Cino showed reusable patterns, not a checklist to copy.',
       gapLabel: 'Dong gap',
       items: [
         { title: 'Record and documentation', products: ['Splitwise', 'Tricount'], observation: 'Receipt scan, expense photos, calculators, and flexible allocation rules keep documentation inside the split.', gap: 'Dong leaves receipt documentation and flexible splitting work outside the flow.' },
-        { title: 'Remind and explain', products: ['Splitwise', 'Monzo', 'Revolut'], observation: 'Automatic or system-mediated reminders reduce how much follow-up feels like a personal request.', gap: 'Dong still leans on manual organizer follow-up after the split.' },
+        { title: 'Remind and explain', products: ['Revolut', 'Splitwise', 'Monzo'], observation: 'Automatic or system-mediated reminders reduce how much follow-up feels like a personal request.', gap: 'Dong still leans on manual organizer follow-up after the split.' },
         { title: 'Open network', products: ['Monzo', 'Cino'], observation: 'Guest links and secure payment links let people participate without fully joining the product first.', gap: 'Dong’s closed participation can block mixed Blu/non-Blu groups, but redesigning that model needs product constraint clarity.' },
       ],
-      synthesis: 'Across the comparison, the opportunity areas were consistent: make expenses easier to document, reduce manual reminder pressure, support more flexible splitting, and treat non-Blu participation as a scoped product decision rather than an automatic redesign feature.',
     },
   },
   synthesis: {
@@ -219,11 +262,26 @@ export const en = {
       ],
     },
     heuristic: {
+      eyebrow: 'Heuristic evaluation · 85 check questions',
+      title: 'Too Much Manual Work, Not Enough Flexibility',
+      lead: '85 check questions across Nielsen’s 10 usability heuristics, each issue rated on the 0–4 severity scale.',
       stats: [
         { value: '85', label: 'Check questions' },
         { value: '48%', label: 'Overall pass rate' },
         { value: '0–4', label: 'Nielsen severity scale' },
       ],
+      focus: {
+        title: 'Only 12% Of Flexibility Checks Passed—Dong’s Clearest Usability Gap',
+        caption: 'Pass rate · four most critical heuristics',
+        note: 'Flexibility and efficiency failed most often and carried the highest priority score: 37.',
+        items: [
+          { label: 'H7 · Flexibility & Efficiency', value: 12, rate: '12%', tone: 'crit', dominant: true },
+          { label: 'H10 · Help & Documentation', value: 20, rate: '20%', tone: 'crit' },
+          { label: 'H9 · Error Recovery', value: 25, rate: '25%', tone: 'crit' },
+          { label: 'H3 · User Control & Freedom', value: 33, rate: '33%', tone: 'warn' },
+        ],
+      },
+      disclosureLabel: 'View full heuristic evaluation · all 10 heuristics',
       chartTitle: 'Flexibility And Efficiency Were Dong’s Largest Usability Gaps',
       chartCaption: 'Priority score · issues × average severity',
       chartNote: 'One heuristic dominated the evaluation: H7 Flexibility & Efficiency.',
@@ -270,13 +328,15 @@ export const en = {
   },
   insights: {
     eyebrow: 'Key insights',
-    title: 'Four Design Priorities Came Out Of The Evidence',
-    lead: 'The research pointed toward four product moves.',
+    title: 'The Opportunity Wasn’t A Better Split—It Was Making Shared Expenses Explainable, Less Manual, And Less Personal',
+    lead: 'Cross-method evidence narrowed the design space into four principles. They guided what we explored next—not predetermined feature decisions.',
+    evidenceLabel: 'Evidence',
+    principleLabel: 'Design principle',
     items: [
-      { title: 'Transparency builds trust.', evidenceLabel: labels.evidence, evidence: '3 / 4 interviewees requested receipt or documentation support.', implicationLabel: labels.implication, implication: 'Use receipts, notes, and itemized breakdowns to make charges explainable.' },
-      { title: 'Manual work creates abandonment risk.', evidenceLabel: labels.evidence, evidence: '4 / 4 interviewees experienced pain with manual splitting, reminders, or calculations.', implicationLabel: labels.implication, implication: 'Automate repeated steps while keeping the organizer in control.' },
-      { title: 'Money reminders create social friction.', evidenceLabel: labels.evidence, evidence: 'Users described worry about pressuring friends when asking for repayment.', implicationLabel: labels.implication, implication: 'Make reminders neutral, system-supported, and less personally confrontational.' },
-      { title: 'Closed participation limits group use.', evidenceLabel: labels.evidence, evidence: 'Non-Blu users appeared across interviews and as a top complaint in reviews.', implicationLabel: labels.implication, implication: 'Document external settlement as an opportunity, without redesigning BluBank membership.' },
+      { icon: 'proof', title: 'Proof Creates Confidence To Pay', evidence: '3 / 4 requested receipt support', insight: 'People need to understand a charge before they trust it.', principle: 'Keep receipts, notes, and itemization attached.' },
+      { icon: 'flexibility', title: 'Flexibility Keeps Work Inside Dong', evidence: '4 / 4 reported manual work · H7 pass: 12%', insight: 'When a split cannot adapt, groups calculate elsewhere.', principle: 'Automate repetition while preserving organizer control.' },
+      { icon: 'reminder', title: 'The System Should Carry The Ask', evidence: 'Users worried about pressuring friends', insight: 'Direct repayment reminders feel personal.', principle: 'Use neutral, system-mediated reminders.' },
+      { icon: 'participation', title: 'Participation Needs Constraint Validation', evidence: 'Repeated across reviews and conversations', insight: 'Mixed Blu/non-Blu groups break at the participation boundary.', principle: 'Validate external settlement before designing it.' },
     ],
   },
   personas: {
@@ -284,21 +344,40 @@ export const en = {
     title: 'Sara Organizes The Split; Nick Needs To Trust It',
     lead: 'Sara and Nick carry the same friction from two sides of the shared-expense relationship.',
     goalLabel: 'Goal',
-    frictionLabel: 'Main friction',
+    painLabel: 'Pain points · High → Medium',
     items: [
       {
+        index: '01',
+        type: 'Primary persona',
         name: 'Sara',
         role: 'Organizer',
-        image: { src: rebuildAsset('figma-exports/persona-sara.png'), alt: 'Sara, organizer persona from the original case study' },
-        goal: 'Have Dong track the shared expense and reduce follow-up work.',
-        friction: 'Manual expense entry, uneven splits, missing receipts, non-Blu members, and the work of reminding people herself.',
+        image: { src: rebuildAsset('figma-exports/persona-sara-hd.png'), alt: 'Sara, organizer persona from the original case study' },
+        behavior: 'Plans first, chases repayment',
+        quote: 'I want everyone to pay their share easily — even if they don’t use Blu — without me having to remind anyone.',
+        goal: 'Have Dong handle the tracking and reminders for her.',
+        goalDetail: 'Right now she splits every shared expense by hand and chases each person herself.',
+        pains: [
+          'Lacks the ability to share payment receipts and expense breakdown details, creating concerns about potential confusion or disagreements among group members.',
+          'Feels dissatisfied with spending time tracking and reminding others about their pending payments.',
+          'Finds managing uneven expense splits time-consuming and frustrating.',
+          'Faces difficulties collecting payments when some group members are not Blu users.',
+        ],
       },
       {
+        index: '02',
+        type: 'Secondary persona',
         name: 'Nick',
-        role: 'Participant',
-        image: { src: rebuildAsset('figma-exports/persona-nick.png'), alt: 'Nick, participant persona from the original case study' },
-        goal: 'Understand exactly what he owes and pay on time.',
-        friction: 'Limited transparency, missing supporting documentation, forgotten payments, and no clear way to question a share.',
+        role: 'Payer',
+        image: { src: rebuildAsset('figma-exports/persona-nick-hd.png'), alt: 'Nick, participant persona from the original case study' },
+        behavior: 'Joins in, settles fast',
+        quote: 'I want to see a clear breakdown of what I owe and why, so I can pay with confidence.',
+        goal: 'See exactly what he owes, then pay it on time.',
+        goalDetail: 'Right now he lacks visibility into expense details and relies on manual reminders to pay on time.',
+        pains: [
+          'Lacks transparency and supporting documentation to confidently trust recorded expenses.',
+          'May forget to complete payments if the expense organizer does not send a reminder.',
+          'Cannot provide feedback or raise questions about their share of expenses.',
+        ],
       },
     ],
   },
@@ -307,10 +386,10 @@ export const en = {
     title: 'The Real Challenge Isn’t Splitting The Bill — It’s Asking For The Money.',
     lead: 'Unpaid debt can turn a product task into an interpersonal moment.',
     steps: [
-      { title: 'Unpaid debt', body: 'A friend still owes money in the group.', image: { src: rebuildAsset('figma-exports/friction-1.png'), alt: 'Original illustration of an anxious payment reminder moment' } },
-      { title: 'Hesitation', body: 'The organizer worries that reminding them will feel pushy or transactional.', image: { src: rebuildAsset('figma-exports/friction-2.png'), alt: 'Original illustration of hesitation before asking for repayment' } },
-      { title: 'Personal chasing', body: 'Follow-up moves outside the product and into a direct personal ask.', image: { src: rebuildAsset('figma-exports/friction-3.png'), alt: 'Original illustration of a nervous repayment message' } },
-      { title: 'Relationship friction', body: 'Repeating this pattern can quietly wear on the relationship.', image: { src: rebuildAsset('figma-exports/friction-4.png'), alt: 'Original illustration of relationship discomfort around debt' } },
+      { title: 'Unpaid debt', body: 'A friend still owes money in the group.', image: { src: rebuildAsset('figma-exports/friction-1-hd.png'), alt: 'Original illustration of an anxious payment reminder moment' } },
+      { title: 'Hesitation', body: 'The organizer worries that reminding them will feel pushy or transactional.', image: { src: rebuildAsset('figma-exports/friction-2-hd.png'), alt: 'Original illustration of hesitation before asking for repayment' } },
+      { title: 'Personal chasing', body: 'Follow-up moves outside the product and into a direct personal ask.', image: { src: rebuildAsset('figma-exports/friction-3-hd.png'), alt: 'Original illustration of a nervous repayment message' } },
+      { title: 'Relationship friction', body: 'Repeating this pattern can quietly wear on the relationship.', image: { src: rebuildAsset('figma-exports/friction-4-hd.png'), alt: 'Original illustration of relationship discomfort around debt' } },
     ],
     source: 'Based on user feedback patterns observed in comparable expense-splitting apps, and consistent with published research on interpersonal debt communication (Angulo, Goldstein & Norton, 2024, Journal of Consumer Psychology).',
   },
@@ -324,8 +403,8 @@ export const en = {
     nickLabel: 'Nick · ',
     opportunityLabel: 'Opportunity',
     personas: [
-      { name: 'Sara', role: 'Organizer', image: { src: rebuildAsset('figma-exports/persona-sara.png'), alt: 'Sara persona' } },
-      { name: 'Nick', role: 'Participant', image: { src: rebuildAsset('figma-exports/persona-nick.png'), alt: 'Nick persona' } },
+      { name: 'Sara', role: 'Organizer', image: { src: rebuildAsset('figma-exports/persona-sara-hd.png'), alt: 'Sara persona' } },
+      { name: 'Nick', role: 'Participant', image: { src: rebuildAsset('figma-exports/persona-nick-hd.png'), alt: 'Nick persona' } },
     ],
     columns: [
       { title: 'Set Up', sara: 'Starts a group for the shared expense and invites members.', nick: 'Joins the group through the invite link.', pains: ["Some intended members can't join without a Blu account."] },
@@ -334,13 +413,13 @@ export const en = {
       { title: 'Settling', sara: "Checks the group's debt/credit summary to see where payments and settlements stand.", nick: 'Completes the payment, Blu-to-Blu.', pains: ["Both see totals, but checking detail means opening transactions one by one."] },
     ],
     points: [
-      { tone: 'sara', x: 12.5, y: 120, label: 'Sara · Frustrated', image: { src: rebuildAsset('figma-exports/emo-sara-frustrated.png'), alt: 'Sara feels frustrated at setup' } },
-      { tone: 'nick', x: 12.5, y: 52, label: 'Nick · Curious', image: { src: rebuildAsset('figma-exports/emo-nick-curious.png'), alt: 'Nick feels curious at setup' } },
-      { tone: 'sara', x: 37.5, y: 200, label: 'Sara · Overwhelmed', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-sara-overwhelmed.png'), alt: 'Sara feels overwhelmed at log and split' } },
-      { tone: 'sara', x: 62.5, y: 160, label: 'Sara · Uncomfortable', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-sara-uncomfortable.png'), alt: 'Sara feels uncomfortable while reminding' } },
-      { tone: 'nick', x: 62.5, y: 92, label: 'Nick · Uncertain', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-nick-uncertain.png'), alt: 'Nick feels uncertain while reviewing' } },
-      { tone: 'sara', x: 81.5, y: 40, label: 'Sara · Relieved', image: { src: rebuildAsset('figma-exports/emo-sara-relieved.png'), alt: 'Sara feels relieved after settlement' } },
-      { tone: 'nick', x: 88.7, y: 40, label: 'Nick · Relieved', image: { src: rebuildAsset('figma-exports/emo-nick-relieved.png'), alt: 'Nick feels relieved after settlement' } },
+      { tone: 'sara', x: 12.5, y: 120, label: 'Sara · Frustrated', image: { src: rebuildAsset('figma-exports/emo-sara-frustrated-hd.png'), alt: 'Sara feels frustrated at setup' } },
+      { tone: 'nick', x: 12.5, y: 52, label: 'Nick · Curious', image: { src: rebuildAsset('figma-exports/emo-nick-curious-hd.png'), alt: 'Nick feels curious at setup' } },
+      { tone: 'sara', x: 37.5, y: 200, label: 'Sara · Overwhelmed', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-sara-overwhelmed-hd.png'), alt: 'Sara feels overwhelmed at log and split' } },
+      { tone: 'sara', x: 62.5, y: 160, label: 'Sara · Uncomfortable', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-sara-uncomfortable-hd.png'), alt: 'Sara feels uncomfortable while reminding' } },
+      { tone: 'nick', x: 62.5, y: 92, label: 'Nick · Uncertain', opportunity: true, image: { src: rebuildAsset('figma-exports/emo-nick-uncertain-hd.png'), alt: 'Nick feels uncertain while reviewing' } },
+      { tone: 'sara', x: 81.5, y: 40, label: 'Sara · Relieved', image: { src: rebuildAsset('figma-exports/emo-sara-relieved-hd.png'), alt: 'Sara feels relieved after settlement' } },
+      { tone: 'nick', x: 88.7, y: 40, label: 'Nick · Relieved', image: { src: rebuildAsset('figma-exports/emo-nick-relieved-hd.png'), alt: 'Nick feels relieved after settlement' } },
     ],
     tooltips: [
       { x: 12.5, y: 150, rows: [{ tone: 'sara', name: 'Sara', state: 'Frustrated' }, { tone: 'nick', name: 'Nick', state: 'Curious' }] },
@@ -365,20 +444,16 @@ export const en = {
   prioritization: {
     matrix: {
       kicker: 'Prioritization',
-      title: 'Four High-impact Opportunities Moved Into Design',
-      body: 'OCR, itemized splitting, reminders, and automatic-payment exploration moved forward. Non-Blu participation stayed documented as a scope decision.',
+      title: 'Four Priorities Shaped Three Product Capabilities',
+      body: 'Receipt OCR, itemized splitting, reminder support, and automatic-payment exploration moved forward. OCR and itemized splitting combine into one end-to-end capability; non-Blu participation remains a documented scope decision.',
       asset: {
         src: rebuildAsset('figma-exports/impact-effort-matrix-figma.png'),
         alt: 'Impact effort matrix exported from Figma node 721:24251',
       },
       focus: ['Receipt Scan / OCR', 'Flexible and itemized splitting', 'Reminder support', 'Automatic-payment exploration'],
     },
-    items: [
-      { title: 'Receipt Scan / OCR + Itemized Split', body: 'Prioritized because transparency and manual calculation gaps appeared across the evidence.' },
-      { title: 'Reminder / Settlement', body: 'Prioritized because repayment follow-up is both a workflow issue and a social-friction issue.' },
-      { title: 'Automatic Payment', body: 'Explored as a first-design flow to reduce repeated settlement effort; final constraints still need confirmation.' },
-      { title: 'Non-Blu participation', body: 'Kept as an open opportunity until product constraints are clarified.' },
-    ],
+    selectedLabel: 'Selected priorities',
+    selected: ['Receipt OCR', 'Itemized Split', 'Reminder Support', 'Automatic Payment'],
     nonBluDecision: {
       kicker: 'Product / scope decision',
       title: "Why we didn't design for non-Blu participation",
@@ -387,8 +462,8 @@ export const en = {
   },
   productDirection: {
     eyebrow: 'Proposed product direction',
-    title: 'The Redesign Focused On Three Proposed Capabilities',
-    lead: 'These are proposed redesign capabilities, not current BluBank Dong features.',
+    title: 'From Priorities To Product Capabilities',
+    lead: 'Four selected priorities became three proposed capabilities because receipt OCR and itemized splitting work as one connected flow. These are proposals, not current BluBank Dong features.',
     items: [
       {
         title: 'Receipt OCR',
@@ -457,6 +532,14 @@ export const en = {
     lead: 'The OCR flow is a product-design rationale, not a fabricated feedback problem.',
     kicker: 'Receipt Scan / OCR',
     body: 'OCR can reduce manual entry, but financial flows still need review, correction, and explicit confirmation.',
+    carouselLabel: 'Receipt OCR design decision screens',
+    slides: [
+      { src: './assets/figma-exports/design-decision-en-01.png', alt: 'Extracted receipt items ready for review' },
+      { src: './assets/figma-exports/design-decision-en-02.png', alt: 'Invoice amount mismatch warning with correction options' },
+      { src: './assets/figma-exports/design-decision-en-03.png', alt: 'Percentage-based share assignment for a receipt item' },
+      { src: './assets/figma-exports/design-decision-en-04.png', alt: 'Receipt items assigned to group members' },
+      { src: './assets/figma-exports/design-decision-en-05.png', alt: 'Final member share summary before confirmation' },
+    ],
     asset: mediaSet([
       figmaSlot('figma-ocr-extracted-items.png', { node: '684:18461' }),
       figmaSlot('figma-ocr-edited-items.png', { node: '684:18532' }),
@@ -475,16 +558,17 @@ export const en = {
     eyebrow: 'Final experience',
     title: 'The Final Experience Makes Shared Expenses Documented, Flexible, And System-supported',
     lead: 'Three proposed flows carry the redesign: OCR, neutral reminders, and opt-in Automatic Payment.',
+    ariaLabel: 'Final experience flows',
     items: [
-      { title: 'Final Flow 01 — OCR', outcome: 'Scan → Extract → Review → Assign → Confirm.', annotations: ['Receipt evidence stays attached.', 'Detected items remain editable.', 'The final split is confirmed before sharing.'], asset: mediaSet([figmaSlot('figma-ocr-extracted-items.png', { node: '684:18461' }), figmaSlot('figma-ocr-discrepancy.png', { node: '684:18607' }), figmaSlot('figma-ocr-final-breakdown.png', { node: '684:19614' })], 'OCR turns a receipt into an editable, explainable group split.', 'final-ocr-flow.mp4') },
-      { title: 'Final Flow 02 — Reminder', outcome: 'Centralized follow-up with scheduling, editable messages, and visible status history.', annotations: ['Recipient selection is centralized.', 'Reminders can be scheduled or recurring.', 'Message and history stay editable and visible.'], asset: mediaSet([figmaSlot('figma-reminder-list.png', { node: '684:13311' }), figmaSlot('figma-reminder-schedule.png', { node: '684:13729' }), figmaSlot('figma-reminder-message.png', { node: '684:13859' }), figmaSlot('figma-reminder-details.png', { node: '684:14264' })], 'System-supported reminders reduce direct personal chasing.', 'final-reminder-flow.mp4') },
-      { title: 'Final Flow 03 — Automatic Payment', outcome: 'Opt-in settlement support with clear consent, caps, status, and easy deactivation.', annotations: ['Explicit opt-in and configurable cap.', 'Positive ON/OFF mental model.', 'System feedback confirms the state.'], asset: mediaSet([figmaSlot('figma-autopay-settings-entry.png', { node: '684:12288' }), figmaSlot('figma-autopay-limit.png', { node: '684:12380' }), figmaSlot('figma-autopay-refined.png', { node: '684:12480' }), figmaSlot('figma-autopay-success.png', { node: '684:12444' })], 'Automatic Payment remains opt-in, capped, and reversible.', 'final-auto-payment-flow.mp4') },
+      { shortTitle: 'Receipt OCR', title: 'Final Flow 01 — Receipt OCR', outcome: 'Scan → Extract → Review → Assign → Confirm.', annotations: ['Receipt evidence stays attached.', 'Detected items remain editable.', 'The final split is confirmed before sharing.'], asset: mediaSet([figmaSlot('figma-ocr-extracted-items.png', { node: '684:18461' }), figmaSlot('figma-ocr-discrepancy.png', { node: '684:18607' }), figmaSlot('figma-ocr-final-breakdown.png', { node: '684:19614' })], 'OCR turns a receipt into an editable, explainable group split.', 'final-ocr-flow-en.mp4') },
+      { shortTitle: 'Reminder', title: 'Final Flow 02 — Reminder', outcome: 'Centralized follow-up with scheduling, editable messages, and visible status history.', annotations: ['Recipient selection is centralized.', 'Reminders can be scheduled or recurring.', 'Message and history stay editable and visible.'], asset: mediaSet([figmaSlot('figma-reminder-list.png', { node: '684:13311' }), figmaSlot('figma-reminder-schedule.png', { node: '684:13729' }), figmaSlot('figma-reminder-message.png', { node: '684:13859' })], 'System-supported reminders reduce direct personal chasing.', 'final-reminder-flow-en.mp4') },
+      { shortTitle: 'Automatic Payment', title: 'Final Flow 03 — Automatic Payment', outcome: 'Opt-in settlement support with clear consent, caps, status, and easy deactivation.', annotations: ['Explicit opt-in and configurable cap.', 'Positive ON/OFF mental model.', 'System feedback confirms the state.'], asset: mediaSet([figmaSlot('figma-autopay-settings-entry.png', { node: '684:12288' }), figmaSlot('figma-autopay-limit.png', { node: '684:12380' }), figmaSlot('figma-autopay-refined.png', { node: '684:12480' })], 'Automatic Payment remains opt-in, capped, and reversible.', 'final-auto-payment-flow-en.mp4') },
     ],
   },
   comparison: {
     eyebrow: 'Before / after',
-    title: 'Manual And Opaque → Documented And System-supported',
-    lead: 'The proposed direction shifts the work from organizer memory and personal follow-up into clearer product support.',
+    title: 'From Manual Coordination To Supported Settlement',
+    lead: 'The redesign moves shared-expense management from memory, manual entry, and personal follow-up toward documented expenses, transparent splits, and system-supported settlement.',
     beforeLabel: 'Before',
     afterLabel: 'Proposed experience',
     arrow: '→',
@@ -493,26 +577,32 @@ export const en = {
   },
   measurement: {
     eyebrow: 'Measurement',
-    title: 'What We Would Measure',
-    lead: 'This project was not launched, so these are proposed success measures rather than measured outcomes.',
+    title: 'How Success Would Be Measured',
+    lead: 'Because the concept has not been launched, these metrics define how its effectiveness should be evaluated—not claimed outcomes.',
+    signalLabel: 'Signal',
+    methodLabel: 'Method',
     items: [
-      { title: 'OCR correction success', body: 'Can organizers catch and correct extracted receipt items before sharing?' },
-      { title: 'Itemized split comprehension', body: 'Do payers understand what they owe and why before paying?' },
-      { title: 'Reminder tone and clarity', body: 'Do reminders feel clear and neutral rather than personally confrontational?' },
-      { title: 'Automatic-payment trust', body: 'Do caps, status, and deactivation controls make opt-in settlement feel safe?' },
+      { title: 'OCR Accuracy & Correction', signal: 'Organizers successfully review and correct extracted receipt items before sharing.', method: 'Task-based usability test' },
+      { title: 'Split Comprehension', signal: 'Payers can correctly explain what they owe and why.', method: 'Comprehension check' },
+      { title: 'Reminder Experience', signal: 'Reminders feel clear, neutral, and non-confrontational.', method: 'Post-task rating' },
+      { title: 'Automatic Payment Trust', signal: 'Users understand caps, status, and deactivation controls.', method: 'Trust and control assessment' },
     ],
   },
   reflection: {
     eyebrow: 'Reflection',
-    title: 'Closing Reflection',
-    lead: 'This was not launched, so the case closes with design learning and validation questions rather than impact claims.',
+    title: 'What I Learned—And What Comes Next',
+    lead: 'The work closes with the design principles that shaped the proposal and the questions that still need validation.',
+    learnedLabel: 'What I learned',
+    nextLabel: 'What I would validate next',
     learned: [
-      { title: 'Shared money is social.', body: 'The hardest part is not only calculating the split; it is preserving trust between people.' },
-      { title: 'Evidence needs to stay attached.', body: 'Receipts, notes, and itemization are not extras; they are how the group understands the expense.' },
+      { title: 'Shared Money Is Social', body: 'Designing the calculation is only part of the problem; the experience must also protect trust between people.' },
+      { title: 'Evidence Creates Confidence', body: 'Receipts, notes, and itemization help participants understand and verify shared expenses.' },
+      { title: 'Automation Needs Visible Control', body: 'Reminders and automatic payments feel safer when users can review, edit, limit, or deactivate them.' },
     ],
     next: [
-      { title: 'Validate with users.', body: 'Test the redesigned flows before claiming outcomes.' },
-      { title: 'Clarify constraints.', body: 'Confirm automatic payment and non-Blu participation constraints before finalizing those flows.' },
+      { title: 'Test The End-to-end Flow', body: 'Validate the complete OCR-to-settlement journey with both organizers and payers.' },
+      { title: 'Validate Reminder Tone', body: 'Test reminder language within real group relationships and different levels of financial sensitivity.' },
+      { title: 'Confirm Product Constraints', body: 'Clarify technical and regulatory constraints for automatic payments and non-Blu participants.' },
     ],
   },
 };

@@ -4,6 +4,7 @@
 
 html {
   min-height: 100%;
+  overflow-x: clip;
   background: var(--bg);
   scroll-behavior: smooth;
 }
@@ -73,11 +74,11 @@ a:hover {
     animation-iteration-count: 1 !important;
   }
 
-  .hero-video {
-    display: none;
+  .hero-video .device-video__media {
+    visibility: hidden;
   }
 
-  .media-set__video {
+  .media-set--video .device-video {
     display: none;
   }
 
@@ -90,9 +91,15 @@ a:hover {
   }
 
   .hero-poster {
-    position: relative;
-    inset: auto;
-    z-index: 2;
+    display: block;
+    width: min(100%, 220px);
+    max-height: 430px;
+    margin-inline: auto;
+    border: 0;
+    border-radius: 26px;
+    background: transparent;
+    box-shadow: none;
+    object-fit: contain;
     transform: none;
   }
 }

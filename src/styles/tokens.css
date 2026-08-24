@@ -91,6 +91,11 @@
   --accent-danger: var(--danger);
   --active-control-text: #0a0d15;
   --control-bg: var(--card);
+  --theme-switch-track: #303a4b;
+  --theme-switch-track-hover: #354154;
+  --theme-switch-thumb: #0e121c;
+  --theme-switch-thumb-border: rgba(126, 179, 245, 0.28);
+  --theme-switch-icon: #eaeef4;
   --chip-slate-fg: #c4cedc;
   --chip-slate-bg: rgba(148, 163, 184, 0.09);
   --chip-slate-bd: rgba(148, 163, 184, 0.4);
@@ -144,6 +149,11 @@
   --accent-danger: var(--danger);
   --active-control-text: #ffffff;
   --control-bg: #e6e9ef;
+  --theme-switch-track: #d8dee8;
+  --theme-switch-track-hover: #cfd6e2;
+  --theme-switch-thumb: #ffffff;
+  --theme-switch-thumb-border: rgba(15, 23, 42, 0.16);
+  --theme-switch-icon: #12151c;
   --chip-slate-fg: #3f4c5e;
   --chip-slate-bg: rgba(71, 85, 105, 0.08);
   --chip-slate-bd: rgba(71, 85, 105, 0.32);
