@@ -1,6 +1,6 @@
-import { en } from './content/en.js?v=20260824-7';
-import { fa } from './content/fa.js?v=20260824-7';
-import { caseNav, header } from './components/header.js?v=20260824-7';
+import { en } from './content/en.js?v=20260824-8';
+import { fa } from './content/fa.js?v=20260824-8';
+import { caseNav, header } from './components/header.js?v=20260824-8';
 import {
   cardGrid,
   competitiveAnalysis,
@@ -36,7 +36,7 @@ import {
   productRelationship,
   reviewEvidence,
   closingComparison,
-} from './components/sections.js?v=20260824-7';
+} from './components/sections.js?v=20260824-8';
 
 const STORAGE_KEYS = {
   locale: 'blubank-dong-rebuild-locale',
@@ -191,6 +191,12 @@ function setupDecisionCoverflow() {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let active = 0;
   let paused = false;
+  let pointerId = null;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragDeltaX = 0;
+  let dragAxis = null;
+  let suppressClick = false;
 
   const show = (next) => {
     active = (next + slides.length) % slides.length;
@@ -216,7 +222,33 @@ function setupDecisionCoverflow() {
     }, 3800);
   };
 
-  slides.forEach((slide, index) => slide.addEventListener('click', () => show(index)));
+  const finishDrag = (event, cancelled = false) => {
+    if (pointerId === null || event.pointerId !== pointerId) return;
+    const threshold = Math.min(72, Math.max(38, carousel.clientWidth * .09));
+    const shouldAdvance = !cancelled && Math.abs(dragDeltaX) >= threshold;
+
+    if (carousel.hasPointerCapture(pointerId)) carousel.releasePointerCapture(pointerId);
+    carousel.classList.remove('is-dragging');
+    carousel.style.removeProperty('--coverflow-drag');
+    pointerId = null;
+    dragAxis = null;
+
+    if (shouldAdvance) {
+      suppressClick = true;
+      show(active + (dragDeltaX < 0 ? 1 : -1));
+      window.setTimeout(() => { suppressClick = false; }, 0);
+    }
+
+    dragDeltaX = 0;
+    paused = event.pointerType === 'mouse'
+      ? carousel.matches(':hover') || carousel.contains(document.activeElement)
+      : false;
+    start();
+  };
+
+  slides.forEach((slide, index) => slide.addEventListener('click', () => {
+    if (!suppressClick) show(index);
+  }));
   dots.forEach((dot, index) => dot.addEventListener('click', () => {
     show(index);
     start();
@@ -225,6 +257,31 @@ function setupDecisionCoverflow() {
   carousel.addEventListener('mouseleave', () => { paused = false; });
   carousel.addEventListener('focusin', () => { paused = true; });
   carousel.addEventListener('focusout', () => { paused = false; });
+  carousel.addEventListener('pointerdown', (event) => {
+    if (event.button !== undefined && event.button !== 0) return;
+    pointerId = event.pointerId;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    dragDeltaX = 0;
+    dragAxis = null;
+    paused = true;
+    carousel.setPointerCapture(pointerId);
+    carousel.classList.add('is-dragging');
+  });
+  carousel.addEventListener('pointermove', (event) => {
+    if (pointerId === null || event.pointerId !== pointerId) return;
+    const deltaX = event.clientX - dragStartX;
+    const deltaY = event.clientY - dragStartY;
+    if (!dragAxis && Math.max(Math.abs(deltaX), Math.abs(deltaY)) >= 6) {
+      dragAxis = Math.abs(deltaX) > Math.abs(deltaY) ? 'horizontal' : 'vertical';
+    }
+    if (dragAxis !== 'horizontal') return;
+    dragDeltaX = deltaX;
+    carousel.style.setProperty('--coverflow-drag', `${deltaX}px`);
+    event.preventDefault();
+  });
+  carousel.addEventListener('pointerup', (event) => finishDrag(event));
+  carousel.addEventListener('pointercancel', (event) => finishDrag(event, true));
   carousel.addEventListener('keydown', (event) => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
