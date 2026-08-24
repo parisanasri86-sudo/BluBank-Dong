@@ -1153,7 +1153,8 @@ html[dir="rtl"] .product-relationship__arrow {
   position: relative;
   display: grid;
   place-items: center;
-  margin-inline-start: 3px;
+  margin: 0;
+  transform: translateX(2px);
   font-size: 20px;
   line-height: 1;
 }
@@ -1166,6 +1167,7 @@ html[dir="rtl"] .product-relationship__arrow {
   width: 18px;
   height: 18px;
   margin-inline-start: 0;
+  transform: none;
   font-size: 0;
 }
 
@@ -4390,7 +4392,7 @@ html[dir="rtl"] .persona-card-compact blockquote {
   }
 
   .mobile-path {
-    stroke-width: 6;
+    stroke-width: 2;
   }
 
   .mobile-path--sara {
@@ -4425,30 +4427,30 @@ html[dir="rtl"] .persona-card-compact blockquote {
     position: absolute;
     z-index: 3;
     display: grid;
-    width: clamp(48px, 14vw, 64px);
+    width: clamp(48px, 12.7vw, 56px);
     aspect-ratio: 1;
     place-items: center;
     transform: translate(-50%, -50%);
-    border: 4px solid var(--blu);
+    border: 2px solid var(--blu);
     border-radius: 50%;
     background: var(--card);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--blu) 24%, transparent);
+    box-shadow: 0 10px 24px rgba(126, 179, 245, .2);
   }
 
   .mobile-journey-point--nick {
     border-color: var(--success);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 24%, transparent);
+    box-shadow: 0 10px 24px rgba(52, 211, 153, .18);
   }
 
   .mobile-journey-point.is-opportunity {
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 72%, transparent);
+    box-shadow: 0 0 0 4px rgba(224, 90, 122, .18);
   }
 
   .mobile-journey-point img {
     display: block;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    border: 1px solid color-mix(in srgb, var(--text) 48%, transparent);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border: 0;
     border-radius: 50%;
     object-fit: cover;
     background: var(--card);
@@ -4456,9 +4458,9 @@ html[dir="rtl"] .persona-card-compact blockquote {
 
   .mobile-point--setup-sara { left: 20.5%; top: 7.2%; }
   .mobile-point--setup-nick { left: 34%; top: 7.2%; }
-  .mobile-point--split-sara { left: 7.7%; top: 31.9%; }
+  .mobile-point--split-sara { left: 9%; top: 31.9%; }
   .mobile-point--review-sara { left: 19%; top: 59.7%; }
-  .mobile-point--review-nick { left: 26%; top: 59.7%; }
+  .mobile-point--review-nick { left: 31%; top: 59.7%; }
   .mobile-point--settle-sara { left: 46.8%; top: 86.1%; }
   .mobile-point--settle-nick { left: 46.8%; top: 93.9%; }
 
@@ -4474,10 +4476,10 @@ html[dir="rtl"] .persona-card-compact blockquote {
     direction: rtl;
   }
 
-  .mobile-step--1 { top: 1%; }
-  .mobile-step--2 { top: 29%; }
-  .mobile-step--3 { top: 57.5%; }
-  .mobile-step--4 { top: 84%; }
+  .mobile-step--1 { top: 0; }
+  .mobile-step--2 { top: 24.5%; }
+  .mobile-step--3 { top: 52.3%; }
+  .mobile-step--4 { top: 78.7%; }
 
   .mobile-journey-step h3 {
     margin: 0 0 8px;

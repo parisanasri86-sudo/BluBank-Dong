@@ -488,11 +488,11 @@ export function emotionalJourney(content) {
       </figure>
       <figure class="mobile-journey-arc" role="img" aria-label="${content.arcLabel}">
         <svg class="mobile-journey-lines" viewBox="0 0 440 720" preserveAspectRatio="none" aria-hidden="true">
-          <path class="mobile-path mobile-path--sara" d="M90 52 C90 130 30 142 34 230 C36 304 82 338 84 430 C84 512 198 548 206 620"></path>
-          <path class="mobile-path mobile-path--nick mobile-path--inactive" d="M150 52 C150 170 116 280 116 430"></path>
-          <path class="mobile-path mobile-path--nick" d="M116 430 C118 516 206 550 206 676"></path>
-          <path class="mobile-path mobile-path--opportunity" d="M34 230 C34 304 82 338 84 430 M116 278 C116 336 116 378 116 430"></path>
-          <path class="mobile-connector" d="M90 52 H268 M34 230 H268 M100 430 H268 M206 620 H268"></path>
+          <path class="mobile-path mobile-path--sara" d="M90 52 C90 130 36 142 40 230 M84 430 C84 512 198 548 206 620"></path>
+          <path class="mobile-path mobile-path--nick mobile-path--inactive" d="M150 52 C150 142 136 176 136 230"></path>
+          <path class="mobile-path mobile-path--nick" d="M136 230 L136 430 C138 516 206 550 206 676"></path>
+          <path class="mobile-path mobile-path--opportunity" d="M40 230 C42 304 82 338 84 430"></path>
+          <path class="mobile-connector" d="M178 52 H268 M68 230 H268 M164 430 H268 M234 620 H268"></path>
           <path class="mobile-opportunity-line" d="M88 342 H270"></path>
         </svg>
         <div class="mobile-journey-point mobile-journey-point--sara mobile-point--setup-sara"><img src="${content.points[0].image.src}" alt="${content.points[0].image.alt}"></div>
