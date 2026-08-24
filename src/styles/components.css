@@ -4553,7 +4553,7 @@ html[dir="rtl"] .persona-card-compact blockquote {
   object-fit: contain;
 }
 
-.asset-slot__light-image {
+.asset-slot--matrix .asset-slot__light-image {
   display: none;
 }
 
