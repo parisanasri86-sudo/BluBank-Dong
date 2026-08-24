@@ -3989,6 +3989,7 @@ html[dir="rtl"] .insight-principle h3 {
 
 .persona-pains {
   display: grid;
+  align-content: start;
   gap: 12px;
   padding-top: 16px;
   border-top: 1px solid var(--line);
@@ -4302,6 +4303,10 @@ html[dir="rtl"] .persona-card-compact blockquote {
   z-index: 1;
 }
 
+[dir="rtl"] .legacy-opportunity {
+  transform: translateX(50%);
+}
+
 .legacy-arc-tooltip {
   position: absolute;
   inset-inline-start: var(--x);
@@ -4560,7 +4565,8 @@ html[dir="rtl"] .persona-card-compact blockquote {
     position: absolute;
     z-index: 5;
     left: 61%;
-    top: 46.5%;
+    top: 47.5%;
+    transform: translateY(-50%);
     padding: 5px 10px;
     border: 1px solid color-mix(in srgb, var(--danger) 70%, transparent);
     border-radius: 999px;
