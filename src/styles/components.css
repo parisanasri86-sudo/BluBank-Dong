@@ -1151,12 +1151,14 @@ html[dir="rtl"] .product-relationship__arrow {
 
 .media-set__icon {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: block;
+  width: 0;
+  height: 0;
   margin: 0;
-  transform: translateX(2px);
-  font-size: 20px;
-  line-height: 1;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid currentColor;
+  font-size: 0;
 }
 
 .media-set__icon.is-pause {
@@ -1167,7 +1169,7 @@ html[dir="rtl"] .product-relationship__arrow {
   width: 18px;
   height: 18px;
   margin-inline-start: 0;
-  transform: none;
+  border: 0;
   font-size: 0;
 }
 
