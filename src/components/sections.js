@@ -50,7 +50,8 @@ export function assetSlot(content, className = '') {
   if (content.src) {
     return `
       <figure class="asset-slot ${className}">
-        <img src="${content.src}" alt="${content.alt || ''}">
+        <img class="${content.lightSrc ? 'asset-slot__default-image' : ''}" src="${content.src}" alt="${content.alt || ''}">
+        ${content.lightSrc ? `<img class="asset-slot__light-image" src="${content.lightSrc}" alt="${content.alt || ''}">` : ''}
         ${content.caption ? `<figcaption>${content.caption}</figcaption>` : ''}
       </figure>
     `;
@@ -352,7 +353,6 @@ export function currentDongExperience(content) {
           <p>${content.gap.body}</p>
         </aside>
       </div>
-      ${problemCausalFlow(content.summary)}
     </div>
   `;
 }
@@ -486,6 +486,37 @@ export function emotionalJourney(content) {
           ${content.legend.map((item) => `<span class="legacy-arc-legend__item legacy-arc-legend__item--${item.tone}">${item.label}</span>`).join('')}
         </div>
       </figure>
+      <figure class="mobile-journey-arc" role="img" aria-label="${content.arcLabel}">
+        <svg class="mobile-journey-lines" viewBox="0 0 440 720" preserveAspectRatio="none" aria-hidden="true">
+          <path class="mobile-path mobile-path--sara" d="M90 52 C90 130 30 142 34 230 C36 304 82 338 84 430 C84 512 198 548 206 620"></path>
+          <path class="mobile-path mobile-path--nick mobile-path--inactive" d="M150 52 C150 170 116 280 116 430"></path>
+          <path class="mobile-path mobile-path--nick" d="M116 430 C118 516 206 550 206 676"></path>
+          <path class="mobile-path mobile-path--opportunity" d="M34 230 C34 304 82 338 84 430 M116 278 C116 336 116 378 116 430"></path>
+          <path class="mobile-connector" d="M90 52 H268 M34 230 H268 M100 430 H268 M206 620 H268"></path>
+          <path class="mobile-opportunity-line" d="M88 342 H270"></path>
+        </svg>
+        <div class="mobile-journey-point mobile-journey-point--sara mobile-point--setup-sara"><img src="${content.points[0].image.src}" alt="${content.points[0].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--nick mobile-point--setup-nick"><img src="${content.points[1].image.src}" alt="${content.points[1].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--sara is-opportunity mobile-point--split-sara"><img src="${content.points[2].image.src}" alt="${content.points[2].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--sara is-opportunity mobile-point--review-sara"><img src="${content.points[3].image.src}" alt="${content.points[3].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--nick is-opportunity mobile-point--review-nick"><img src="${content.points[4].image.src}" alt="${content.points[4].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--sara mobile-point--settle-sara"><img src="${content.points[5].image.src}" alt="${content.points[5].image.alt}"></div>
+        <div class="mobile-journey-point mobile-journey-point--nick mobile-point--settle-nick"><img src="${content.points[6].image.src}" alt="${content.points[6].image.alt}"></div>
+        ${content.tooltips.map((tooltip, index) => `
+          <div class="mobile-journey-step mobile-step--${index + 1}">
+            <h3>${content.columns[index].title}</h3>
+            <div class="mobile-journey-card">
+              ${tooltip.rows.map((row) => `
+                <span class="legacy-arc-row ${row.muted ? 'is-muted' : ''}">
+                  <strong class="legacy-arc-name legacy-arc-name--${row.tone}">${row.name}</strong>
+                  <em>${row.state}</em>
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+        <span class="mobile-opportunity">△ ${content.opportunityLabel}</span>
+      </figure>
     </div>
   `;
 }
@@ -601,7 +632,7 @@ export function interviewEvidence(content) {
               <div class="quote-pair">
                 ${item.quotes.map((quote) => `
                   <blockquote>
-                    <img class="quote-avatar" src="./assets/users/user-${quote.avatar}.png" alt="${quote.source}">
+                    <span class="quote-avatar"><img src="./assets/users/user-${quote.avatar}.png" alt="${quote.source}"></span>
                     <p>“${quote.text}”</p>
                   </blockquote>
                 `).join('')}

@@ -223,9 +223,9 @@ export const en = {
       title: 'The Complaints Mattered Because Shared Money Depends On Trust',
       lead: 'The conversations showed the human cost behind the reviews: uncertainty, extra organizer work, social discomfort, and harder group coordination.',
       items: [
-        { title: '1. Trust needs proof', insight: 'People wanted evidence before paying.', quotes: [{ text: 'If I could upload a receipt, it would be so much better.', source: 'Participant 01', avatar: '1' }, { text: 'I have to send the receipt separately, outside the app.', source: 'Participant 02', avatar: '2' }] },
+        { title: '1. No Transparency, No Trust', insight: 'People wanted proof before they felt confident paying.', quotes: [{ text: 'If I could upload a receipt, it would be so much better.', source: 'Participant 01', avatar: '1' }, { text: 'I have to send the receipt separately, outside the app.', source: 'Participant 02', avatar: '2' }] },
         { title: '2. Manual work increases organizer effort', insight: 'Uneven splits pushed calculation and checking back onto the group.', quotes: [{ text: 'I have to manually enter unequal expenses myself.', source: 'Participant 03', avatar: '3' }, { text: 'Last time we just calculated everything manually between ourselves.', source: 'Participant 04', avatar: '4' }] },
-        { title: '3. Reminders create social discomfort', insight: 'Following up felt personal, even when the debt itself was simple.', quotes: [{ text: "It’d be better if a notification just went out automatically.", source: 'Participant 01', avatar: '1' }, { text: "I have to remind each member individually, and I’m worried they’ll think I’m deliberately pressuring them.", source: 'Participant 03', avatar: '3' }] },
+        { title: '3. Reminders create social discomfort', insight: 'Following up felt personal, even when the debt itself was simple.', quotes: [{ text: "I have to remind each member individually, and I’m worried they’ll think I’m deliberately pressuring them.", source: 'Participant 03', avatar: '3' }, { text: "It’d be better if a notification just went out automatically.", source: 'Participant 01', avatar: '1' }] },
         { title: '4. Non-Blu Users Break the Flow', insight: 'Mixed Blu/non-Blu groups forced workarounds outside Dong.', quotes: [{ text: "If even one person doesn’t have a Blu account, the entire flow breaks down.", source: 'Participant 02', avatar: '2' }, { text: "Those who don’t have Blu have to use card-to-card transfers through other banking apps.", source: 'Participant 04', avatar: '4' }] },
       ],
     },
@@ -448,6 +448,7 @@ export const en = {
       body: 'Receipt OCR, itemized splitting, reminder support, and automatic-payment exploration moved forward. OCR and itemized splitting combine into one end-to-end capability; non-Blu participation remains a documented scope decision.',
       asset: {
         src: rebuildAsset('figma-exports/impact-effort-matrix-figma.png'),
+        lightSrc: rebuildAsset('figma-exports/impact-effort-matrix-en-light.png'),
         alt: 'Impact effort matrix exported from Figma node 721:24251',
       },
       focus: ['Receipt Scan / OCR', 'Flexible and itemized splitting', 'Reminder support', 'Automatic-payment exploration'],
