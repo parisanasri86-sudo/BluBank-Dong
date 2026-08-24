@@ -3465,8 +3465,22 @@ html[dir="rtl"] .insight-principle h3 {
 }
 
 .reflection-stack .story-card {
+  display: grid;
   grid-template-columns: 36px minmax(0, 1fr);
+  align-items: start;
   gap: var(--space-3);
+}
+
+.reflection-number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--blu) 16%, var(--surface));
+  font-size: 11px;
 }
 
 .reflection-stack h3,
