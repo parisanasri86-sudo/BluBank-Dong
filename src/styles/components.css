@@ -3536,7 +3536,6 @@ html[dir="rtl"] .insight-principle h3 {
 
 .decision-coverflow {
   --coverflow-card-width: clamp(200px, 44%, 240px);
-  --coverflow-drag: 0px;
   position: relative;
   display: grid;
   grid-template-rows: minmax(540px, 1fr) auto;
@@ -3584,17 +3583,13 @@ html[dir="rtl"] .insight-principle h3 {
   opacity: 1;
   transform:
     translate(-50%, -50%)
-    translateX(calc(var(--coverflow-x) * 32% + var(--coverflow-drag)))
+    translateX(calc(var(--coverflow-x) * 32%))
     rotateZ(calc(var(--coverflow-x) * 3.5deg))
     scale(calc(1 - var(--coverflow-distance) * .1));
   transform-origin: center;
   transition: transform .65s cubic-bezier(.22, 1, .36, 1);
   filter: none;
   user-select: none;
-}
-
-.decision-coverflow.is-dragging .decision-coverflow__slide {
-  transition: none;
 }
 
 .decision-coverflow__slide img {
@@ -3659,7 +3654,7 @@ html[dir="rtl"] .insight-principle h3 {
   .decision-coverflow__slide {
     transform:
       translate(-50%, -50%)
-      translateX(calc(var(--coverflow-x) * 28% + var(--coverflow-drag)))
+      translateX(calc(var(--coverflow-x) * 28%))
       rotateZ(calc(var(--coverflow-x) * 3deg))
       scale(calc(1 - var(--coverflow-distance) * .1));
   }

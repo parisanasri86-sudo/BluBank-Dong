@@ -1,6 +1,6 @@
-import { en } from './content/en.js?v=20260824-11';
-import { fa } from './content/fa.js?v=20260824-11';
-import { caseNav, header } from './components/header.js?v=20260824-11';
+import { en } from './content/en.js?v=20260824-12';
+import { fa } from './content/fa.js?v=20260824-12';
+import { caseNav, header } from './components/header.js?v=20260824-12';
 import {
   cardGrid,
   competitiveAnalysis,
@@ -36,7 +36,7 @@ import {
   productRelationship,
   reviewEvidence,
   closingComparison,
-} from './components/sections.js?v=20260824-11';
+} from './components/sections.js?v=20260824-12';
 
 const STORAGE_KEYS = {
   locale: 'blubank-dong-rebuild-locale',
@@ -229,7 +229,6 @@ function setupDecisionCoverflow() {
 
     if (carousel.hasPointerCapture(pointerId)) carousel.releasePointerCapture(pointerId);
     carousel.classList.remove('is-dragging');
-    carousel.style.removeProperty('--coverflow-drag');
     pointerId = null;
     dragAxis = null;
 
@@ -277,7 +276,6 @@ function setupDecisionCoverflow() {
     }
     if (dragAxis !== 'horizontal') return;
     dragDeltaX = deltaX;
-    carousel.style.setProperty('--coverflow-drag', `${deltaX}px`);
     event.preventDefault();
   });
   carousel.addEventListener('pointerup', (event) => finishDrag(event));
