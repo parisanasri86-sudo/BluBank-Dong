@@ -4068,6 +4068,14 @@ html[dir="rtl"] .persona-card-compact blockquote {
   background: var(--card-bg);
 }
 
+.journey-persona:nth-child(1) {
+  border-color: color-mix(in srgb, var(--blu) 68%, transparent);
+}
+
+.journey-persona:nth-child(2) {
+  border-color: color-mix(in srgb, var(--success) 68%, transparent);
+}
+
 .journey-persona img {
   width: 44px;
   height: 44px;
@@ -4223,6 +4231,11 @@ html[dir="rtl"] .persona-card-compact blockquote {
   inset: 22px 0 0;
   min-width: 760px;
   color: var(--accent);
+}
+
+[dir="rtl"] .emotional-arc .legacy-arc-stage > svg {
+  transform: scaleX(-1);
+  transform-origin: center;
 }
 
 .legacy-arc-point {
